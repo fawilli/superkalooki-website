@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Super Kalooki – Play Contract Rummy Online | iOS Card Game</title>
+  <meta name="robots" content="index, follow"/>
+  <meta name="description" content="Play Super Kalooki — the best online Kalooki card game for iOS. Contract rummy for 4–6 players. Single player AI or live online with friends. Download free on the App Store."/>
+  
+  
+  
+  <meta property="og:image" content="https://superkalooki.com/wp-content/uploads/2024/02/logo.png"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-lt: #E8C96A;
+  --felt: #0D2818;
+  --felt-mid: #112010;
+  --ivory: #FAF7F0;
+  --ivory-dark: #F0EBE0;
+  --text-dark: #1A160E;
+  --text-mid: #4A4035;
+  --text-muted: #7A6E60;
+}
+
+/* ═══════════════════════════════════════
+   NAV — TRUE FULL-WIDTH EDGE TO EDGE
+   Logo left | Links center | Social right
+   Uses padding only, NO max-width cap
+   ═══════════════════════════════════════ */
+.sk-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(8,16,10,0.93);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* 3-column grid spanning FULL viewport width */
+.sk-nav-inner {
+  /* NO max-width — fills edge to edge */
+  width: 100%;
+  padding: 0 1.25rem;
+  height: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media(min-width:768px){
+  .sk-nav-inner { padding: 0 2rem; gap: 1rem; }
+}
+@media(min-width:1024px){
+  .sk-nav-inner { height: 72px; padding: 0 3rem; gap: 1.5rem; }
+}
+@media(min-width:1440px){
+  .sk-nav-inner { padding: 0 4rem; }
+}
+
+/* LEFT column: logo */
+.sk-nav-logo { display: flex; align-items: center; text-decoration: none; }
+.sk-nav-logo img { height: 44px; width: auto; display: block; }
+@media(min-width:1024px) { .sk-nav-logo img { height: 56px; } }
+
+/* CENTER column: nav links */
+.sk-nav-links {
+  display: none;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+@media(min-width:1024px) { .sk-nav-links { display: flex; } }
+.sk-nav-links li a {
+  display: block;
+  font-size: 0.875rem; font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.sk-nav-links li a:hover,
+.sk-nav-links li a[aria-current="page"] { color: var(--gold); }
+
+/* RIGHT column: social icons + hamburger */
+.sk-nav-right {
+  display: flex; align-items: center; gap: 0.5rem;
+  justify-content: flex-end;
+}
+.sk-nav-social {
+  display: none;
+  align-items: center; gap: 0.375rem;
+}
+@media(min-width:1024px) { .sk-nav-social { display: flex; } }
+.sk-nav-social a {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.13);
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.sk-nav-social a:hover { border-color: var(--gold); color: var(--gold); }
+.sk-nav-social svg { width: 15px; height: 15px; display: block; }
+
+/* Hamburger — mobile only */
+.sk-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 6px;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+@media(min-width:1024px) { .sk-hamburger { display: none; } }
+.sk-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: rgba(255,255,255,0.75); border-radius: 2px;
+  transition: all 0.2s;
+}
+
+/* Mobile drawer */
+.sk-mobile-menu {
+  display: none;
+  position: fixed; inset: 0; z-index: 49; padding-top: 64px;
+}
+.sk-mobile-menu.open { display: block; }
+.sk-mobile-menu-bg {
+  position: absolute; inset: 0;
+  background: rgba(5,10,6,0.97);
+}
+.sk-mobile-menu-content {
+  position: relative; z-index: 1;
+  padding: 1rem 1.25rem 2rem;
+  display: flex; flex-direction: column;
+}
+.sk-mobile-menu-content a {
+  display: block;
+  padding: 0.875rem 0;
+  font-size: 1.0625rem; font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.15s;
+}
+.sk-mobile-menu-content a:hover { color: var(--gold); }
+.sk-mobile-social {
+  display: flex; gap: 0.875rem; align-items: center;
+  margin-top: 1.25rem; padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.sk-mobile-social a {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  transition: all 0.15s;
+}
+.sk-mobile-social a:hover { border-color: var(--gold); color: var(--gold); }
+.sk-mobile-social svg { width: 18px; height: 18px; display: block; }
+
+/* ═══════════════════════
+   STORE BADGES
+   ═══════════════════════ */
+.badges-row {
+  display: flex; flex-wrap: wrap;
+  align-items: center; gap: 0.875rem;
+}
+.store-badge { display: inline-block; text-decoration: none; }
+.store-badge img { display: block; }
+.store-badge-disabled { cursor: not-allowed; position: relative; }
+.google-badge-wrap { position: relative; display: inline-block; }
+.google-soon {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(201,168,76,0.9); color: #000;
+  font-size: 0.75rem; font-weight: 700;
+  padding: 0.2rem 0.6rem; border-radius: 2px;
+  white-space: nowrap; letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════
+   GOLD DIVIDER
+   ═══════════════════════ */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+}
+
+/* ═══════════════════════
+   FOOTER
+   ═══════════════════════ */
+.sk-footer {
+  background: #060E08;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 2.5rem 1.25rem 1.5rem;
+}
+@media(min-width:768px) { .sk-footer { padding: 3rem 2rem 2rem; } }
+@media(min-width:1024px) { .sk-footer { padding: 3rem 3rem 2rem; } }
+.sk-footer-top {
+  display: flex; flex-direction: column; gap: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+@media(min-width:768px) {
+  .sk-footer-top { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+}
+.sk-footer-logo img { height: 40px; width: auto; opacity: 0.75; }
+.sk-footer-right { display: flex; flex-direction: column; gap: 1rem; }
+.sk-footer-links {
+  display: flex; flex-wrap: wrap; gap: 0.375rem 1.25rem; list-style: none;
+}
+.sk-footer-links a {
+  font-size: 0.875rem; font-weight: 400;
+  color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.15s;
+}
+.sk-footer-links a:hover { color: var(--gold); }
+.sk-footer-social { display: flex; gap: 0.625rem; align-items: center; }
+.sk-footer-social a {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.45); text-decoration: none; transition: all 0.15s;
+}
+.sk-footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.sk-footer-social svg { width: 15px; height: 15px; fill: currentColor; }
+.sk-footer-bottom {
+  padding-top: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.375rem; text-align: center;
+}
+@media(min-width:768px) {
+  .sk-footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+.sk-footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.2); }
+.sk-footer-bottom a { color: rgba(255,255,255,0.25); text-decoration: none; }
+.sk-footer-bottom a:hover { color: rgba(255,255,255,0.5); }
+
+/* ═══════════════════════════════
+   IVORY (text-heavy) PAGES
+   ═══════════════════════════════ */
+.ivory-body { background: var(--ivory); color: var(--text-dark); }
+
+/* Tighter padding on mobile, grows on desktop */
+.ivory-main {
+  max-width: 860px; margin: 0 auto;
+  padding: 5rem 1.125rem 3rem;
+}
+@media(min-width:640px)  { .ivory-main { padding: 5.5rem 1.5rem 3.5rem; } }
+@media(min-width:1024px) { .ivory-main { padding: 6.5rem 2rem 4.5rem; } }
+
+.ivory-hero {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 1.75rem; margin-bottom: 2rem;
+}
+.ivory-hero .eyebrow {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.5rem; display: block;
+}
+.ivory-hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.75rem, 4vw, 2.625rem);
+  font-weight: 400; line-height: 1.15;
+  color: var(--text-dark); text-wrap: pretty;
+}
+.ivory-hero .meta {
+  margin-top: 0.375rem; font-size: 0.875rem; color: var(--text-muted);
+}
+
+/* Prose typography */
+.prose h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.375rem; font-weight: 400; color: var(--text-dark);
+  margin-top: 2rem; margin-bottom: 0.625rem;
+  padding-bottom: 0.375rem; border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.prose h3 {
+  font-size: 0.9375rem; font-weight: 600; color: var(--text-dark);
+  margin-top: 1.375rem; margin-bottom: 0.375rem;
+}
+.prose p { font-size: 1rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 0.875rem; }
+.prose ul, .prose ol { padding-left: 1.375rem; margin-bottom: 0.875rem; }
+.prose li { font-size: 1rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 0.25rem; }
+.prose strong { color: var(--text-dark); font-weight: 600; }
+.prose a { color: #1A6B38; text-decoration: underline; text-underline-offset: 3px; }
+.prose a:hover { color: var(--gold); }
+.prose table {
+  width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem;
+  font-size: 0.9rem; overflow-x: auto; display: block;
+}
+.prose table th {
+  background: rgba(201,168,76,0.1); color: var(--text-dark); font-weight: 600;
+  padding: 0.5rem 0.875rem; text-align: left;
+  border-bottom: 2px solid rgba(201,168,76,0.3); white-space: nowrap;
+}
+.prose table td {
+  padding: 0.4375rem 0.875rem; border-bottom: 1px solid rgba(0,0,0,0.06); color: var(--text-mid);
+}
+.prose table tr:hover td { background: rgba(0,0,0,0.02); }
+
+/* Blog index cards */
+.blog-card {
+  background: var(--ivory); border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 3px; padding: 1.25rem;
+  text-decoration: none; display: block; transition: all 0.2s;
+}
+.blog-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.blog-date {
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+}
+.blog-card h2, .blog-card h3 {
+  font-family: 'Instrument Serif', serif; font-size: 1.125rem;
+  font-weight: 400; line-height: 1.35; color: var(--text-dark);
+  margin-bottom: 0.4375rem; text-wrap: pretty;
+}
+.blog-card p { font-size: 0.9375rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 0.625rem; }
+.blog-read-more { font-size: 0.875rem; font-weight: 600; color: #1A6B38; }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.07); padding: 1rem 0; }
+.faq-q { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.375rem; }
+.faq-q::before { content: 'Q  '; color: var(--gold); font-weight: 700; }
+.faq-a { font-size: 0.9375rem; line-height: 1.8; color: var(--text-mid); }
+.faq-a::before { content: 'A  '; color: #1A6B38; font-weight: 600; }
+
+/* Contact */
+.contact-grid { display: grid; gap: 1.5rem; }
+@media(min-width:768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.contact-card { background: var(--ivory-dark); border: 1px solid rgba(0,0,0,0.08); border-radius: 3px; padding: 1.5rem; }
+.contact-link-item {
+  display: flex; align-items: center; gap: 0.625rem;
+  padding: 0.5625rem 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+  text-decoration: none; color: var(--text-dark); font-size: 0.9375rem; transition: color 0.15s;
+}
+.contact-link-item:last-child { border-bottom: none; }
+.contact-link-item:hover { color: #1A6B38; }
+
+/* Back link bar */
+.back-link-bar {
+  margin-top: 2rem; padding: 1rem 1.25rem;
+  background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.07); border-radius: 3px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem;
+}
+.back-link-bar a { font-size: 0.9375rem; font-weight: 600; color: #1A6B38; text-decoration: none; }
+.back-link-bar a:hover { color: var(--gold); }
+
+/* Animations */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.fu  { animation: fadeUp 0.7s ease both; }
+.fu2 { animation: fadeUp 0.7s 0.1s ease both; }
+.fu3 { animation: fadeUp 0.7s 0.2s ease both; }
+
+/* Accessibility */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+</style>
+
+  <!-- ═══════════════ SEO & ANALYTICS ═══════════════ -->
+  
+  <!-- Google tag (gtag.js) — Google Analytics GA4 -->
+  <!-- ⚠️  Replace G-XXXXXXXXXX with your real GA4 Measurement ID from analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      page_path: window.location.pathname,
+      anonymize_ip: true
+    });
+  </script>
+  
+  <!-- Google Search Console verification -->
+  <!-- ⚠️  Replace content value with your real GSC verification token -->
+  <meta name="google-site-verification" content="REPLACE_WITH_GSC_VERIFICATION_TOKEN"/>
+
+  <!-- Canonical URL (page-specific, not homepage for all) -->
+  <link rel="canonical" href="https://superkalooki.com/"/>
+
+  <!-- Keywords -->
+  <meta name="keywords" content="kalooki card game, super kalooki, kalooki online, contract rummy, kalooki iOS app, jamaican card game, rummy card game online"/>
+
+  <!-- Full Open Graph -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://superkalooki.com/"/>
+  <meta property="og:title"       content="Super Kalooki – Play Contract Rummy Online | iOS Card Game"/>
+  <meta property="og:description" content="Play Super Kalooki — the best online Kalooki card game for iOS. Contract rummy for 4–6 players. Single player AI or live online with friends. Download free on the App Store."/>
+  <meta property="og:image"       content="https://superkalooki.com/wp-content/uploads/2024/02/logo.png"/>
+  <meta property="og:image:alt"   content="Super Kalooki – The Ultimate Card Game"/>
+  <meta property="og:image:width" content="400"/>
+  <meta property="og:image:height" content="200"/>
+  <meta property="og:site_name"   content="Super Kalooki"/>
+  <meta property="og:locale"      content="en_US"/>
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@superkalooki"/>
+  <meta name="twitter:title"       content="Super Kalooki – Play Contract Rummy Online | iOS Card Game"/>
+  <meta name="twitter:description" content="Play Super Kalooki — the best online Kalooki card game for iOS. Contract rummy for 4–6 players. Single player AI or live online with friends. Download free on the App Store."/>
+  <meta name="twitter:image"       content="https://superkalooki.com/wp-content/uploads/2024/02/logo.png"/>
+
+  <!-- Apple mobile web app -->
+  <meta name="apple-mobile-web-app-capable"          content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title"            content="Super Kalooki"/>
+  <meta name="application-name"                      content="Super Kalooki"/>
+
+  <!-- Theme colour (matches felt green) -->
+  <meta name="theme-color" content="#0D2818"/>
+  <meta name="msapplication-TileColor" content="#0D2818"/>
+
+  <!-- Performance: preconnect to Google for fonts (already in FONTS but belt+suspenders) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com"/>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com"/>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://superkalooki.com/#website",
+        "url": "https://superkalooki.com/",
+        "name": "Super Kalooki",
+        "description": "The best online Kalooki card game — contract rummy for iOS",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://superkalooki.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://superkalooki.com/#organization",
+        "name": "Super Kalooki",
+        "url": "https://superkalooki.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://superkalooki.com/wp-content/uploads/2024/02/logo.png",
+          "width": 400,
+          "height": 200
+        },
+        "sameAs": [
+          "https://www.instagram.com/superkalooki",
+          "https://apps.apple.com/in/app/super-kalooki/id6451106023"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "superkalookigame@gmail.com",
+          "contactType": "customer support"
+        }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://superkalooki.com/#app",
+        "name": "Super Kalooki",
+        "description": "Play Kalooki — contract rummy card game — online with friends or against AI bots. Available for iOS.",
+        "operatingSystem": "iOS",
+        "applicationCategory": "GameApplication",
+        "applicationSubCategory": "Card Game",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "reviewCount": "10"
+        },
+        "installUrl": "https://apps.apple.com/in/app/super-kalooki/id6451106023",
+        "author": {
+          "@id": "https://superkalooki.com/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- ═══════════════ /SEO & ANALYTICS ═══════════════ -->
+
+</head>
+<body style="background:#0D2818;color:#F5EDD8;">
+  
+<a href="#main-content"
+   style="position:fixed;top:-100px;left:0;background:var(--gold);color:#000;padding:0.5rem 1rem;z-index:200;font-weight:600;font-size:0.875rem;transition:top 0.15s;"
+   onfocus="this.style.top='0'" onblur="this.style.top='-100px'">
+  Skip to main content
+</a>
+<header role="banner">
+  <nav class="sk-nav" aria-label="Main navigation">
+    <div class="sk-nav-inner">
+
+      <!-- LEFT: Logo -->
+      <a href="/" class="sk-nav-logo" aria-label="Super Kalooki – Homepage">
+        <img src="https://superkalooki.com/wp-content/uploads/2024/02/logo.png" alt="Super Kalooki" width="112" height="56"/>
+      </a>
+
+      <!-- CENTER: Page links (desktop) -->
+      <ul class="sk-nav-links" role="list">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/rules/">Rules</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+
+      <!-- RIGHT: Social + hamburger -->
+      <div class="sk-nav-right">
+        <nav class="sk-nav-social" aria-label="Social media">
+          <a href="https://www.instagram.com/superkalooki" target="_blank" rel="noopener noreferrer" aria-label="Super Kalooki on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://discord.gg/superkalooki" target="_blank" rel="noopener noreferrer" aria-label="Join Super Kalooki on Discord">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.102 18.08.114 18.1.132 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+        </nav>
+        <button class="sk-hamburger"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="Open navigation menu"
+                onclick="toggleMenu(this)">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Mobile full-screen drawer -->
+  <div id="mobile-menu" class="sk-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="sk-mobile-menu-bg" onclick="closeMenu()" aria-hidden="true"></div>
+    <div class="sk-mobile-menu-content" role="navigation" aria-label="Mobile navigation">
+      <a href="/blog/">Blog</a>
+      <a href="/rules/">Rules</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">Contact</a>
+      <div class="sk-mobile-social" aria-label="Social media">
+        <a href="https://www.instagram.com/superkalooki" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://discord.gg/superkalooki" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.102 18.08.114 18.1.132 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleMenu(btn) {
+  var open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!open));
+  document.getElementById('mobile-menu').classList.toggle('open', !open);
+  document.body.style.overflow = open ? '' : 'hidden';
+}
+function closeMenu() {
+  var btn = document.querySelector('.sk-hamburger');
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+</script>
+
+  
+<style>
+body { font-family:'Geist',system-ui,sans-serif; }
+
+/* ── Hero ── */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 88vh; display: flex; align-items: center;
+  /* Tight top padding on mobile (nav=64px), generous on desktop */
+  padding: 5rem 1.125rem 3rem;
+  background: #0D2818;
+}
+@media(min-width:640px)  { .hero { padding: 5.5rem 1.5rem 3rem; } }
+@media(min-width:1024px) { .hero { padding: 6.5rem 3rem 3.5rem; min-height: 84vh; } }
+@media(min-width:1440px) { .hero { padding: 6.5rem 4rem 3.5rem; } }
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse 70% 60% at 65% 40%, rgba(34,97,56,0.4), transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.05), transparent 60%),
+    #0D2818;
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: -1;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 72px,rgba(201,168,76,0.04) 72px,rgba(201,168,76,0.04) 73px),
+    repeating-linear-gradient(90deg,transparent,transparent 72px,rgba(201,168,76,0.04) 72px,rgba(201,168,76,0.04) 73px);
+}
+.hero-suits {
+  position: absolute; top: 20%; right: 2%;
+  font-size: clamp(2.5rem,7vw,7rem); line-height: 1;
+  color: rgba(201,168,76,0.04); letter-spacing: 0.3rem;
+  pointer-events: none; user-select: none; z-index: -1;
+}
+.hero-inner { width: 100%; }
+.hero-eyebrow {
+  display: inline-block; font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(201,168,76,0.8); margin-bottom: 1rem;
+  border-left: 3px solid var(--gold); padding-left: 0.625rem;
+}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 9vw, 6rem);
+  font-weight: 400; line-height: 1.05;
+  color: #F5EDD8; text-wrap: balance;
+  max-width: 14ch; margin-bottom: 1.125rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(0.9375rem,2.5vw,1.0625rem); line-height: 1.75;
+  color: rgba(245,237,216,0.55); max-width: 44ch;
+  margin-bottom: 1.75rem; text-wrap: pretty;
+}
+.badges-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.875rem; }
+
+/* ── Sections ── */
+.section-dark { background: #111D13; }
+.section-felt { background: #0D2818; }
+/* Tight on mobile, grows desktop */
+.section-pad {
+  padding: 2.75rem 1.125rem;
+}
+@media(min-width:640px)  { .section-pad { padding: 3rem 1.5rem; } }
+@media(min-width:1024px) { .section-pad { padding: 4rem 3rem; } }
+@media(min-width:1440px) { .section-pad { padding: 4rem 4rem; } }
+
+.section-eyebrow {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(201,168,76,0.7);
+  margin-bottom: 0.625rem; display: block;
+}
+.section-heading {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.625rem, 4vw, 2.375rem); font-weight: 400;
+  color: rgba(245,237,216,0.9); text-wrap: balance;
+  max-width: 30ch; line-height: 1.2; margin-bottom: 0;
+}
+.section-sub {
+  font-size: clamp(0.9375rem,2vw,1rem); line-height: 1.75;
+  color: rgba(245,237,216,0.5); max-width: 52ch;
+  margin-top: 0.625rem; text-wrap: pretty;
+}
+
+/* ── About ── */
+.about-grid { display: grid; gap: 2rem; }
+@media(min-width:1024px) { .about-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 3.5rem; } }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.stat-card {
+  background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 2px; padding: 1rem;
+}
+.stat-card dt { font-size: 0.8rem; color: rgba(245,237,216,0.4); margin-bottom: 0.2rem; }
+.stat-card .val {
+  font-family:'Instrument Serif',serif; font-size:1.875rem; font-weight:400;
+  color:var(--gold); line-height:1; font-variant-numeric:tabular-nums;
+}
+.stat-card .sub { font-size:0.8rem; color:rgba(245,237,216,0.35); margin-top:0.2rem; }
+
+/* ── Features ── */
+.features-grid {
+  display: grid; gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 3px; overflow: hidden;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1.5rem;
+}
+@media(min-width:768px) { .features-grid { grid-template-columns: repeat(4,1fr); } }
+.feature-item { background: #0D2818; padding: 1.125rem; transition: background 0.15s; }
+.feature-item:hover { background: #122A19; }
+.feature-icon { font-size: 1.25rem; margin-bottom: 0.625rem; line-height: 1; }
+.feature-name { font-size: 0.9rem; font-weight: 600; color: rgba(245,237,216,0.85); margin-bottom: 0.25rem; }
+.feature-desc { font-size: 0.8125rem; line-height: 1.6; color: rgba(245,237,216,0.4); }
+.feature-soon {
+  display: inline-block; margin-top: 0.375rem;
+  font-size: 0.6875rem; font-weight: 500;
+  background: rgba(201,168,76,0.1); color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.2); padding: 0.1rem 0.4rem; border-radius: 20px;
+}
+
+/* ── Blog preview ── */
+.blog-preview-grid { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+@media(min-width:768px) { .blog-preview-grid { grid-template-columns: repeat(3,1fr); } }
+.blog-preview-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3px; padding: 1.125rem;
+  text-decoration: none; display: block; transition: all 0.2s;
+}
+.blog-preview-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(255,255,255,0.05); }
+.blog-preview-card .date {
+  font-size: 0.8rem; color: rgba(201,168,76,0.6);
+  letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.375rem;
+}
+.blog-preview-card h3 {
+  font-family:'Instrument Serif',serif; font-weight:400; font-size:1rem;
+  line-height:1.35; color:rgba(245,237,216,0.85); margin-bottom:0.375rem; text-wrap:pretty;
+}
+.blog-preview-card p { font-size:0.8125rem; line-height:1.6; color:rgba(245,237,216,0.38); }
+.blog-preview-more { font-size:0.8125rem; font-weight:600; color:var(--gold); margin-top:0.625rem; display:inline-block; }
+
+/* ── CTA ── */
+.cta-section { text-align:center; }
+.cta-inner { max-width:500px; margin:0 auto; }
+.cta-inner h2 {
+  font-family:'Instrument Serif',serif; font-size:clamp(1.75rem,5vw,2.875rem);
+  font-weight:400; color:rgba(245,237,216,0.9); margin-bottom:0.625rem;
+  text-wrap:balance; max-width:26ch; margin-left:auto; margin-right:auto;
+}
+.cta-inner p {
+  font-size:clamp(0.9375rem,2vw,1rem); color:rgba(245,237,216,0.45);
+  max-width:44ch; margin:0 auto 1.5rem; line-height:1.75; text-wrap:pretty;
+}
+.cta-badges { display:flex; flex-wrap:wrap; justify-content:center; gap:0.875rem; align-items:center; }
+</style>
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-suits" aria-hidden="true">&#9824; &#9829; &#9830; &#9827;</div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow fu">Contract Rummy &mdash; Now on iOS</p>
+      <h1 id="hero-heading" class="fu2">Play <em>Super</em><br/>Kalooki</h1>
+      <p class="hero-sub fu3">
+        A thrilling twist on classic contract rummy. Challenge friends,
+        climb the leaderboard, and enjoy live online play &mdash; anytime, anywhere.
+      </p>
+      <div class="badges-row fu3">
+        <a href="https://apps.apple.com/in/app/super-kalooki/id6451106023" target="_blank" rel="noopener" class="store-badge" aria-label="Download on the App Store">
+  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" height="44" style="height:44px;width:auto;display:block;"/>
+</a>
+        <span class="store-badge store-badge-disabled" aria-label="Get it on Google Play — Coming Soon" title="Coming Soon">
+  <span class="google-badge-wrap">
+    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="64" style="height:64px;width:auto;display:block;opacity:0.38;filter:grayscale(0.3);"/>
+    <span class="google-soon">Soon</span>
+  </span>
+</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <!-- ABOUT -->
+  <section class="section-dark section-pad" aria-labelledby="about-heading">
+    <div class="about-grid">
+      <div>
+        <span class="section-eyebrow">About the Game</span>
+        <h2 id="about-heading" class="section-heading">More Than Just a Card Game</h2>
+        <p class="section-sub">
+          Passionate card game enthusiasts sharing the joy of Kalooki &mdash;
+          a thrilling Jamaican variant of Contract Rummy. Play solo against AI
+          or go live with friends. Every round is competitive, social, and fun.
+        </p>
+        <p class="section-sub" style="margin-top:0.5rem;">
+          Super Kalooki brings the beloved card game online for 4&ndash;6 players.
+          Practice in single-player mode or challenge friends in real-time live games.
+        </p>
+      </div>
+      <dl class="about-stats">
+        <div class="stat-card">
+          <dt>Players per game</dt>
+          <dd class="val">4&ndash;6</dd>
+          <dd class="sub">per table</dd>
+        </div>
+        <div class="stat-card">
+          <dt>Deals per set</dt>
+          <dd class="val">9</dd>
+          <dd class="sub">rounds to win</dd>
+        </div>
+        <div class="stat-card">
+          <dt>Platform</dt>
+          <dd class="val" style="font-size:1.25rem;margin-top:0.2rem;">iOS</dd>
+          <dd class="sub">Android coming soon</dd>
+        </div>
+        <div class="stat-card">
+          <dt>Game type</dt>
+          <dd class="val" style="font-size:1.125rem;margin-top:0.2rem;">Contract</dd>
+          <dd class="sub">Rummy variant</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <!-- FEATURES -->
+  <section class="section-felt section-pad" aria-labelledby="features-heading">
+    <span class="section-eyebrow">Game Modes &amp; Features</span>
+    <h2 id="features-heading" class="section-heading">Everything You Need</h2>
+    <p class="section-sub">Two ways to play. Three AI levels. One unbeatable card game.</p>
+
+    <div class="features-grid" role="list">
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#129302;</div>
+        <p class="feature-name">Single Player</p>
+        <p class="feature-desc">Beginner, Intermediate, or Expert AI bots. Perfect your strategy before going online.</p>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#127760;</div>
+        <p class="feature-name">Live Online</p>
+        <p class="feature-desc">Play live with friends. Private table or public game &mdash; 4 to 6 players.</p>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#128248;</div>
+        <p class="feature-name">Voice &amp; Video</p>
+        <p class="feature-desc">See and hear opponents for the full table experience. Live online only.</p>
+        <span class="feature-soon">Live Online &middot; Soon</span>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#9881;&#65039;</div>
+        <p class="feature-name">Custom Rules</p>
+        <p class="feature-desc">Set your own house rules for live online games.</p>
+        <span class="feature-soon">Live Online &middot; Soon</span>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#127942;</div>
+        <p class="feature-name">World Ranking</p>
+        <p class="feature-desc">Climb the global leaderboard across all nine deals.</p>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#128274;</div>
+        <p class="feature-name">Private Tables</p>
+        <p class="feature-desc">Invite friends only, or open to public. Your game, your terms.</p>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#127885;</div>
+        <p class="feature-name">Tournaments</p>
+        <p class="feature-desc">Global tournaments for ranking points and glory.</p>
+        <span class="feature-soon">Coming Soon</span>
+      </div>
+      <div class="feature-item" role="listitem">
+        <div class="feature-icon" aria-hidden="true">&#127922;</div>
+        <p class="feature-name">4&ndash;6 Players</p>
+        <p class="feature-desc">Flexible tables for small groups or competitive sessions.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <!-- BLOG PREVIEW -->
+  <section class="section-dark section-pad" aria-labelledby="blog-heading">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+      <div>
+        <span class="section-eyebrow">From the Blog</span>
+        <h2 id="blog-heading" class="section-heading" style="max-width:none;">Latest Articles</h2>
+      </div>
+      <a href="/blog/" style="font-size:0.9rem;font-weight:600;color:var(--gold);text-decoration:none;white-space:nowrap;flex-shrink:0;">View all &rarr;</a>
+    </div>
+    <div class="blog-preview-grid">
+      <a href="/mastering-kalooki-strategies-and-tips-for-beginners/" class="blog-preview-card">
+        <p class="date">July 16, 2024</p>
+        <h3>Mastering Kalooki: Strategies and Tips for Beginners</h3>
+        <p>Essential strategies to help you master the game.</p>
+        <span class="blog-preview-more">Read more &rarr;</span>
+      </a>
+      <a href="/kalooki-playing-etiquette-a-players-guide/" class="blog-preview-card">
+        <p class="date">July 16, 2024</p>
+        <h3>Kalooki Playing Etiquette: A Player&rsquo;s Guide</h3>
+        <p>The etiquette that ensures everyone has a great time.</p>
+        <span class="blog-preview-more">Read more &rarr;</span>
+      </a>
+      <a href="/kalooki-game/" class="blog-preview-card">
+        <p class="date">July 5, 2024</p>
+        <h3>Kalooki Game</h3>
+        <p>Contract Rummy from Jamaica, loved worldwide.</p>
+        <span class="blog-preview-more">Read more &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <!-- CTA -->
+  <section class="section-dark section-pad cta-section" style="background:#111D13;" aria-labelledby="cta-heading">
+    <div class="cta-inner">
+      <span class="section-eyebrow" style="display:block;margin-bottom:0.75rem;">Get the App</span>
+      <h2 id="cta-heading">Ready to Play?</h2>
+      <p>Download Super Kalooki and join thousands of players.</p>
+      <div class="cta-badges">
+        <a href="https://apps.apple.com/in/app/super-kalooki/id6451106023" target="_blank" rel="noopener" class="store-badge" aria-label="Download on the App Store">
+  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" height="44" style="height:44px;width:auto;display:block;"/>
+</a>
+        <span class="store-badge store-badge-disabled" aria-label="Get it on Google Play — Coming Soon" title="Coming Soon">
+  <span class="google-badge-wrap">
+    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="64" style="height:64px;width:auto;display:block;opacity:0.38;filter:grayscale(0.3);"/>
+    <span class="google-soon">Soon</span>
+  </span>
+</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+  
+<footer class="sk-footer" role="contentinfo">
+  <div class="sk-footer-top">
+    <a href="/" aria-label="Super Kalooki – Homepage" style="display:inline-block;">
+      <img src="https://superkalooki.com/wp-content/uploads/2024/02/logo.png" alt="Super Kalooki" width="100" height="40" style="height:40px;width:auto;opacity:0.75;display:block;"/>
+    </a>
+    <div class="sk-footer-right">
+      <ul class="sk-footer-links" role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/rules/">Rules</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+        <li><a href="/terms-and-conditions/">Terms</a></li>
+        <li><a href="/cookie-policy/">Cookies</a></li>
+      </ul>
+      <nav class="sk-footer-social" aria-label="Social media">
+        <a href="https://www.instagram.com/superkalooki" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://discord.gg/superkalooki" target="_blank" rel="noopener noreferrer" aria-label="Discord"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.102 18.08.114 18.1.132 18.11a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+      </nav>
+    </div>
+  </div>
+  <div class="sk-footer-bottom">
+    <p>&copy; 2024 Super Kalooki &mdash; Crofts Hill Holdings LLC, Miami, FL</p>
+    <p>Icons: <a href="https://thenounproject.com" target="_blank" rel="noopener">The Noun Project</a> (CC BY 3.0)</p>
+  </div>
+</footer>
+
+</body>
+</html>

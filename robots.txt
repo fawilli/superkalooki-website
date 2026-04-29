@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block any admin or private paths if they exist
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /.env
+Disallow: /node_modules/
+
+Sitemap: https://superkalooki.com/sitemap.xml
