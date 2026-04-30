@@ -1,0 +1,23 @@
+{
+  "name": "Super Kalooki",
+  "short_name": "Kalooki",
+  "description": "Play Super Kalooki — contract rummy card game for 4-6 players on iOS",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0D2818",
+  "theme_color": "#0D2818",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

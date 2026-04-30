@@ -2,30 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Page Not Found – Super Kalooki</title>
   <meta name="robots" content="noindex, nofollow"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Geist',sans-serif;background:#0D2818;color:#F5EDD8;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
-    .logo{margin-bottom:2.5rem;}
-    .logo img{height:64px;width:auto;}
-    h1{font-family:'Instrument Serif',serif;font-size:clamp(3rem,10vw,7rem);font-weight:400;color:#C9A84C;line-height:1;margin-bottom:1rem;}
-    p{font-size:1.0625rem;color:rgba(245,237,216,0.6);max-width:40ch;margin:0 auto 2rem;line-height:1.75;}
-    a.btn{display:inline-block;background:#C9A84C;color:#000;padding:0.75rem 2rem;border-radius:2px;font-weight:600;text-decoration:none;font-size:0.9375rem;}
-    a.btn:hover{background:#E8C96A;}
-    .suits{font-size:3rem;color:rgba(201,168,76,0.08);margin-top:3rem;letter-spacing:1rem;}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Geist', system-ui, sans-serif;
+      background: #0D2818; color: #F5EDD8;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    .sk-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(8,16,10,0.93);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .sk-nav-inner {
+      width: 100%; padding: 0 1.25rem; height: 64px;
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 0.5rem;
+    }
+    @media(min-width:1024px){ .sk-nav-inner { height: 72px; padding: 0 3rem; } }
+    .sk-nav-logo img { height: 44px; width: auto; display: block; }
+    @media(min-width:1024px){ .sk-nav-logo img { height: 56px; } }
+    .sk-nav-links {
+      display: none; list-style: none;
+      justify-content: center; align-items: center; gap: 0;
+    }
+    @media(min-width:1024px){ .sk-nav-links { display: flex; } }
+    .sk-nav-links li a {
+      display: block; font-size: 0.875rem; font-weight: 500;
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      padding: 0.5rem 1.25rem; transition: color 0.15s;
+    }
+    .sk-nav-links li a:hover { color: #C9A84C; }
+    .sk-nav-right { display: flex; align-items: center; gap: 0.5rem; justify-content: flex-end; }
+
+    /* Main 404 content */
+    .page-404 {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 3rem 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .page-404::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(34,97,56,0.3), transparent 70%),
+        #0D2818;
+    }
+    .page-404-inner { position: relative; z-index: 1; }
+    .logo-wrap { margin-bottom: 2.5rem; }
+    .logo-wrap img { height: 72px; width: auto; }
+    .error-code {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(5rem, 20vw, 10rem);
+      font-weight: 400; line-height: 1;
+      color: #C9A84C; margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+    .error-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.375rem, 4vw, 2rem);
+      font-weight: 400; color: #F5EDD8;
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .error-desc {
+      font-size: 1rem; line-height: 1.75;
+      color: rgba(245,237,216,0.55);
+      max-width: 38ch; margin: 0 auto 2rem;
+      text-wrap: pretty;
+    }
+    .btn-home {
+      display: inline-block;
+      background: #C9A84C; color: #000;
+      font-size: 0.9375rem; font-weight: 600;
+      padding: 0.75rem 2rem; border-radius: 2px;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .btn-home:hover { background: #E8C96A; }
+    .suits-row {
+      display: flex; gap: 1.5rem; justify-content: center;
+      margin-top: 3rem;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      color: rgba(201,168,76,0.07);
+      font-family: serif;
+      user-select: none;
+    }
+
+    /* Helpful links */
+    .helpful-links {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 0.5rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .helpful-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: rgba(245,237,216,0.45);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .helpful-links a:hover { color: #C9A84C; }
+
+    /* Footer */
+    .sk-footer {
+      background: #060E08;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 1.5rem; text-align: center;
+    }
+    .sk-footer p { font-size: 0.8rem; color: rgba(255,255,255,0.2); }
+
+    :focus-visible { outline: 2px solid #C9A84C; outline-offset: 3px; }
   </style>
 </head>
 <body>
-  <div class="logo">
-    <a href="/"><img src="https://superkalooki.com/wp-content/uploads/2024/02/logo.png" alt="Super Kalooki"/></a>
-  </div>
-  <h1>404</h1>
-  <p>This page has folded — like a bad hand. Let's get you back in the game.</p>
-  <a href="/" class="btn">Back to Home</a>
-  <div class="suits" aria-hidden="true">&#9824; &#9829; &#9830; &#9827;</div>
+
+  <!-- Nav -->
+  <header role="banner">
+    <nav class="sk-nav" aria-label="Main navigation">
+      <div class="sk-nav-inner">
+        <a href="/" class="sk-nav-logo" aria-label="Super Kalooki – Homepage">
+          <img src="https://superkalooki.com/wp-content/uploads/2024/02/logo.png" alt="Super Kalooki" width="112" height="56"/>
+        </a>
+        <ul class="sk-nav-links" role="list">
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/rules/">Rules</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+        <div class="sk-nav-right"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 404 Content -->
+  <main id="main-content" class="page-404" aria-labelledby="error-heading">
+    <div class="page-404-inner">
+
+      <div class="logo-wrap">
+        <img src="https://superkalooki.com/wp-content/uploads/2024/02/logo.png" alt="Super Kalooki"/>
+      </div>
+
+      <p class="error-code" aria-hidden="true">404</p>
+
+      <h1 id="error-heading" class="error-title">
+        This hand has been folded
+      </h1>
+
+      <p class="error-desc">
+        The page you're looking for doesn't exist — like a card that's already been discarded. Let's get you back in the game.
+      </p>
+
+      <a href="/" class="btn-home">Back to Homepage</a>
+
+      <nav class="helpful-links" aria-label="Helpful pages">
+        <a href="/rules/">Game Rules</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+
+      <div class="suits-row" aria-hidden="true">
+        <span>&#9824;</span>
+        <span>&#9829;</span>
+        <span>&#9830;</span>
+        <span>&#9827;</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="sk-footer" role="contentinfo">
+    <p>&copy; 2024 Super Kalooki &mdash; Crofts Hill Holdings LLC, Miami, FL</p>
+  </footer>
+
 </body>
 </html>
