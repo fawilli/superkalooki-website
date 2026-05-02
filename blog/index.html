@@ -20,6 +20,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
 :root {
+  /* ── Colour tokens ── */
   --gold: #C9A84C;
   --gold-lt: #E8C96A;
   --felt: #0D2818;
@@ -29,6 +30,24 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
   --text-dark: #1A160E;
   --text-mid: #4A4035;
   --text-muted: #7A6E60;
+
+  /* ── Nav size tokens ── */
+  --nav-h: 64px;
+  --nav-h-lg: 72px;
+
+  /* ── Logo size tokens ── */
+  --logo-h: 52px;
+  --logo-h-lg: 64px;
+  --logo-h-footer: 46px;
+
+  /* ── Social icon tokens ── */
+  --icon-btn: 38px;
+  --icon-svg: 17px;
+  --icon-btn-mobile: 44px;
+  --icon-svg-mobile: 20px;
+
+  /* ── Nav link token ── */
+  --nav-link-size: 0.9rem;
 }
 
 /* ═══════════════════════════════════════
@@ -49,7 +68,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
   /* NO max-width — fills edge to edge */
   width: 100%;
   padding: 0 1.25rem;
-  height: 64px;
+  height: var(--nav-h);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -59,7 +78,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
   .sk-nav-inner { padding: 0 2rem; gap: 1rem; }
 }
 @media(min-width:1024px){
-  .sk-nav-inner { height: 72px; padding: 0 3rem; gap: 1.5rem; }
+  .sk-nav-inner { height: var(--nav-h-lg); padding: 0 3rem; gap: 1.5rem; }
 }
 @media(min-width:1440px){
   .sk-nav-inner { padding: 0 4rem; }
@@ -67,8 +86,13 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
 
 /* LEFT column: logo */
 .sk-nav-logo { display: flex; align-items: center; text-decoration: none; }
-.sk-nav-logo img { height: 44px; width: auto; display: block; }
-@media(min-width:1024px) { .sk-nav-logo img { height: 56px; } }
+.sk-nav-logo img {
+  height: var(--logo-h);
+  width: auto;
+  display: block;
+  mix-blend-mode: screen;
+}
+@media(min-width:1024px) { .sk-nav-logo img { height: var(--logo-h-lg); } }
 
 /* CENTER column: nav links */
 .sk-nav-links {
@@ -81,7 +105,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
 @media(min-width:1024px) { .sk-nav-links { display: flex; } }
 .sk-nav-links li a {
   display: block;
-  font-size: 0.875rem; font-weight: 500;
+  font-size: var(--nav-link-size); font-weight: 500;
   color: rgba(255,255,255,0.55);
   text-decoration: none;
   padding: 0.5rem 1.25rem;
@@ -103,7 +127,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
 @media(min-width:1024px) { .sk-nav-social { display: flex; } }
 .sk-nav-social a {
   display: flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px;
+  width: var(--icon-btn); height: var(--icon-btn);
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.13);
   color: rgba(255,255,255,0.5);
@@ -112,7 +136,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
   flex-shrink: 0;
 }
 .sk-nav-social a:hover { border-color: var(--gold); color: var(--gold); }
-.sk-nav-social svg { width: 15px; height: 15px; display: block; }
+.sk-nav-social svg { width: var(--icon-svg); height: var(--icon-svg); display: block; }
 
 /* Hamburger — mobile only */
 .sk-hamburger {
@@ -135,7 +159,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
 /* Mobile drawer */
 .sk-mobile-menu {
   display: none;
-  position: fixed; inset: 0; z-index: 49; padding-top: 64px;
+  position: fixed; inset: 0; z-index: 49; padding-top: var(--nav-h);
 }
 .sk-mobile-menu.open { display: block; }
 .sk-mobile-menu-bg {
@@ -164,13 +188,13 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
 }
 .sk-mobile-social a {
   display: flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 50%;
+  width: var(--icon-btn-mobile); height: var(--icon-btn-mobile); border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
   color: rgba(255,255,255,0.5); text-decoration: none;
   transition: all 0.15s;
 }
 .sk-mobile-social a:hover { border-color: var(--gold); color: var(--gold); }
-.sk-mobile-social svg { width: 18px; height: 18px; display: block; }
+.sk-mobile-social svg { width: var(--icon-svg-mobile); height: var(--icon-svg-mobile); display: block; }
 
 /* ═══════════════════════
    STORE BADGES
@@ -218,7 +242,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
 @media(min-width:768px) {
   .sk-footer-top { flex-direction: row; align-items: flex-start; justify-content: space-between; }
 }
-.sk-footer-logo img { height: 40px; width: auto; opacity: 0.75; }
+.sk-footer-logo img { height: var(--logo-h-footer); width: auto; opacity: 0.85; mix-blend-mode: screen; }
 .sk-footer-right { display: flex; flex-direction: column; gap: 1rem; }
 .sk-footer-links {
   display: flex; flex-wrap: wrap; gap: 0.375rem 1.25rem; list-style: none;
