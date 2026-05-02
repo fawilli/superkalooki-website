@@ -47,7 +47,7 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
   /* ── Logo size tokens ── */
   --logo-h: 52px;
   --logo-h-lg: 64px;
-  --logo-h-footer: 46px;
+  --logo-h-footer: 64px;
 
   /* ── Social icon tokens ── */
   --icon-btn: 38px;
@@ -66,10 +66,11 @@ body { font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: anti
    ═══════════════════════════════════════ */
 .sk-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  background: rgba(8,16,10,0.93);
+  background: rgba(13,40,24,0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,255,255,0.07);
+  isolation: isolate;
 }
 
 /* 3-column grid spanning FULL viewport width */
