@@ -47,8 +47,8 @@
 <meta content="Super Kalooki — Contract Rummy on iOS and Android. 4–6 players. Single player AI or live online with friends. Free to download on the App Store." property="og:description"/>
 <meta content="/logo.png" property="og:image"/>
 <meta content="Super Kalooki – The Ultimate Card Game" property="og:image:alt"/>
-<meta content="600" property="og:image:width"/>
-<meta content="452" property="og:image:height"/>
+<meta content="1073" property="og:image:width"/>
+<meta content="810" property="og:image:height"/>
 <meta content="Super Kalooki" property="og:site_name"/>
 <meta content="en_US" property="og:locale"/>
 <!-- Twitter / X Card -->
@@ -93,8 +93,8 @@
         "logo": {
           "@type": "ImageObject",
           "url": "/logo.png",
-          "width": 600,
-          "height": 452
+          "width": 1073,
+          "height": 810
         },
         "sameAs": [
           "https://www.instagram.com/superkalooki",
@@ -144,7 +144,7 @@
 <div class="w-full px-5 h-16 grid grid-cols-[auto_1fr_auto] items-center gap-2 md:px-8 lg:h-[4.5rem] lg:px-12 lg:gap-6 2xl:px-16">
 <!-- LEFT: Logo -->
 <a aria-label="Super Kalooki – Homepage" class="flex items-center" href="/">
-<img alt="Super Kalooki" class="h-[52px] w-auto mix-blend-screen block lg:h-16" height="64" src="/logo.png" width="85"/>
+<img alt="Super Kalooki" class="h-[52px] w-auto lg:h-16" height="64" src="/logo.png" width="85"/>
 </a>
 <!-- CENTER: Page links (desktop) -->
 <ul class="hidden lg:flex list-none justify-center items-center" role="list">
@@ -242,97 +242,115 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
         </p>
 </div>
 <dl class="grid grid-cols-2 gap-4">
-<div class="bg-white/[0.04] border border-white/[0.08] rounded-sm p-5">
-<dt>Players per game</dt>
-<dd class="text-[2.25rem] font-semibold text-gold leading-none mt-1">4–6</dd>
-<dd class="text-[0.75rem] text-ivory/40 mt-0.5">per table</dd>
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-5 hover:border-gold/30 transition-colors duration-200">
+<dt class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-ivory/40">Players per game</dt>
+<dd class="text-[2.25rem] font-semibold text-gold leading-none mt-2 tabular-nums">4–6</dd>
+<dd class="text-[0.75rem] text-ivory/35 mt-1">per table</dd>
 </div>
-<div class="bg-white/[0.04] border border-white/[0.08] rounded-sm p-5">
-<dt>Deals per set</dt>
-<dd class="text-[2.25rem] font-semibold text-gold leading-none mt-1">9</dd>
-<dd class="text-[0.75rem] text-ivory/40 mt-0.5">rounds to win</dd>
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-5 hover:border-gold/30 transition-colors duration-200">
+<dt class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-ivory/40">Deals per set</dt>
+<dd class="text-[2.25rem] font-semibold text-gold leading-none mt-2 tabular-nums">9</dd>
+<dd class="text-[0.75rem] text-ivory/35 mt-1">rounds to win</dd>
 </div>
-<div class="bg-white/[0.04] border border-white/[0.08] rounded-sm p-5">
-<dt>Platform</dt>
-<dd class="text-[2.25rem] font-semibold text-gold leading-none mt-1" style="font-size:1.25rem;margin-top:0.2rem;">iOS</dd>
-<dd class="text-[0.75rem] text-ivory/40 mt-0.5">Android coming soon</dd>
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-5 hover:border-gold/30 transition-colors duration-200">
+<dt class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-ivory/40">Platform</dt>
+<dd class="text-[1.375rem] font-semibold text-gold leading-none mt-2">iOS</dd>
+<dd class="text-[0.75rem] text-ivory/35 mt-1">Android coming soon</dd>
 </div>
-<div class="bg-white/[0.04] border border-white/[0.08] rounded-sm p-5">
-<dt>Game type</dt>
-<dd class="text-[2.25rem] font-semibold text-gold leading-none mt-1" style="font-size:1.125rem;margin-top:0.2rem;">Contract</dd>
-<dd class="text-[0.75rem] text-ivory/40 mt-0.5">Rummy variant</dd>
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-5 hover:border-gold/30 transition-colors duration-200">
+<dt class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-ivory/40">Game type</dt>
+<dd class="text-[1.25rem] font-semibold text-gold leading-none mt-2">Contract</dd>
+<dd class="text-[0.75rem] text-ivory/35 mt-1">Rummy variant</dd>
 </div>
 </dl>
 </div>
 </section>
 <div class="h-px bg-linear-to-r from-transparent via-gold/40 to-transparent"></div>
 <!-- FEATURES -->
-<section aria-labelledby="features-heading" class="bg-felt-mid text-ivory px-5 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
+<section aria-labelledby="features-heading" class="bg-felt-mid text-ivory py-16 md:py-20 lg:py-24">
+<div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
 <span class="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/70 mb-3 block">What’s in the App</span>
-<h2 class="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-ivory mb-4 [text-wrap:pretty]" id="features-heading">Play your way</h2>
-<div class="max-w-7xl mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-<div class="feature-item" role="listitem">
-<div aria-hidden="true" class="text-3xl leading-none">🤖</div>
-<p class="feature-name">Single Player</p>
-<p class="feature-desc">Challenge AI bots in the app. Build your game before facing real players.</p>
+<h2 class="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-ivory mb-10 max-w-[35ch] [text-wrap:pretty]" id="features-heading">Everything you need to play your way</h2>
+<dl class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Single Player -->
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 hover:border-gold/35 transition-colors duration-200">
+<svg aria-hidden="true" class="size-6 shrink-0 mb-4 stroke-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"/>
+</svg>
+<dt class="text-[0.9375rem] font-semibold text-ivory mb-2">Single Player</dt>
+<dd class="text-[0.875rem] text-ivory/55 leading-relaxed">Sharpen your game against AI bots before you face your crew.</dd>
 </div>
-<div class="feature-item" role="listitem">
-<div aria-hidden="true" class="text-3xl leading-none">🌐</div>
-<p class="feature-name">Live Online</p>
-<p class="feature-desc">In the app — private table, real time, 4–6 players. Draw, lay your contract, call, discard.</p>
+<!-- Live Online -->
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 hover:border-gold/35 transition-colors duration-200">
+<svg aria-hidden="true" class="size-6 shrink-0 mb-4 stroke-gold" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+<path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/>
+</svg>
+<dt class="text-[0.9375rem] font-semibold text-ivory mb-2">Live Online</dt>
+<dd class="text-[0.875rem] text-ivory/55 leading-relaxed">Private table, real time. 4–6 players. Draw, lay your contract, call, discard.</dd>
 </div>
-<div class="feature-item" role="listitem">
-<div aria-hidden="true" class="text-3xl leading-none">📸</div>
-<p class="feature-name">Voice &amp; Video</p>
-<p class="feature-desc">See and hear your opponents in the app for the full table experience.</p>
-<span class="feature-soon">Live Online · Soon</span>
+<!-- Voice & Video -->
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 hover:border-gold/35 transition-colors duration-200">
+<svg aria-hidden="true" class="size-6 shrink-0 mb-4 stroke-gold/50" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+<path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/>
+</svg>
+<dt class="text-[0.9375rem] font-semibold text-ivory mb-2">Voice &amp; Video
+<span class="ml-2 inline-flex items-center text-[0.65rem] font-bold tracking-[0.1em] uppercase bg-gold/[0.12] text-gold/75 px-[0.5rem] py-[0.2rem] rounded-sm align-middle">Soon</span>
+</dt>
+<dd class="text-[0.875rem] text-ivory/55 leading-relaxed">See and hear your opponents. Same energy as sitting around a real table.</dd>
 </div>
-<div class="feature-item" role="listitem">
-<div aria-hidden="true" class="text-3xl leading-none">⚙️</div>
-<p class="feature-name">Custom Rules</p>
-<p class="feature-desc">Set your own house rules in the app for live online games.</p>
-<span class="feature-soon">Live Online · Soon</span>
+<!-- Custom Rules -->
+<div class="bg-white/[0.04] border border-white/[0.08] rounded-lg p-6 hover:border-gold/35 transition-colors duration-200">
+<svg aria-hidden="true" class="size-6 shrink-0 mb-4 stroke-gold/50" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"/>
+</svg>
+<dt class="text-[0.9375rem] font-semibold text-ivory mb-2">Custom Rules
+<span class="ml-2 inline-flex items-center text-[0.65rem] font-bold tracking-[0.1em] uppercase bg-gold/[0.12] text-gold/75 px-[0.5rem] py-[0.2rem] rounded-sm align-middle">Soon</span>
+</dt>
+<dd class="text-[0.875rem] text-ivory/55 leading-relaxed">Set your own house rules for live games. Play it your way, every time.</dd>
 </div>
+</dl>
 </div>
 </section>
 <div class="h-px bg-linear-to-r from-transparent via-gold/40 to-transparent"></div>
 <!-- BLOG PREVIEW -->
-<section aria-labelledby="blog-heading" class="bg-felt text-ivory px-5 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24">
-<div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+<section aria-labelledby="blog-heading" class="bg-felt text-ivory py-16 md:py-20 lg:py-24">
+<div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+<div class="flex items-end justify-between flex-wrap gap-3 mb-10">
 <div>
 <span class="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/70 mb-3 block">From the Blog</span>
-<h2 class="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-ivory mb-4 [text-wrap:pretty]" id="blog-heading" style="max-width:none;">Latest Articles</h2>
+<h2 class="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-ivory max-w-[35ch] [text-wrap:pretty]" id="blog-heading">Latest Articles</h2>
 </div>
-<a href="/blog/" style="font-size:0.9rem;font-weight:600;color:var(--gold);text-decoration:none;white-space:nowrap;flex-shrink:0;">View all →</a>
+<a class="text-[0.875rem] font-semibold text-gold no-underline whitespace-nowrap shrink-0 hover:text-gold-lt transition-colors duration-150" href="/blog/">View all →</a>
 </div>
-<div class="blog-preview-grid">
-<a class="blog-preview-card" href="/mastering-kalooki-strategies-and-tips-for-beginners/">
-<p class="text-[0.8rem] font-medium tracking-[0.1em] uppercase text-gold mb-2">July 16, 2024</p>
-<h3>Mastering Kalooki: Strategies and Tips for Beginners</h3>
-<p>Essential strategies to help you master the game.</p>
-<span class="blog-preview-more">Read more →</span>
+<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+<a class="group bg-white/[0.03] border border-white/[0.08] rounded-lg p-6 no-underline hover:border-gold/30 hover:bg-white/[0.05] transition-all duration-200 flex flex-col gap-3" href="/mastering-kalooki-strategies-and-tips-for-beginners/">
+<p class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold/70">July 16, 2024</p>
+<h3 class="text-[1rem] font-semibold text-ivory leading-snug [text-wrap:pretty]">Mastering Kalooki: Strategies and Tips for Beginners</h3>
+<p class="text-[0.875rem] text-ivory/50 leading-relaxed grow">Essential strategies to help you master the game.</p>
+<span class="text-[0.875rem] font-medium text-gold/70 group-hover:text-gold transition-colors duration-150">Read more →</span>
 </a>
-<a class="blog-preview-card" href="/kalooki-playing-etiquette-a-players-guide/">
-<p class="text-[0.8rem] font-medium tracking-[0.1em] uppercase text-gold mb-2">July 16, 2024</p>
-<h3>Kalooki Playing Etiquette: A Player’s Guide</h3>
-<p>The etiquette that ensures everyone has a great time.</p>
-<span class="blog-preview-more">Read more →</span>
+<a class="group bg-white/[0.03] border border-white/[0.08] rounded-lg p-6 no-underline hover:border-gold/30 hover:bg-white/[0.05] transition-all duration-200 flex flex-col gap-3" href="/kalooki-playing-etiquette-a-players-guide/">
+<p class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold/70">July 16, 2024</p>
+<h3 class="text-[1rem] font-semibold text-ivory leading-snug [text-wrap:pretty]">Kalooki Playing Etiquette: A Player’s Guide</h3>
+<p class="text-[0.875rem] text-ivory/50 leading-relaxed grow">The etiquette that ensures everyone has a great time.</p>
+<span class="text-[0.875rem] font-medium text-gold/70 group-hover:text-gold transition-colors duration-150">Read more →</span>
 </a>
-<a class="blog-preview-card" href="/kalooki-game/">
-<p class="text-[0.8rem] font-medium tracking-[0.1em] uppercase text-gold mb-2">July 5, 2024</p>
-<h3>Kalooki Game</h3>
-<p>Contract Rummy from Jamaica, loved worldwide.</p>
-<span class="blog-preview-more">Read more →</span>
+<a class="group bg-white/[0.03] border border-white/[0.08] rounded-lg p-6 no-underline hover:border-gold/30 hover:bg-white/[0.05] transition-all duration-200 flex flex-col gap-3" href="/kalooki-game/">
+<p class="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold/70">July 5, 2024</p>
+<h3 class="text-[1rem] font-semibold text-ivory leading-snug [text-wrap:pretty]">Kalooki Game</h3>
+<p class="text-[0.875rem] text-ivory/50 leading-relaxed grow">Contract Rummy from Jamaica, loved worldwide.</p>
+<span class="text-[0.875rem] font-medium text-gold/70 group-hover:text-gold transition-colors duration-150">Read more →</span>
 </a>
+</div>
 </div>
 </section>
 <div class="h-px bg-linear-to-r from-transparent via-gold/40 to-transparent"></div>
 <!-- CTA -->
-<section aria-labelledby="cta-heading" class="bg-[#111D13] px-5 py-16 text-center md:px-8 md:py-20 lg:px-12 lg:py-24" style="background:#111D13;">
-<div class="max-w-lg mx-auto flex flex-col items-center gap-4">
-<span class="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/70 mb-3 block" style="display:block;margin-bottom:0.75rem;">Get the App</span>
+<section aria-labelledby="cta-heading" class="bg-[#111D13] py-16 text-center md:py-20 lg:py-24">
+<div class="max-w-lg mx-auto px-5 md:px-8 flex flex-col items-center gap-4">
+<span class="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/70 mb-1 block">Get the App</span>
 <h2 class="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal text-ivory" id="cta-heading">Deal yourself in</h2>
-<p>Free to download on iOS. Android coming soon.</p>
+<p class="text-ivory/60 text-base">Free to download on iOS. Android coming soon.</p>
 <div class="flex flex-wrap justify-center items-center gap-[0.875rem]">
 <a aria-label="Download on the App Store" class="inline-block no-underline" href="https://apps.apple.com/in/app/super-kalooki/id6451106023" rel="noopener" target="_blank">
 <img alt="Download on the App Store" height="44" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" style="height:44px;width:auto;display:block;"/>
@@ -358,7 +376,7 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
 <footer class="bg-felt-deep border-t border-white/[0.05] px-5 pt-10 pb-6 md:px-8 md:pt-12 md:pb-8 lg:px-12" role="contentinfo">
 <div class="flex flex-col gap-7 pb-7 border-b border-white/[0.06] md:flex-row md:items-start md:justify-between">
 <a aria-label="Super Kalooki – Homepage" href="/">
-<img alt="Super Kalooki" class="h-16 w-auto opacity-85 mix-blend-screen" height="64" src="/logo.png" width="85"/>
+<img alt="Super Kalooki" class="h-16 w-auto opacity-80" height="64" src="/logo.png" width="85"/>
 </a>
 <div class="flex flex-col gap-4">
 <ul class="flex flex-wrap gap-x-5 gap-y-[0.375rem] list-none" role="list">
@@ -378,7 +396,7 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close
 </div>
 <div class="pt-5 flex flex-col gap-[0.375rem] text-center md:flex-row md:justify-between md:text-left">
 <p class="text-[0.8rem] text-white/20">© 2026 Super Kalooki — Crofts Hill Holdings LLC, Florida, United States</p>
-<p class="text-[0.8rem] text-white/20">Icons: <a class="text-white/25 no-underline hover:text-white/50" href="https://thenounproject.com" rel="noopener" target="_blank">The Noun Project</a> (CC BY 3.0)</p>
+<p class="text-[0.8rem] text-white/20">Icons: <a class="text-white/25 no-underline hover:text-white/50" href="https://heroicons.com" rel="noopener" target="_blank">Heroicons</a> by Tailwind Labs (MIT)</p>
 </div>
 </footer>
 </body>
