@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Brand colours */
+  --color-gold:        #C9A84C;
+  --color-gold-lt:     #E8C96A;
+  --color-felt:        #0D2818;
+  --color-felt-mid:    #112010;
+  --color-felt-deep:   #060E08;
+  --color-ivory:       #FAF7F0;
+  --color-ivory-dark:  #F0EBE0;
+  --color-text-dark:   #1A160E;
+  --color-text-mid:    #4A4035;
+  --color-text-muted:  #7A6E60;
+  --color-green-link:  #1A6B38;
+
+  /* Typography */
+  --font-display: "Instrument Serif", serif;
+  --font-sans:    "Geist", system-ui, sans-serif;
+}
+
+/* ─── Prose customisation (inner-page content) ───────────────────── */
+.prose {
+  --tw-prose-body:        var(--color-text-mid);
+  --tw-prose-headings:    var(--color-text-dark);
+  --tw-prose-links:       var(--color-green-link);
+  --tw-prose-bold:        var(--color-text-dark);
+  --tw-prose-counters:    var(--color-text-muted);
+  --tw-prose-bullets:     var(--color-text-muted);
+  --tw-prose-hr:          rgba(0,0,0,0.08);
+  --tw-prose-quotes:      var(--color-text-dark);
+  --tw-prose-quote-borders: var(--color-gold);
+  --tw-prose-captions:    var(--color-text-muted);
+  --tw-prose-th-borders:  rgba(201,168,76,0.3);
+  --tw-prose-td-borders:  rgba(0,0,0,0.06);
+}
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 0.375rem;
+}
+.prose h3 { font-size: 0.9375rem; font-weight: 600; }
+.prose a:hover { color: var(--color-gold); }
+.prose table { display: block; overflow-x: auto; }
+.prose thead th {
+  background: rgba(201,168,76,0.1);
+  white-space: nowrap;
+}

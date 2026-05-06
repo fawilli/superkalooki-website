@@ -1,4 +1,5 @@
 node_modules/
+src/
 .github/
 package.json
 package-lock.json
