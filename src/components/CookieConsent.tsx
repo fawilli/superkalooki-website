@@ -6,26 +6,54 @@ import {
   applyGtagConsent,
   readConsent,
   writeConsent,
+  type ConsentState,
 } from '@/lib/consent'
 import Link from 'next/link'
-import {useEffect, useSyncExternalStore} from 'react'
+import {useEffect, useState, useSyncExternalStore} from 'react'
 
 const GA_MEASUREMENT = 'G-SL2JT4PC9T'
 const GA_TAG = 'GT-KFHT9GHL'
 const CLARITY_ID = 'wmxjtxj1w5'
 
 let analyticsLoaded = false
-let panelEpoch = 0
-let draftAnalytics = false
 
-function emit(name: string) {
-  window.dispatchEvent(new Event(name))
+/** Stable snapshot cache — useSyncExternalStore requires Object.is-stable gets. */
+let snapshotRaw: string | null | undefined
+let snapshotValue: ConsentState | null = null
+
+function getConsentSnapshot(): ConsentState | null {
+  const raw = window.localStorage.getItem(CONSENT_STORAGE_KEY)
+  if (raw === snapshotRaw) return snapshotValue
+  snapshotRaw = raw
+  if (!raw) {
+    snapshotValue = null
+    return null
+  }
+  try {
+    const parsed = JSON.parse(raw) as ConsentState
+    snapshotValue = typeof parsed.analytics === 'boolean' ? {...parsed, necessary: true} : null
+  } catch {
+    snapshotValue = null
+  }
+  return snapshotValue
 }
 
-function subscribeKey(key: string, onChange: () => void) {
-  const handler = () => onChange()
-  window.addEventListener(key, handler)
-  return () => window.removeEventListener(key, handler)
+function subscribeConsent(onStoreChange: () => void) {
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === null || e.key === CONSENT_STORAGE_KEY) onStoreChange()
+  }
+  window.addEventListener('storage', onStorage)
+  window.addEventListener('sk-consent-changed', onStoreChange)
+  return () => {
+    window.removeEventListener('storage', onStorage)
+    window.removeEventListener('sk-consent-changed', onStoreChange)
+  }
+}
+
+function notifyConsentChanged() {
+  // Invalidate cache so the next getSnapshot re-reads localStorage.
+  snapshotRaw = undefined
+  window.dispatchEvent(new Event('sk-consent-changed'))
 }
 
 function loadClarity() {
@@ -62,11 +90,12 @@ function loadAnalytics() {
   document.head.appendChild(ga)
 
   window.dataLayer = window.dataLayer || []
-  window.gtag =
-    window.gtag ||
-    function gtag(...args: unknown[]) {
-      window.dataLayer?.push(args)
+  if (typeof window.gtag !== 'function') {
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments)
     }
+  }
   window.gtag('js', new Date())
   window.gtag('config', GA_TAG)
   window.gtag('config', GA_MEASUREMENT)
@@ -75,7 +104,7 @@ function loadAnalytics() {
 
 /**
  * Free first-party cookie banner + Consent Mode v2 bridge.
- * Replaces Cookiebot; analytics scripts load only after opt-in.
+ * Preference is stored in localStorage — no third-party CMP required.
  */
 export function CookieConsent() {
   const mounted = useSyncExternalStore(
@@ -83,31 +112,9 @@ export function CookieConsent() {
     () => true,
     () => false,
   )
-  const stored = useSyncExternalStore(
-    (onChange) => {
-      const onStorage = (e: StorageEvent) => {
-        if (e.key === null || e.key === CONSENT_STORAGE_KEY) onChange()
-      }
-      window.addEventListener('storage', onStorage)
-      const unsub = subscribeKey('sk-consent-changed', onChange)
-      return () => {
-        window.removeEventListener('storage', onStorage)
-        unsub()
-      }
-    },
-    readConsent,
-    () => null,
-  )
-  const epoch = useSyncExternalStore(
-    (onChange) => subscribeKey('sk-consent-ui', onChange),
-    () => panelEpoch,
-    () => 0,
-  )
-  const analyticsChecked = useSyncExternalStore(
-    (onChange) => subscribeKey('sk-consent-ui', onChange),
-    () => draftAnalytics,
-    () => false,
-  )
+  const stored = useSyncExternalStore(subscribeConsent, getConsentSnapshot, () => null)
+  const [forceOpen, setForceOpen] = useState(false)
+  const [draftAnalytics, setDraftAnalytics] = useState(false)
 
   useEffect(() => {
     if (!mounted || !stored) return
@@ -115,24 +122,31 @@ export function CookieConsent() {
     if (stored.analytics) loadAnalytics()
   }, [mounted, stored])
 
+  useEffect(() => {
+    const onOpen = () => {
+      setDraftAnalytics(readConsent()?.analytics ?? false)
+      setForceOpen(true)
+    }
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, onOpen)
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, onOpen)
+  }, [])
+
   if (!mounted) return null
 
-  const needsChoice = stored === null
-  const settingsOpen = epoch > 0 && epoch % 2 === 1
-  // epoch odd = open, even = closed; first visit forces open via needsChoice
-  const visible = needsChoice || settingsOpen
-
-  if (!visible) return null
+  const open = stored === null || forceOpen
+  if (!open) return null
 
   function save(nextAnalytics: boolean) {
-    writeConsent(nextAnalytics)
-    applyGtagConsent(nextAnalytics)
-    if (nextAnalytics) loadAnalytics()
-    draftAnalytics = nextAnalytics
-    // close panel: bump to even epoch
-    panelEpoch = panelEpoch % 2 === 1 ? panelEpoch + 1 : panelEpoch + 2
-    emit('sk-consent-changed')
-    emit('sk-consent-ui')
+    try {
+      writeConsent(nextAnalytics)
+      applyGtagConsent(nextAnalytics)
+      if (nextAnalytics) loadAnalytics()
+      setDraftAnalytics(nextAnalytics)
+      setForceOpen(false)
+      notifyConsentChanged()
+    } catch (err) {
+      console.error('Failed to save cookie preference', err)
+    }
   }
 
   return (
@@ -157,13 +171,10 @@ export function CookieConsent() {
 
         <label className="flex items-start gap-3 mb-5 cursor-pointer min-h-11">
           <input
-            checked={analyticsChecked}
+            checked={draftAnalytics}
             className="mt-1 size-4 accent-[var(--color-gold)]"
             type="checkbox"
-            onChange={(e) => {
-              draftAnalytics = e.target.checked
-              emit('sk-consent-ui')
-            }}
+            onChange={(e) => setDraftAnalytics(e.target.checked)}
           />
           <span className="text-sm text-ivory/80 leading-snug">
             <strong className="text-ivory font-semibold">Analytics</strong> — help us improve Super Kalooki.com
@@ -189,7 +200,7 @@ export function CookieConsent() {
           <button
             className="min-h-11 px-4 rounded-md bg-transparent text-gold text-sm font-semibold border border-gold/40 cursor-pointer hover:border-gold transition-colors"
             type="button"
-            onClick={() => save(analyticsChecked)}
+            onClick={() => save(draftAnalytics)}
           >
             Save choices
           </button>
@@ -204,12 +215,7 @@ export function CookieSettingsLink({className = ''}: {className?: string}) {
     <button
       className={`bg-transparent border-0 p-0 cursor-pointer text-inherit font-inherit ${className}`}
       type="button"
-      onClick={() => {
-        draftAnalytics = readConsent()?.analytics ?? false
-        panelEpoch = panelEpoch % 2 === 1 ? panelEpoch : panelEpoch + 1
-        emit(OPEN_COOKIE_SETTINGS_EVENT)
-        emit('sk-consent-ui')
-      }}
+      onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS_EVENT))}
     >
       Cookie settings
     </button>

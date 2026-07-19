@@ -45,11 +45,13 @@ declare global {
 
 export function applyGtagConsent(analytics: boolean) {
   window.dataLayer = window.dataLayer || []
-  window.gtag =
-    window.gtag ||
-    function gtag(...args: unknown[]) {
-      window.dataLayer?.push(args)
+  if (typeof window.gtag !== 'function') {
+    window.gtag = function gtag() {
+      // Official GTM stub shape — push Arguments, not a rest array.
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments)
     }
+  }
   window.gtag('consent', 'update', {
     analytics_storage: analytics ? 'granted' : 'denied',
     ad_storage: 'denied',
