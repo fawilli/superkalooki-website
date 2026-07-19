@@ -114,7 +114,7 @@ export function CookieConsent() {
   )
   const stored = useSyncExternalStore(subscribeConsent, getConsentSnapshot, () => null)
   const [forceOpen, setForceOpen] = useState(false)
-  const [draftAnalytics, setDraftAnalytics] = useState(false)
+  const [draftAnalytics, setDraftAnalytics] = useState(true)
 
   useEffect(() => {
     if (!mounted || !stored) return
@@ -178,7 +178,7 @@ export function CookieConsent() {
           />
           <span className="text-sm text-ivory/80 leading-snug">
             <strong className="text-ivory font-semibold">Analytics</strong> — help us improve Super Kalooki.com
-            (GA4 + Clarity). Off by default.
+            (GA4 + Clarity). Recommended; uncheck to decline.
           </span>
         </label>
 
