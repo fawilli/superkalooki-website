@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 const links = [
   {href: '/', label: 'Home'},
+  {href: '/about/', label: 'About'},
   {href: '/blog/', label: 'Blog'},
   {href: '/rules/', label: 'Rules'},
   {href: '/faq/', label: 'FAQ'},
@@ -22,22 +23,16 @@ export function SiteFooter() {
         <Link
           href="/"
           aria-label="Super Kalooki – Homepage"
-          className="flex items-center gap-3 no-underline"
+          className="flex items-center gap-3 no-underline min-h-11"
         >
           <Image
             alt=""
-            className="size-12 rounded-[12px] ring-1 ring-white/10 opacity-90"
-            height={48}
+            className="size-11 rounded-[11px] ring-1 ring-white/10"
+            height={44}
             src="/app-icon.png"
-            width={48}
+            width={44}
           />
-          <Image
-            alt="Super Kalooki"
-            className="h-14 w-auto opacity-85 block"
-            height={64}
-            src="/logo.png"
-            width={85}
-          />
+          <span className="text-sm font-semibold text-ivory/70">Super Kalooki</span>
         </Link>
         <ul className="flex flex-wrap gap-x-5 gap-y-[0.375rem] list-none m-0 p-0" role="list">
           {links.map((item) => (

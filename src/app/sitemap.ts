@@ -7,6 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getArticleSlugs()
   const staticRoutes = [
     '',
+    '/about/',
     '/blog/',
     '/faq/',
     '/rules/',

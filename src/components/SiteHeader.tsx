@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {useState} from 'react'
 
 const nav = [
+  {href: '/about/', label: 'About'},
   {href: '/blog/', label: 'Blog'},
   {href: '/rules/', label: 'Rules'},
   {href: '/faq/', label: 'FAQ'},
@@ -30,7 +31,7 @@ export function SiteHeader() {
           <Link
             href="/"
             aria-label="Super Kalooki – Homepage"
-            className="shrink-0 flex items-center gap-2.5 no-underline"
+            className="shrink-0 flex items-center gap-2.5 no-underline min-h-11"
           >
             <Image
               src="/app-icon.png"
@@ -40,14 +41,9 @@ export function SiteHeader() {
               className="size-10 rounded-[10px] shadow-sm ring-1 ring-white/15"
               priority
             />
-            <Image
-              src="/logo.png"
-              alt="Super Kalooki"
-              width={120}
-              height={90}
-              className="h-9 w-auto"
-              priority
-            />
+            <span className="text-[0.95rem] font-semibold tracking-tight text-ivory/90 hidden sm:inline">
+              Super Kalooki
+            </span>
           </Link>
           <ul className="hidden lg:flex items-center list-none m-0 p-0" role="list">
             {nav.map((item) => (
