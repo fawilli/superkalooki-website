@@ -37,18 +37,20 @@ GitHub code stays on **`fawilli/superkalooki-website`**.
 ## 2. Sanity
 
 1. Sign up / log in at [sanity.io](https://www.sanity.io) as **`superkalooki@gmail.com`**. Enable MFA.
-2. From the repo (after Next is ready):
+2. Create the project in [manage.sanity.io](https://manage.sanity.io/) (or `npx sanity@latest init`) as **Super Kalooki Marketing**, Free plan, dataset `production`.
 
-   ```bash
-   cd /Volumes/SSD/superkalooki-website
-   npx sanity@latest init
-   ```
+   **There is no separate Studio to configure in Manage.** Studio is embedded in this Next.js app at **`/studio`** (`src/app/studio/…` + `sanity.config.ts`). You will not see a hosted `*.sanity.studio` unless you later run `npx sanity deploy` (optional; not required).
 
-   Choose: create project **Super Kalooki Marketing**, Free plan, dataset `production` (public), TypeScript, embed Studio at `/studio`.
+3. In Manage → **API → CORS origins** (required for embedded Studio login — Allow credentials **ON**):
 
-   Or create the project in [manage.sanity.io](https://manage.sanity.io/) and paste IDs into `.env.local` / Vercel.
+   | Origin | Notes |
+   | --- | --- |
+   | `http://localhost:3000` | Local `npm run dev` |
+   | `https://superkalooki-website-superkalookigame.vercel.app` | Vercel production alias |
+   | `https://superkalooki.com` | After Cloudflare cutover |
+   | `https://www.superkalooki.com` | After Cloudflare cutover |
 
-3. In Manage → **API → CORS origins**: add `http://localhost:3000`, your `*.vercel.app` preview host, and `https://superkalooki.com` (credentials allowed for Studio).
+   Also add each Preview deployment host you use, or run `npx sanity cors add <origin> --credentials` from the repo.
 4. **API → Tokens**: create **Viewer** token `Vercel Draft Mode` → `SANITY_API_READ_TOKEN`.
 5. **Members**: invite founder + non-tech editor with the least-privileged content-editing role.
 6. Seed content (temporary Writer/Editor token):
