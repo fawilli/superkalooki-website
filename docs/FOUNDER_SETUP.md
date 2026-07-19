@@ -71,17 +71,20 @@ GitHub code stays on **`fawilli/superkalooki-website`**.
 
 Chain: **GoDaddy (registrar) → Cloudflare (DNS + SSL) → Vercel (origin)**.
 
-1. In Vercel, add domains `superkalooki.com` + `www.superkalooki.com`. Note the DNS target. Do **not** change nameservers.
+The old marketing site was a **Cloudflare Worker git-connected to this repo**. That auto-deploy is **off** — the GitHub Action was moved to `legacy/github-workflows/deploy-cloudflare-workers.yml` so pushes to `main` no longer deploy to Workers. App hosting for apex/`www` is Vercel.
+
+1. In Vercel, add domains `superkalooki.com` + `www.superkalooki.com` (project hostnames only — registrar stays GoDaddy). Note the DNS target. Do **not** change Cloudflare nameservers.
 2. Cloudflare zone `superkalooki.com`:
-   - Remove Worker route `superkalooki.com/*` for the old static Worker. Leave `game.` / `stage.` / `api.` alone.
+   - Disconnect / delete the marketing Worker (or at least remove route `superkalooki.com/*`). Leave `game.` / `stage.` / `api.` alone.
+   - If Workers Builds is still linked to this GitHub repo, disconnect it so it cannot redeploy over DNS.
    - Point `@` and `www` at Vercel’s target; keep **proxied (orange cloud)**.
 3. SSL/TLS mode: **Full (strict)**. Keep Always Use HTTPS.
 4. Verify `https://superkalooki.com/privacy-policy/` (App Store URL).
-5. After 48h stable, retire the old Workers deploy. Keep `legacy/wrangler.jsonc` in git for rollback.
+5. After 48h stable, you can fully delete the old Worker. Keep `legacy/wrangler.jsonc` + `legacy/github-workflows/` for rollback.
 
 ### Rollback
 
-Re-add Cloudflare Worker route for `superkalooki.com/*` and repoint apex/`www` to the Worker. SSL can stay Full (strict).
+Restore `legacy/github-workflows/deploy-cloudflare-workers.yml` to `.github/workflows/deploy.yml` (and point wrangler at `legacy/` or restore root static assets), re-add Cloudflare Worker route for `superkalooki.com/*`, and repoint apex/`www` to the Worker. SSL can stay Full (strict).
 
 ## 4. Image library seed (manual)
 
