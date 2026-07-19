@@ -1,3 +1,4 @@
+import {CookieSettingsLink} from '@/components/CookieConsent'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -45,6 +46,9 @@ export function SiteFooter() {
               </Link>
             </li>
           ))}
+          <li>
+            <CookieSettingsLink className="text-sm font-normal text-white/35 transition-colors duration-150 hover:text-gold" />
+          </li>
         </ul>
       </div>
       <div className="pt-5 flex flex-col gap-[0.375rem] text-center md:flex-row md:justify-between md:text-left">
