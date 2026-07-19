@@ -1,3 +1,4 @@
+import {ContractMeldCards, HeroCardFan} from '@/components/HeroCards'
 import {PhoneFrame} from '@/components/PhoneFrame'
 import {SiteFooter} from '@/components/SiteFooter'
 import {SiteHeader} from '@/components/SiteHeader'
@@ -116,17 +117,26 @@ export default async function HomePage() {
       />
       <SiteHeader />
       <main id="main-content">
-        {/* Hero: brand + copy + landscape phone frame (full UI, no crop) */}
+        {/* Hero: brand + copy + real card fan (product vernacular) */}
         <section
           aria-labelledby="hero-heading"
-          className="relative isolate overflow-hidden bg-felt-deep pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20"
+          className="relative isolate overflow-hidden bg-felt-deep pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 min-h-[100svh] flex items-center"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.12),_transparent_55%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_rgba(201,168,76,0.14),_transparent_50%)]"
           />
-          <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-            <div className="sk-hero-copy max-w-2xl mb-10 lg:mb-12">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgba(250,247,240,0.55) 1px, transparent 0)',
+              backgroundSize: '28px 28px',
+            }}
+          />
+          <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
+            <div className="sk-hero-copy max-w-xl">
               <div className="flex items-center gap-3.5 mb-4">
                 <Image
                   alt=""
@@ -154,12 +164,7 @@ export default async function HomePage() {
                 Entertainment only — no real money, gambling, or prizes.
               </p>
             </div>
-            <PhoneFrame
-              alt="Super Kalooki table — live hand with draw pile, discard, and opponent cards"
-              className="sk-hero-media max-w-4xl mx-auto"
-              priority
-              src="/marketing/solo-mid-hand.png"
-            />
+            <HeroCardFan className="sk-hero-media lg:justify-self-end" />
           </div>
         </section>
 
@@ -207,10 +212,12 @@ export default async function HomePage() {
                 </Link>
               </div>
             </div>
-            <PhoneFrame
-              alt="Pre-deal screen showing this deal’s Kalooki contract — set of 3 and run of 4"
-              src="/marketing/hero-deal-in.png"
-            />
+            <div className="rounded-[1.15rem] border border-white/12 bg-felt-deep/80 p-6 sm:p-8 ring-1 ring-black/30">
+              <p className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/80 mb-5">
+                This deal — example contract
+              </p>
+              <ContractMeldCards />
+            </div>
           </div>
         </section>
 
