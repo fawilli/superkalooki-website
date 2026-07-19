@@ -19,21 +19,39 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://superkalooki.com'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Super Kalooki — Contract Rummy for iOS & Android',
+    default: 'Super Kalooki — Play Jamaican Kalooki & Contract Rummy Online',
     template: '%s | Super Kalooki',
   },
   description:
-    'Super Kalooki — Contract Rummy on iOS and Android. 4–6 players. Single player AI or live online with friends. Free to download on the App Store.',
+    'Download Super Kalooki, the free Jamaican Contract Rummy (Kalooki) app for iOS. Play solo vs AI or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
   openGraph: {
     type: 'website',
     siteName: 'Super Kalooki',
     locale: 'en_US',
+    title: 'Super Kalooki — Jamaican Kalooki & Contract Rummy',
+    description:
+      'Free Kalooki app: nine scored deals, changing contracts, solo AI or live tables for 4–6 players.',
+    images: [
+      {
+        url: '/marketing/solo-mid-hand.png',
+        width: 1920,
+        height: 883,
+        alt: 'Super Kalooki gameplay screenshot',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Super Kalooki — Play Kalooki Online',
+    description: 'Free Jamaican Kalooki / Contract Rummy for iOS. Solo or live with friends.',
+    images: ['/marketing/solo-mid-hand.png'],
   },
   icons: {
     icon: [
       {url: '/favicon.ico'},
       {url: '/icon-32.png', sizes: '32x32', type: 'image/png'},
       {url: '/icon-192.png', sizes: '192x192', type: 'image/png'},
+      {url: '/app-icon.png', sizes: '1024x1024', type: 'image/png'},
     ],
     apple: [{url: '/icon-180.png', sizes: '180x180', type: 'image/png'}],
   },

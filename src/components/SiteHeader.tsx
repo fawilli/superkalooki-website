@@ -27,8 +27,27 @@ export function SiteHeader() {
         className="fixed top-0 inset-x-0 z-50 bg-felt/[0.97] backdrop-blur-[20px] border-b border-white/[0.07]"
       >
         <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-4 lg:px-8">
-          <Link href="/" aria-label="Super Kalooki – Homepage" className="shrink-0">
-            <Image src="/logo.png" alt="Super Kalooki" width={56} height={42} className="h-10 w-auto" priority />
+          <Link
+            href="/"
+            aria-label="Super Kalooki – Homepage"
+            className="shrink-0 flex items-center gap-2.5 no-underline"
+          >
+            <Image
+              src="/app-icon.png"
+              alt=""
+              width={40}
+              height={40}
+              className="size-10 rounded-[10px] shadow-sm ring-1 ring-white/15"
+              priority
+            />
+            <Image
+              src="/logo.png"
+              alt="Super Kalooki"
+              width={120}
+              height={90}
+              className="h-9 w-auto"
+              priority
+            />
           </Link>
           <ul className="hidden lg:flex items-center list-none m-0 p-0" role="list">
             {nav.map((item) => (

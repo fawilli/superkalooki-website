@@ -69,9 +69,9 @@ for (const article of articles) {
 tx.createOrReplace({
   _id: 'siteSettings',
   _type: 'siteSettings',
-  headline: 'Nine deals. Changing contracts. Lowest score wins.',
+  headline: 'Play Jamaican Kalooki — Contract Rummy on mobile',
   subcopy:
-    'Super Kalooki is real-time Contract Rummy for 4–6 players — solo against AI or live online with friends.',
+    'Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.',
   primaryCtaLabel: 'Download on the App Store',
   primaryCtaUrl: 'https://apps.apple.com/in/app/super-kalooki/id6451106023',
 })

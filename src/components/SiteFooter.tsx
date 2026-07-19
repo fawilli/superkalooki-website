@@ -19,10 +19,21 @@ export function SiteFooter() {
       role="contentinfo"
     >
       <div className="flex flex-col gap-7 pb-7 border-b border-white/[0.06] md:flex-row md:items-start md:justify-between">
-        <Link href="/" aria-label="Super Kalooki – Homepage">
+        <Link
+          href="/"
+          aria-label="Super Kalooki – Homepage"
+          className="flex items-center gap-3 no-underline"
+        >
+          <Image
+            alt=""
+            className="size-12 rounded-[12px] ring-1 ring-white/10 opacity-90"
+            height={48}
+            src="/app-icon.png"
+            width={48}
+          />
           <Image
             alt="Super Kalooki"
-            className="h-16 w-auto opacity-80 block"
+            className="h-14 w-auto opacity-85 block"
             height={64}
             src="/logo.png"
             width={85}
