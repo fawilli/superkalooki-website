@@ -1,0 +1,79 @@
+[
+  {
+    "_type": "faqItem",
+    "question": "What is Kalooki?",
+    "answer": "Kalooki is a card game similar to Rummy, originating in Jamaica. It can be played with 4\u20136 players.",
+    "category": "general",
+    "sortOrder": 1
+  },
+  {
+    "_type": "faqItem",
+    "question": "How do you play Super Kalooki?",
+    "answer": "Draw a card, optionally lay down your contract (sets and runs), then discard. The first player to go out ends the round. See the full rules (/rules/).",
+    "category": "general",
+    "sortOrder": 2
+  },
+  {
+    "_type": "faqItem",
+    "question": "How many players does Super Kalooki support?",
+    "answer": "Super Kalooki supports 4\u20136 players per game.",
+    "category": "general",
+    "sortOrder": 3
+  },
+  {
+    "_type": "faqItem",
+    "question": "What game modes are available?",
+    "answer": "Single Player (against AI bots at Beginner, Intermediate, or Expert level) and Live Online with friends. Voice, video, and custom rules are coming soon for live online games.",
+    "category": "general",
+    "sortOrder": 4
+  },
+  {
+    "_type": "faqItem",
+    "question": "How many decks of cards are used?",
+    "answer": "Two decks (104 cards + 4 jokers) at minimum. More decks are added with more players.",
+    "category": "general",
+    "sortOrder": 5
+  },
+  {
+    "_type": "faqItem",
+    "question": "What are the AI difficulty levels?",
+    "answer": "Beginner (Lucky Larry), Intermediate (Steady Sandra), and Expert (Sharp Shane).",
+    "category": "general",
+    "sortOrder": 6
+  },
+  {
+    "_type": "faqItem",
+    "question": "What is a contract in Kalooki?",
+    "answer": "Each of the nine deals has a specific contract \u2014 a combination of threes (sets of same rank) and fours (runs of same suit) you must lay down before going out.",
+    "category": "general",
+    "sortOrder": 7
+  },
+  {
+    "_type": "faqItem",
+    "question": "What is 'down and out'?",
+    "answer": "Going out on the same turn you first lay down your cards. Opponents score double card values for that round.",
+    "category": "general",
+    "sortOrder": 8
+  },
+  {
+    "_type": "faqItem",
+    "question": "Can I call another player's discard?",
+    "answer": "Yes \u2014 if you haven't yet laid down, you can call a discarded card. You get it but must draw one extra penalty card from the stock. Maximum 3 calls per round per player.",
+    "category": "general",
+    "sortOrder": 9
+  },
+  {
+    "_type": "faqItem",
+    "question": "What is the best strategy?",
+    "answer": "Track discards, minimise high-value cards early, and use jokers wisely (50-point penalty if caught in hand). See our strategy guide (/mastering-kalooki-strategies-and-tips-for-beginners/).",
+    "category": "general",
+    "sortOrder": 10
+  },
+  {
+    "_type": "faqItem",
+    "question": "Is Super Kalooki free to play?",
+    "answer": "Yes \u2014 download free on the iOS App Store. Android coming soon.",
+    "category": "general",
+    "sortOrder": 11
+  }
+]
