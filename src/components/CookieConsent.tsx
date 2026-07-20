@@ -1,60 +1,19 @@
 'use client'
 
 import {
-  CONSENT_STORAGE_KEY,
   OPEN_COOKIE_SETTINGS_EVENT,
   applyGtagConsent,
   readConsent,
   writeConsent,
-  type ConsentState,
 } from '@/lib/consent'
 import Link from 'next/link'
-import {useEffect, useState, useSyncExternalStore} from 'react'
+import {useEffect, useState} from 'react'
 
 const GA_MEASUREMENT = 'G-SL2JT4PC9T'
 const GA_TAG = 'GT-KFHT9GHL'
 const CLARITY_ID = 'wmxjtxj1w5'
 
 let analyticsLoaded = false
-
-/** Stable snapshot cache — useSyncExternalStore requires Object.is-stable gets. */
-let snapshotRaw: string | null | undefined
-let snapshotValue: ConsentState | null = null
-
-function getConsentSnapshot(): ConsentState | null {
-  const raw = window.localStorage.getItem(CONSENT_STORAGE_KEY)
-  if (raw === snapshotRaw) return snapshotValue
-  snapshotRaw = raw
-  if (!raw) {
-    snapshotValue = null
-    return null
-  }
-  try {
-    const parsed = JSON.parse(raw) as ConsentState
-    snapshotValue = typeof parsed.analytics === 'boolean' ? {...parsed, necessary: true} : null
-  } catch {
-    snapshotValue = null
-  }
-  return snapshotValue
-}
-
-function subscribeConsent(onStoreChange: () => void) {
-  const onStorage = (e: StorageEvent) => {
-    if (e.key === null || e.key === CONSENT_STORAGE_KEY) onStoreChange()
-  }
-  window.addEventListener('storage', onStorage)
-  window.addEventListener('sk-consent-changed', onStoreChange)
-  return () => {
-    window.removeEventListener('storage', onStorage)
-    window.removeEventListener('sk-consent-changed', onStoreChange)
-  }
-}
-
-function notifyConsentChanged() {
-  // Invalidate cache so the next getSnapshot re-reads localStorage.
-  snapshotRaw = undefined
-  window.dispatchEvent(new Event('sk-consent-changed'))
-}
 
 function loadClarity() {
   if (document.getElementById('sk-clarity')) return
@@ -104,37 +63,40 @@ function loadAnalytics() {
 
 /**
  * Free first-party cookie banner + Consent Mode v2 bridge.
- * Preference is stored in localStorage — no third-party CMP required.
+ * Preference is stored in a cookie + localStorage — no third-party CMP.
  */
 export function CookieConsent() {
-  const mounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  )
-  const stored = useSyncExternalStore(subscribeConsent, getConsentSnapshot, () => null)
-  const [forceOpen, setForceOpen] = useState(false)
+  const [ready, setReady] = useState(false)
+  const [open, setOpen] = useState(false)
   const [draftAnalytics, setDraftAnalytics] = useState(true)
 
   useEffect(() => {
-    if (!mounted || !stored) return
-    applyGtagConsent(stored.analytics)
-    if (stored.analytics) loadAnalytics()
-  }, [mounted, stored])
+    const existing = readConsent()
+    // Defer state updates so hydration from storage isn't flagged as cascading render.
+    queueMicrotask(() => {
+      if (existing) {
+        setDraftAnalytics(existing.analytics)
+        setOpen(false)
+      } else {
+        setDraftAnalytics(true)
+        setOpen(true)
+      }
+      setReady(true)
+    })
 
-  useEffect(() => {
+    if (existing) {
+      applyGtagConsent(existing.analytics)
+      if (existing.analytics) loadAnalytics()
+    }
+
     const onOpen = () => {
-      setDraftAnalytics(readConsent()?.analytics ?? false)
-      setForceOpen(true)
+      const current = readConsent()
+      setDraftAnalytics(current?.analytics ?? true)
+      setOpen(true)
     }
     window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, onOpen)
     return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, onOpen)
   }, [])
-
-  if (!mounted) return null
-
-  const open = stored === null || forceOpen
-  if (!open) return null
 
   function save(nextAnalytics: boolean) {
     try {
@@ -142,12 +104,13 @@ export function CookieConsent() {
       applyGtagConsent(nextAnalytics)
       if (nextAnalytics) loadAnalytics()
       setDraftAnalytics(nextAnalytics)
-      setForceOpen(false)
-      notifyConsentChanged()
+      setOpen(false)
     } catch (err) {
       console.error('Failed to save cookie preference', err)
     }
   }
+
+  if (!ready || !open) return null
 
   return (
     <div

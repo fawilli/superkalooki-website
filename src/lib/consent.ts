@@ -1,4 +1,5 @@
 export const CONSENT_STORAGE_KEY = 'sk_cookie_consent_v1'
+export const CONSENT_COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
 
 export type ConsentState = {
   necessary: true
@@ -6,20 +7,19 @@ export type ConsentState = {
   updatedAt: string
 }
 
-export const DEFAULT_CONSENT: ConsentState = {
-  necessary: true,
-  analytics: false,
-  updatedAt: '',
-}
-
 export function readConsent(): ConsentState | null {
   if (typeof window === 'undefined') return null
+
   try {
+    const fromCookie = readConsentCookie()
+    if (fromCookie) return fromCookie
+
     const raw = window.localStorage.getItem(CONSENT_STORAGE_KEY)
     if (!raw) return null
-    const parsed = JSON.parse(raw) as ConsentState
-    if (typeof parsed.analytics !== 'boolean') return null
-    return {...parsed, necessary: true}
+    const parsed = parseConsent(raw)
+    // Migrate legacy localStorage-only preference into a cookie.
+    if (parsed) writeConsent(parsed.analytics)
+    return parsed
   } catch {
     return null
   }
@@ -31,8 +31,29 @@ export function writeConsent(analytics: boolean): ConsentState {
     analytics,
     updatedAt: new Date().toISOString(),
   }
-  window.localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(next))
+  const raw = JSON.stringify(next)
+  window.localStorage.setItem(CONSENT_STORAGE_KEY, raw)
+  document.cookie = `${CONSENT_STORAGE_KEY}=${encodeURIComponent(raw)}; path=/; max-age=${CONSENT_COOKIE_MAX_AGE}; SameSite=Lax`
   return next
+}
+
+function parseConsent(raw: string): ConsentState | null {
+  try {
+    const parsed = JSON.parse(raw) as ConsentState
+    if (typeof parsed.analytics !== 'boolean') return null
+    return {...parsed, necessary: true}
+  } catch {
+    return null
+  }
+}
+
+function readConsentCookie(): ConsentState | null {
+  const match = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith(`${CONSENT_STORAGE_KEY}=`))
+  if (!match) return null
+  const value = decodeURIComponent(match.slice(CONSENT_STORAGE_KEY.length + 1))
+  return parseConsent(value)
 }
 
 declare global {
@@ -47,7 +68,6 @@ export function applyGtagConsent(analytics: boolean) {
   window.dataLayer = window.dataLayer || []
   if (typeof window.gtag !== 'function') {
     window.gtag = function gtag() {
-      // Official GTM stub shape — push Arguments, not a rest array.
       // eslint-disable-next-line prefer-rest-params
       window.dataLayer?.push(arguments)
     }
