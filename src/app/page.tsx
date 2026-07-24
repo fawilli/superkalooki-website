@@ -1,9 +1,18 @@
 import {ContractMeldCards, HeroCardFan} from '@/components/HeroCards'
+import {JsonLd} from '@/components/JsonLd'
 import {PhoneFrame} from '@/components/PhoneFrame'
 import {SiteFooter} from '@/components/SiteFooter'
 import {SiteHeader} from '@/components/SiteHeader'
 import {StoreBadges} from '@/components/StoreBadges'
+import {appStoreUrl} from '@/lib/app-store'
+import {DIFFERENTIATION_FAQS} from '@/lib/jamaican-kalooki'
 import {formatDate, getArticles} from '@/lib/content'
+import {
+  faqPageJsonLd,
+  graphJsonLd,
+  mobileApplicationJsonLd,
+  organizationJsonLd,
+} from '@/lib/json-ld'
 import Image from 'next/image'
 import Link from 'next/link'
 import type {Metadata} from 'next'
@@ -47,63 +56,27 @@ export const metadata: Metadata = {
   },
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
+const jsonLd = graphJsonLd([
+  organizationJsonLd(),
+  {
+    '@type': 'WebSite',
+    '@id': 'https://superkalooki.com/#website',
+    name: 'Super Kalooki',
+    url: 'https://superkalooki.com/',
+    description:
+      'Official site for Super Kalooki — Jamaican Kalooki and Contract Rummy for iOS.',
+    publisher: {'@id': 'https://superkalooki.com/#organization'},
+  },
+  mobileApplicationJsonLd(),
+  faqPageJsonLd([
+    ...DIFFERENTIATION_FAQS,
     {
-      '@type': 'SoftwareApplication',
-      name: 'Super Kalooki',
-      applicationCategory: 'GameApplication',
-      operatingSystem: 'iOS, Android',
-      description:
-        'Super Kalooki is a Jamaican Contract Rummy (Kalooki) mobile game. Play nine scored deals with changing contracts — solo against AI or live online with 4–6 players.',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
-      url: 'https://superkalooki.com/',
-      downloadUrl: 'https://apps.apple.com/in/app/super-kalooki/id6451106023',
-      image: 'https://superkalooki.com/app-icon.png',
+      question: 'Is Super Kalooki free?',
+      answer:
+        'Yes. Super Kalooki is free to download on the App Store. It is for entertainment only — no real money, no gambling, and no prizes.',
     },
-    {
-      '@type': 'WebSite',
-      name: 'Super Kalooki',
-      url: 'https://superkalooki.com/',
-      description:
-        'Official site for Super Kalooki — Jamaican Kalooki and Contract Rummy for iOS and Android.',
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What is Kalooki?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Kalooki is a Jamaican Contract Rummy card game. Players complete changing contracts of sets and runs across nine scored deals; the lowest cumulative score wins.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How do you play Super Kalooki?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Download Super Kalooki on iOS. Play solo against AI bots or host a live online table for 4–6 players. Each deal has a contract (sets and runs). Draw, lay, call, and discard — first to go out ends the round.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is Super Kalooki free?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. Super Kalooki is free to download on the App Store. It is for entertainment only — no real money, no gambling, and no prizes.',
-          },
-        },
-      ],
-    },
-  ],
-}
+  ]),
+])
 
 export default async function HomePage() {
   const articles = await getArticles()
@@ -111,10 +84,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-felt text-ivory">
-      <script
-        dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-        type="application/ld+json"
-      />
+      <JsonLd data={jsonLd} />
       <SiteHeader />
       <main id="main-content">
         {/* Hero: brand + copy + real card fan (product vernacular) */}
@@ -159,7 +129,7 @@ export default async function HomePage() {
               <p className="text-base sm:text-lg text-ivory/70 mb-8 leading-relaxed max-w-[42ch]">
                 Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.
               </p>
-              <StoreBadges />
+              <StoreBadges campaign="website_hero" />
               <p className="text-[0.8rem] text-white/40 tracking-[0.02em] mt-4">
                 Entertainment only — no real money, gambling, or prizes.
               </p>
@@ -175,41 +145,53 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <p className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/80 mb-3">
-                What is Kalooki?
+                What is Jamaican Kalooki?
               </p>
               <h2
                 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-normal leading-[1.15] text-ivory mb-5 text-pretty"
                 id="what-heading"
               >
-                Contract Rummy from Jamaica — rebuilt for your phone
+                Contract Rummy from Jamaica — not Kalooki 40/51
               </h2>
               <p className="text-ivory/65 leading-relaxed mb-4">
-                Kalooki (also spelled Kaluki) is Contract Rummy: each of nine deals has a required contract of{' '}
+                Jamaican Kalooki (also spelled Kaluki) is a <strong className="text-ivory/90 font-medium">Contract Rummy</strong>{' '}
+                variant: each of nine deals has a required contract of{' '}
                 <strong className="text-ivory/90 font-medium">sets</strong> and{' '}
                 <strong className="text-ivory/90 font-medium">runs</strong>. Meet the contract, go out, and keep your
-                score low. After nine deals, the lowest total wins.
+                score low. After nine deals, the lowest total wins — unlike Kalooki 40/51 point-threshold games.
               </p>
               <p className="text-ivory/65 leading-relaxed mb-6">
-                Super Kalooki is the mobile Kalooki app for that exact game — calls, tacks, private live tables, and
-                solo practice against AI. Read the{' '}
-                <Link className="text-gold hover:text-gold-lt underline-offset-2 hover:underline" href="/rules/">
-                  full Kalooki rules
+                Super Kalooki is the mobile app for that Jamaican ruleset — calls, private live tables, and solo practice
+                against AI. Start with{' '}
+                <Link
+                  className="text-gold hover:text-gold-lt underline-offset-2 hover:underline"
+                  href="/jamaican-kalooki/"
+                >
+                  What is Jamaican Kalooki?
                 </Link>{' '}
-                or start a table now.
+                or the{' '}
+                <Link className="text-gold hover:text-gold-lt underline-offset-2 hover:underline" href="/rules/">
+                  full rules
+                </Link>
+                .
               </p>
               <div className="flex flex-wrap gap-x-5 gap-y-2">
                 <Link
                   className="inline-flex items-center min-h-11 text-sm font-semibold text-gold hover:text-gold-lt transition-colors"
-                  href="/faq/"
+                  href="/play/"
                 >
-                  Kalooki FAQ →
+                  Play on iOS →
                 </Link>
-                <Link
+                <a
                   className="inline-flex items-center min-h-11 text-sm font-semibold text-gold hover:text-gold-lt transition-colors"
-                  href="/about/"
+                  data-cta="app-store"
+                  data-cta-campaign="website_cta"
+                  href={appStoreUrl('website_cta')}
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  About us →
-                </Link>
+                  Download on the App Store →
+                </a>
               </div>
             </div>
             <div className="rounded-[1.15rem] border border-white/12 bg-felt-deep/80 p-6 sm:p-8 ring-1 ring-black/30">
@@ -353,10 +335,10 @@ export default async function HomePage() {
             Download Super Kalooki free
           </h2>
           <p className="text-ivory/65 mb-8 max-w-xl mx-auto leading-relaxed">
-            Start a private Kalooki table with friends — or practice Contract Rummy solo against AI. Available now on
-            the App Store; Google Play coming soon.
+            Start a private Kalooki table with friends — or practice Contract Rummy solo against AI. Free on the App
+            Store for iPhone and iPad.
           </p>
-          <StoreBadges centered />
+          <StoreBadges centered campaign="website_cta" />
         </section>
       </main>
       <SiteFooter />

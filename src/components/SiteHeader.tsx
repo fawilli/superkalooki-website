@@ -1,19 +1,22 @@
 'use client'
 
+import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
 import {useState} from 'react'
 
 const nav = [
-  {href: '/about/', label: 'About'},
-  {href: '/blog/', label: 'Blog'},
+  {href: '/jamaican-kalooki/', label: 'Jamaican Kalooki'},
   {href: '/rules/', label: 'Rules'},
+  {href: '/play/', label: 'Play'},
+  {href: '/blog/', label: 'Blog'},
   {href: '/faq/', label: 'FAQ'},
-  {href: '/contact/', label: 'Contact'},
+  {href: '/about/', label: 'About'},
 ]
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
+  const downloadHref = appStoreUrl('website_header')
 
   return (
     <header role="banner">
@@ -50,34 +53,60 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block text-[0.9rem] font-medium text-white/55 no-underline px-5 py-2 transition-colors duration-150 hover:text-gold whitespace-nowrap"
+                  className="block text-[0.9rem] font-medium text-white/55 no-underline px-4 py-2 transition-colors duration-150 hover:text-gold whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <a
-            aria-label="Super Kalooki on Instagram"
-            className="hidden lg:flex items-center justify-center size-[38px] rounded-full border border-white/[0.13] text-white/50 no-underline transition-all duration-150 hover:border-gold hover:text-gold shrink-0"
-            href="https://www.instagram.com/superkalooki"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <InstagramIcon />
-          </a>
-          <button
-            aria-controls="mobile-menu"
-            aria-expanded={open}
-            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
-            className="flex flex-col justify-center gap-[5px] bg-transparent border-0 cursor-pointer p-[6px] shrink-0 lg:hidden min-h-11 min-w-11"
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
-            <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
-            <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
-          </button>
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <a
+              aria-label="Super Kalooki on Instagram"
+              className="flex items-center justify-center size-[38px] rounded-full border border-white/[0.13] text-white/50 no-underline transition-all duration-150 hover:border-gold hover:text-gold"
+              href="https://www.instagram.com/superkalooki"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <InstagramIcon />
+            </a>
+            <a
+              aria-label="Download Super Kalooki on the App Store"
+              className="inline-flex items-center justify-center min-h-11 px-4 rounded-full bg-gold text-felt-deep text-[0.875rem] font-semibold no-underline transition-colors hover:bg-gold-lt"
+              data-cta="app-store"
+              data-cta-campaign="website_header"
+              href={downloadHref}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Download free
+            </a>
+          </div>
+          <div className="flex items-center gap-2 lg:hidden shrink-0">
+            <a
+              aria-label="Download Super Kalooki on the App Store"
+              className="inline-flex items-center justify-center min-h-11 px-3.5 rounded-full bg-gold text-felt-deep text-[0.8125rem] font-semibold no-underline"
+              data-cta="app-store"
+              data-cta-campaign="website_header"
+              href={downloadHref}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Get app
+            </a>
+            <button
+              aria-controls="mobile-menu"
+              aria-expanded={open}
+              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+              className="flex flex-col justify-center gap-[5px] bg-transparent border-0 cursor-pointer p-[6px] shrink-0 min-h-11 min-w-11"
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
+              <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
+              <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
+            </button>
+          </div>
         </div>
       </nav>
       {open ? (
@@ -103,6 +132,17 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <a
+              className="mt-6 inline-flex items-center justify-center min-h-12 rounded-xl bg-gold text-felt-deep text-[1rem] font-semibold no-underline"
+              data-cta="app-store"
+              data-cta-campaign="website_header"
+              href={downloadHref}
+              rel="noopener noreferrer"
+              target="_blank"
+              onClick={() => setOpen(false)}
+            >
+              Download free on the App Store
+            </a>
           </div>
         </div>
       ) : null}

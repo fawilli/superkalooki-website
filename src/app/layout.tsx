@@ -1,4 +1,6 @@
 import {ConsentScripts} from '@/components/ConsentScripts'
+import {StickyDownloadBar} from '@/components/StickyDownloadBar'
+import {APP_STORE_ID} from '@/lib/app-store'
 import type {Metadata} from 'next'
 import {Geist, Instrument_Serif} from 'next/font/google'
 import './globals.css'
@@ -46,6 +48,9 @@ export const metadata: Metadata = {
     description: 'Free Jamaican Kalooki / Contract Rummy for iOS. Solo or live with friends.',
     images: ['/marketing/solo-mid-hand.png'],
   },
+  other: {
+    'apple-itunes-app': `app-id=${APP_STORE_ID}, app-argument=${siteUrl}`,
+  },
 }
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
@@ -74,7 +79,7 @@ gtag('set', 'url_passthrough', false);
         />
       </head>
       <body
-        className="font-sans antialiased"
+        className="font-sans antialiased pb-20 lg:pb-0"
         style={
           {
             fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
@@ -84,6 +89,7 @@ gtag('set', 'url_passthrough', false);
       >
         <ConsentScripts />
         {children}
+        <StickyDownloadBar />
       </body>
     </html>
   )

@@ -1,13 +1,16 @@
 import {CookieSettingsLink} from '@/components/CookieConsent'
+import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const links = [
   {href: '/', label: 'Home'},
-  {href: '/about/', label: 'About'},
-  {href: '/blog/', label: 'Blog'},
+  {href: '/jamaican-kalooki/', label: 'Jamaican Kalooki'},
   {href: '/rules/', label: 'Rules'},
+  {href: '/play/', label: 'Play'},
+  {href: '/blog/', label: 'Blog'},
   {href: '/faq/', label: 'FAQ'},
+  {href: '/about/', label: 'About'},
   {href: '/contact/', label: 'Contact'},
   {href: '/privacy-policy/', label: 'Privacy'},
   {href: '/terms-and-conditions/', label: 'Terms'},
@@ -46,6 +49,18 @@ export function SiteFooter() {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              className="text-sm font-semibold text-gold no-underline transition-colors duration-150 hover:text-gold-lt"
+              data-cta="app-store"
+              data-cta-campaign="website_footer"
+              href={appStoreUrl('website_footer')}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Download on App Store
+            </a>
+          </li>
           <li>
             <CookieSettingsLink className="text-sm font-normal text-white/35 transition-colors duration-150 hover:text-gold" />
           </li>

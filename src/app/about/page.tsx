@@ -81,11 +81,11 @@ export default function AboutPage() {
                 Download Super Kalooki
               </h2>
               <p className="text-ivory/55 m-0 leading-relaxed">
-                Free on the App Store. Google Play coming soon. Entertainment only — no real money, no prizes.
+                Free on the App Store for iPhone and iPad. Entertainment only — no real money, no prizes.
               </p>
             </div>
           </div>
-          <StoreBadges />
+          <StoreBadges campaign="website_about" />
           <p className="mt-10 text-sm text-ivory/45">
             Press or partnership inquiries:{' '}
             <a className="text-gold hover:text-gold-lt" href="mailto:superkalookigame@gmail.com">

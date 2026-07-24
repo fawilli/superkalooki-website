@@ -1,15 +1,26 @@
-const APP_STORE =
-  'https://apps.apple.com/in/app/super-kalooki/id6451106023'
+import {appStoreUrl, type AppStoreCampaign} from '@/lib/app-store'
 
-export function StoreBadges({centered = false}: {centered?: boolean}) {
+type Props = {
+  centered?: boolean
+  /** Apple App Analytics campaign token */
+  campaign?: AppStoreCampaign
+  /** Show muted Google Play note under the badge (default true) */
+  showPlayNote?: boolean
+}
+
+export function StoreBadges({
+  centered = false,
+  campaign = 'website',
+  showPlayNote = true,
+}: Props) {
   return (
-    <div
-      className={`flex flex-wrap items-center gap-3 ${centered ? 'justify-center' : ''}`}
-    >
+    <div className={centered ? 'flex flex-col items-center gap-3' : 'flex flex-col items-start gap-3'}>
       <a
-        aria-label="Download on the App Store"
-        className="inline-block no-underline min-h-11"
-        href={APP_STORE}
+        aria-label="Download Super Kalooki on the App Store"
+        className="inline-block no-underline min-h-11 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+        data-cta="app-store"
+        data-cta-campaign={campaign}
+        href={appStoreUrl(campaign)}
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -21,28 +32,11 @@ export function StoreBadges({centered = false}: {centered?: boolean}) {
           style={{height: 44, width: 'auto', display: 'block'}}
         />
       </a>
-      <span
-        aria-label="Get it on Google Play — Coming Soon"
-        className="inline-block cursor-not-allowed relative min-h-11"
-        title="Coming Soon"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          alt="Get it on Google Play"
-          height={44}
-          src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-          style={{
-            height: 44,
-            width: 'auto',
-            display: 'block',
-            opacity: 0.38,
-            filter: 'grayscale(0.3)',
-          }}
-        />
-        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold/90 text-black text-[0.75rem] font-bold px-[0.6rem] py-[0.2rem] rounded-sm whitespace-nowrap tracking-[0.05em]">
-          Soon
-        </span>
-      </span>
+      {showPlayNote ? (
+        <p className="text-[0.75rem] text-white/35 m-0 tracking-[0.02em]">
+          Free on iOS · Google Play coming soon
+        </p>
+      ) : null}
     </div>
   )
 }

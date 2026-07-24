@@ -100,7 +100,7 @@ export async function getSiteSettings() {
       subcopy:
         'Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.',
       primaryCtaLabel: 'Download on the App Store',
-      primaryCtaUrl: 'https://apps.apple.com/in/app/super-kalooki/id6451106023',
+      primaryCtaUrl: 'https://apps.apple.com/app/super-kalooki/id6451106023',
     }
   )
 }

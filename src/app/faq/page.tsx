@@ -1,18 +1,33 @@
+import {JsonLd} from '@/components/JsonLd'
 import {SiteFooter} from '@/components/SiteFooter'
 import {SiteHeader} from '@/components/SiteHeader'
 import {getFaqItems} from '@/lib/content'
+import {graphJsonLd, faqPageJsonLd, organizationJsonLd, webPageJsonLd} from '@/lib/json-ld'
 import type {Metadata} from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'FAQ',
-  description: 'Frequently asked questions about Super Kalooki and Contract Rummy.',
+  title: 'FAQ — Jamaican Kalooki & Super Kalooki',
+  description:
+    'Frequently asked questions about Jamaican Kalooki, Contract Rummy, Kalooki 40/51 differences, and the Super Kalooki iOS app.',
+  alternates: {canonical: '/faq/'},
 }
 
 export default async function FaqPage() {
   const items = await getFaqItems()
+  const jsonLd = graphJsonLd([
+    organizationJsonLd(),
+    webPageJsonLd({
+      name: 'Super Kalooki FAQ',
+      description: metadata.description as string,
+      path: '/faq/',
+    }),
+    faqPageJsonLd(items.map((item) => ({question: item.question, answer: item.answer}))),
+  ])
 
   return (
     <div className="min-h-screen bg-ivory">
+      <JsonLd data={jsonLd} />
       <SiteHeader />
       <main
         className="max-w-[860px] mx-auto px-[1.125rem] pt-20 pb-12 sm:px-6 lg:px-8"
@@ -25,6 +40,17 @@ export default async function FaqPage() {
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal text-text-dark m-0">
             Frequently Asked Questions
           </h1>
+          <p className="text-text-mid mt-4 mb-0 leading-relaxed">
+            Short answers about Jamaican Kalooki (Contract Rummy) and Super Kalooki. For the full ruleset see{' '}
+            <Link className="text-green-link font-semibold hover:text-gold" href="/rules/">
+              Jamaican Kalooki Rules
+            </Link>{' '}
+            or{' '}
+            <Link className="text-green-link font-semibold hover:text-gold" href="/jamaican-kalooki/">
+              What is Jamaican Kalooki?
+            </Link>
+            .
+          </p>
         </header>
         <div className="flex flex-col">
           {items.map((item) => (

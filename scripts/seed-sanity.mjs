@@ -54,7 +54,17 @@ function withKeys(doc) {
 const faq = JSON.parse(readFileSync(join(root, 'src/content/faq-seed.json'), 'utf8'))
 const articles = JSON.parse(readFileSync(join(root, 'src/content/articles-seed.json'), 'utf8'))
 
+const seedFaqIds = new Set(faq.map((item) => `faq.${item.sortOrder}`))
+const existingFaqIds = await client.fetch(`*[_type == "faqItem"]._id`)
+
 const tx = client.transaction()
+
+// Drop Studio/orphan FAQ docs so seed is the sole FAQ source of truth
+for (const id of existingFaqIds) {
+  if (!seedFaqIds.has(id)) {
+    tx.delete(id)
+  }
+}
 
 for (const item of faq) {
   const id = `faq.${item.sortOrder}`
@@ -73,7 +83,7 @@ tx.createOrReplace({
   subcopy:
     'Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.',
   primaryCtaLabel: 'Download on the App Store',
-  primaryCtaUrl: 'https://apps.apple.com/in/app/super-kalooki/id6451106023',
+  primaryCtaUrl: 'https://apps.apple.com/app/super-kalooki/id6451106023',
 })
 
 const result = await tx.commit()
