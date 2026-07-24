@@ -17,7 +17,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Jamaican Kalooki vs Kalooki 40/51 & Contract Rummy',
   description:
-    'How Jamaican Kalooki differs from Kalooki 40, Kalooki 51, and generic Contract Rummy — contracts, scoring, calling, and what Super Kalooki implements.',
+    'How Jamaican Kalooki differs from Kalooki 40, Kalooki 51, and other Contract Rummy — contracts, scoring, calling, and what you play in Super Kalooki.',
   alternates: {canonical: '/jamaican-kalooki/vs-other-variants/'},
   openGraph: {
     title: 'Jamaican Kalooki vs Other Variants',
@@ -40,24 +40,24 @@ export default function VsOtherVariantsPage() {
   return (
     <GuideLayout
       currentPath="/jamaican-kalooki/vs-other-variants/"
-      eyebrow="Compare variants"
+      eyebrow="Compare"
       jsonLd={jsonLd}
       summary={AI_SUMMARY}
       title="Jamaican Kalooki vs Kalooki 40/51 & Contract Rummy"
     >
       <p>
-        Jamaican Kalooki is a <strong>Contract Rummy family</strong> game — not a separate invention, and not the same
-        as Kalooki 40 or Kalooki 51. Use this table when AI or search results mix the names.
+        “Kalooki” means different things to different tables. Super Kalooki plays <strong>Jamaican Kalooki</strong> —
+        Contract Rummy with nine deals and Jamaican scoring — not Kalooki 40 or Kalooki 51.
       </p>
 
       <div className="overflow-x-auto my-8">
         <table>
           <thead>
             <tr>
-              <th>Aspect</th>
+              <th></th>
               <th>Jamaican Kalooki</th>
               <th>Kalooki 40 / 51</th>
-              <th>Contract Rummy (family)</th>
+              <th>Contract Rummy</th>
             </tr>
           </thead>
           <tbody>
@@ -78,14 +78,13 @@ export default function VsOtherVariantsPage() {
       <h2>Is Jamaican Kalooki the same as Contract Rummy?</h2>
       <p>{DIFFERENTIATION_FAQS[2].answer}</p>
 
-      <h2>What makes Jamaican Kalooki different from Kalooki 40/51?</h2>
+      <h2>What about Kalooki 40 and 51?</h2>
       <p>{DIFFERENTIATION_FAQS[3].answer}</p>
 
       <p>
-        For the full contract sequence and penalties, see the{' '}
-        <Link href="/rules/">Jamaican Kalooki rules</Link>. To learn{' '}
-        <Link href="/jamaican-kalooki/scoring/">scoring &amp; deadwood</Link>, or{' '}
-        <Link href="/play/">play Super Kalooki online on iOS</Link>.
+        Want the full contract list and penalties? See the <Link href="/rules/">Jamaican Kalooki rules</Link>. For
+        how points work, read <Link href="/jamaican-kalooki/scoring/">scoring &amp; deadwood</Link>. Or{' '}
+        <Link href="/play/">play Super Kalooki on iOS</Link>.
       </p>
     </GuideLayout>
   )

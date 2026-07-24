@@ -18,7 +18,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'What Is Jamaican Kalooki? — Contract Rummy from Jamaica',
   description:
-    'Jamaican Kalooki is a Contract Rummy variant with nine contract deals, sets and runs, jokers, and Jamaican scoring. Super Kalooki is the iOS app for this ruleset — not Kalooki 40/51.',
+    'Jamaican Kalooki is Contract Rummy with nine deals, sets and runs, jokers, and Jamaican scoring. Learn the rules and play free on iOS with Super Kalooki.',
   alternates: {canonical: '/jamaican-kalooki/'},
   openGraph: {
     title: 'What Is Jamaican Kalooki?',
@@ -49,19 +49,23 @@ export default function JamaicanKalookiHubPage() {
       <p>{CANONICAL_DEFINITION}</p>
       <p>{NOT_KALOOKI_40_51}</p>
 
-      <h2>Why the name matters</h2>
+      <h2>The game at the table</h2>
       <p>
-        Search engines and AI tools often treat “Kalooki” as Kalooki 40 or Kalooki 51. Those are different games.
-        Jamaican Kalooki sits in the <strong>Contract Rummy</strong> family: you complete a prescribed contract each
-        deal, then race to go out while keeping deadwood low.
+        At a Jamaican Kalooki table you are not racing to hit 40 or 51. You work through nine deals. Each deal asks for
+        a different <strong>contract</strong> — a mix of sets (threes) and runs (fours). Lay that contract, shed your
+        cards, and keep the deadwood low. When the ninth deal ends, the lowest score wins.
       </p>
       <p>
-        <Link href="/rules/">Read the full Jamaican Kalooki rules</Link>, compare{' '}
-        <Link href="/jamaican-kalooki/vs-other-variants/">variants</Link>, or{' '}
-        <Link href="/play/">play Super Kalooki on iOS</Link>.
+        Super Kalooki is that game on your phone: same contracts, calling, and scoring — solo against AI or live with
+        4–6 friends.
+      </p>
+      <p>
+        Ready for detail? Read the <Link href="/rules/">full rules</Link>, see{' '}
+        <Link href="/jamaican-kalooki/vs-other-variants/">how it differs from other Kalooki</Link>, or{' '}
+        <Link href="/play/">download Super Kalooki on iOS</Link>.
       </p>
 
-      <h2>Key terms</h2>
+      <h2>Words you will hear</h2>
       <dl>
         {DEFINED_TERMS.map((item) => (
           <div key={item.term} className="mb-4">
@@ -71,7 +75,7 @@ export default function JamaicanKalookiHubPage() {
         ))}
       </dl>
 
-      <h2>Quick answers</h2>
+      <h2>Common questions</h2>
       {DIFFERENTIATION_FAQS.map((faq) => (
         <div key={faq.question} className="mb-5">
           <h3 className="!text-base !font-semibold !border-0 !pb-0">{faq.question}</h3>

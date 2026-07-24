@@ -81,7 +81,7 @@ export default function PlayPage() {
               </h2>
               <p className="text-ivory/60 leading-relaxed mb-4">
                 Practice against Beginner, Intermediate, or Expert bots — or host a private online table. Same Jamaican
-                rules either way. Not Kalooki 40/51.
+                Kalooki rules either way.
               </p>
               <ul className="text-ivory/60 leading-relaxed space-y-2 list-disc pl-5 m-0">
                 <li>Nine contract deals (333 → 4444)</li>

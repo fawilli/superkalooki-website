@@ -53,7 +53,7 @@ export function GuideLayout({
 
         <nav aria-label="Jamaican Kalooki guides" className="mt-12 pt-8 border-t border-black/[0.08]">
           <p className="text-[0.75rem] font-medium tracking-[0.16em] uppercase text-gold mb-4 m-0">
-            Guided links
+            Keep learning
           </p>
           <ul className="grid gap-2 sm:grid-cols-2 list-none m-0 p-0">
             {GUIDE_LINKS.map((link) => {

@@ -4,7 +4,7 @@ type Props = {
   tone?: 'light' | 'dark'
 }
 
-/** Short, machine-quotable definition block for AIO / AEO. */
+/** Short page summary — player-facing; also easy for AI to quote. */
 export function AiSummary({children, tone = 'light'}: Props) {
   const isDark = tone === 'dark'
   return (
@@ -21,9 +21,10 @@ export function AiSummary({children, tone = 'light'}: Props) {
           isDark ? 'text-gold/80' : 'text-gold'
         }`}
       >
-        Quick definition
+        In short
       </p>
       <p className="text-[0.95rem] leading-relaxed m-0 text-pretty">{children}</p>
     </aside>
   )
 }
+

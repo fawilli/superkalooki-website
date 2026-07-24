@@ -2,14 +2,14 @@
   {
     "_type": "faqItem",
     "question": "What is Jamaican Kalooki?",
-    "answer": "Jamaican Kalooki is a Contract Rummy variant from Jamaica: two decks plus jokers, nine deals with changing contracts of sets and runs, and lowest cumulative score wins.",
+    "answer": "Jamaican Kalooki is Contract Rummy from Jamaica: two decks plus jokers, nine deals with changing contracts of sets and runs, and lowest score wins.",
     "category": "general",
     "sortOrder": 1
   },
   {
     "_type": "faqItem",
     "question": "What is Kalooki?",
-    "answer": "Kalooki usually means Jamaican Contract Rummy in this context — nine contract deals, sets and runs, Jamaican scoring. It is not Kalooki 40 or Kalooki 51. See What is Jamaican Kalooki? (/jamaican-kalooki/).",
+    "answer": "On this site, Kalooki means Jamaican Contract Rummy — nine contract deals, sets and runs, lowest score wins. That is different from Kalooki 40 or 51. More here: /jamaican-kalooki/.",
     "category": "general",
     "sortOrder": 2
   },
@@ -23,14 +23,14 @@
   {
     "_type": "faqItem",
     "question": "Is Jamaican Kalooki the same as Contract Rummy?",
-    "answer": "Jamaican Kalooki is a member of the Contract Rummy family with Jamaican contracts, calling, and scoring. It is the same family of games, not a totally unrelated title.",
+    "answer": "Yes — it is a Contract Rummy game with Jamaican contracts, calling, and scoring. Same family; Jamaican house rules.",
     "category": "general",
     "sortOrder": 4
   },
   {
     "_type": "faqItem",
     "question": "What makes Jamaican Kalooki different from Kalooki 40/51?",
-    "answer": "Kalooki 40 and 51 are point-threshold variants common in Israeli/European play. Jamaican Kalooki uses nine contract deals and Jamaican deadwood scoring instead of a 40/51 going-out target.",
+    "answer": "Kalooki 40 and 51 are built around hitting a point target to go out. Jamaican Kalooki uses nine contract deals and scores the cards left in hand instead.",
     "category": "general",
     "sortOrder": 5
   },

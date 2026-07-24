@@ -35,9 +35,9 @@ export default function StrategyPage() {
       title="Jamaican Kalooki strategy tips"
     >
       <p>
-        These tips apply to <strong>Jamaican Contract Rummy</strong> as implemented in Super Kalooki — nine changing
-        contracts, calling with a penalty card, and lowest score wins. They are not Kalooki 40/51 “race to threshold”
-        tactics.
+        These tips are for <strong>Jamaican Kalooki</strong> in Super Kalooki — nine changing contracts, calling with a
+        penalty card, and lowest score wins. If you usually play Kalooki 40 or 51, leave the “race to the number”
+        mindset at the door.
       </p>
 
       <h2>1. Build toward the contract first</h2>

@@ -151,18 +151,17 @@ export default async function HomePage() {
                 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-normal leading-[1.15] text-ivory mb-5 text-pretty"
                 id="what-heading"
               >
-                Contract Rummy from Jamaica — not Kalooki 40/51
+                Contract Rummy from Jamaica — on your phone
               </h2>
               <p className="text-ivory/65 leading-relaxed mb-4">
-                Jamaican Kalooki (also spelled Kaluki) is a <strong className="text-ivory/90 font-medium">Contract Rummy</strong>{' '}
-                variant: each of nine deals has a required contract of{' '}
+                Jamaican Kalooki (also spelled Kaluki) is <strong className="text-ivory/90 font-medium">Contract Rummy</strong>{' '}
+                with Jamaican rules: nine deals, each with a contract of{' '}
                 <strong className="text-ivory/90 font-medium">sets</strong> and{' '}
-                <strong className="text-ivory/90 font-medium">runs</strong>. Meet the contract, go out, and keep your
-                score low. After nine deals, the lowest total wins — unlike Kalooki 40/51 point-threshold games.
+                <strong className="text-ivory/90 font-medium">runs</strong>. Meet the contract, go out, keep your score
+                low. After nine deals, lowest total wins — not a race to 40 or 51.
               </p>
               <p className="text-ivory/65 leading-relaxed mb-6">
-                Super Kalooki is the mobile app for that Jamaican ruleset — calls, private live tables, and solo practice
-                against AI. Start with{' '}
+                Super Kalooki is that table on iOS — calls, private live games, and solo practice against AI. Start with{' '}
                 <Link
                   className="text-gold hover:text-gold-lt underline-offset-2 hover:underline"
                   href="/jamaican-kalooki/"
