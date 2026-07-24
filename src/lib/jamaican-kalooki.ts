@@ -53,7 +53,7 @@ export const DEFINED_TERMS: DefinedTerm[] = [
   {
     term: 'Down and out',
     definition:
-      'Going out on the same turn you first lay your contract. Everyone else scores double that round.',
+      'Going out on the same turn you first lay your contract. Opponents score double deadwood, and you get a −50 bonus.',
   },
   {
     term: 'Penalties',

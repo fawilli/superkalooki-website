@@ -12,11 +12,11 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Jamaican Kalooki Scoring — Deadwood, Penalties & Winning',
   description:
-    'How Jamaican Kalooki scoring works: card penalty values, deadwood, down and out, call and contract-error penalties, and lowest score after nine deals.',
+    'How Jamaican Kalooki scoring works: card penalty values, deadwood, down and out (−50 bonus), call penalties, and lowest score after nine deals.',
   alternates: {canonical: '/jamaican-kalooki/scoring/'},
   openGraph: {
     title: 'Jamaican Kalooki Scoring',
-    description: 'Deadwood values, double scoring on down-and-out, and 50-point penalties.',
+    description: 'Deadwood values, down-and-out double + −50 bonus, and call penalties.',
     url: '/jamaican-kalooki/scoring/',
   },
 }
@@ -35,8 +35,8 @@ export default function ScoringPage() {
       steps: [
         'When a player goes out, remaining cards in each hand are deadwood.',
         'Add each deadwood card’s penalty value to that player’s cumulative score.',
-        'If the winner went down and out, opponents score double for that round.',
-        'Apply 50-point penalties for over-calling or contract errors when they occur.',
+        'If the winner went down and out, opponents score double and the winner gets a −50 bonus.',
+        'Apply a 50-point penalty for over-calling when it occurs.',
         'After nine deals, the lowest cumulative score wins the match.',
       ],
     }),
@@ -98,7 +98,8 @@ export default function ScoringPage() {
       <h2>Down and out</h2>
       <p>
         Going out on the same turn you first lay your contract is <strong>down and out</strong>. Opponents score{' '}
-        <strong>double</strong> deadwood for that round — a powerful swing if you can pull it off.
+        <strong>double</strong> deadwood for that round, and you take a <strong>−50</strong> bonus off your score —
+        double pain for the table, and a clean cushion for the winner.
       </p>
 
       <h2>Penalties</h2>
@@ -106,10 +107,6 @@ export default function ScoringPage() {
         <li>
           <strong>Over-call (more than three calls):</strong> 50 points; you may no longer call, refuse calls, or go
           down and out for the rest of that game.
-        </li>
-        <li>
-          <strong>Contract error:</strong> 50 points; you cannot lay or go down and out that round (draw and discard
-          only).
         </li>
       </ul>
 

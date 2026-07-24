@@ -68,8 +68,8 @@ export default function StrategyPage() {
 
       <h2>5. Know when down and out is worth it</h2>
       <p>
-        Going down and out doubles opponents’ scores for the round. If your hand is ready on first lay, take it. If you
-        are one discard away and someone else looks tight, press the pace.
+        Going down and out doubles opponents’ scores for the round and gives you a −50 bonus. If your hand is ready on
+        first lay, take it. If you are one discard away and someone else looks tight, press the pace.
       </p>
 
       <h2>6. Practice solo, then host a table</h2>

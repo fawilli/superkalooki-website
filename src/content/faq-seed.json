@@ -79,7 +79,7 @@
   {
     "_type": "faqItem",
     "question": "What is 'down and out'?",
-    "answer": "Going out on the same turn you first lay down your cards. Opponents score double card values for that round.",
+    "answer": "Going out on the same turn you first lay your contract. Opponents score double deadwood for that round, and you get a \u221250 bonus.",
     "category": "general",
     "sortOrder": 12
   },
