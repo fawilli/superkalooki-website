@@ -1,0 +1,1 @@
+{"version":1,"hooks":{"beforeShellExecution":[{"command":".cursor/hooks/deny-dangerous-shell.sh","failClosed":true}]}}
