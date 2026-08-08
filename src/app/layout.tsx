@@ -1,6 +1,7 @@
 import {ConsentScripts} from '@/components/ConsentScripts'
 import {StickyDownloadBar} from '@/components/StickyDownloadBar'
 import {APP_STORE_ID} from '@/lib/app-store'
+import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata} from 'next'
 import {Geist, Instrument_Serif} from 'next/font/google'
 import './globals.css'
@@ -90,6 +91,7 @@ gtag('set', 'url_passthrough', false);
         <ConsentScripts />
         {children}
         <StickyDownloadBar />
+        <SpeedInsights />
       </body>
     </html>
   )
