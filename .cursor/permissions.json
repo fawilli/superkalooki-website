@@ -1,0 +1,12 @@
+{
+  "autoRun": {
+    "allow_instructions": [
+      "After founder chat go-ahead, allow production promote and deploy: promote-to-prod.sh, doctl apps create-deployment, vercel --prod, vercel deploy --prod, deploy.sh prod, ship-marketing.sh --prod, and git push origin main as part of that promote.",
+      "Do not hold those production promote/deploy commands for a second Auto-review approval when the founder already said go in this chat."
+    ],
+    "block_instructions": [
+      "Always hold git force-push and --force-with-lease for approval.",
+      "Always hold commands that pipe secrets, PEM/key files, or printenv into curl, wget, or nc."
+    ]
+  }
+}

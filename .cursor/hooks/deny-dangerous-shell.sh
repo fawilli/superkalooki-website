@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 # Portfolio-portable deny hook for beforeShellExecution.
-# Blocks force-push, common prod deploy CLIs, and secret-exfil patterns.
+# Blocks force-push and secret-exfil patterns.
+# Prod deploy/promote CLIs are allowed (founder confirms in chat per deploy skills).
+# Kill switch: touch ~/.cursor/ai-org-hooks.off  → allow all (then Reload Window).
 # Fail-closed when paired with failClosed: true in hooks.json.
 set -euo pipefail
 
 input=$(cat)
+
+# Founder kill switch — disables this entire hook (force-push/exfil too).
+if [[ -f "${HOME}/.cursor/ai-org-hooks.off" ]]; then
+  printf '%s\n' '{"permission":"allow"}'
+  exit 0
+fi
+
 cmd=""
 if command -v python3 >/dev/null 2>&1; then
   cmd=$(printf '%s' "$input" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("command") or "")' 2>/dev/null || true)
@@ -19,10 +28,14 @@ deny() {
   # Fixed JSON — messages are static literals from this script only
   case "$msg" in
     force) printf '%s\n' '{"permission":"deny","user_message":"Blocked by AI org hook: force-push is not allowed for unattended or agent sessions.","agent_message":"Blocked by AI org hook: force-push is not allowed for unattended or agent sessions."}' ;;
-    prod) printf '%s\n' '{"permission":"deny","user_message":"Blocked by AI org hook: production deploy/promote requires founder approval (agent-runtime).","agent_message":"Blocked by AI org hook: production deploy/promote requires founder approval (agent-runtime)."}' ;;
     secret) printf '%s\n' '{"permission":"deny","user_message":"Blocked by AI org hook: possible secret exfiltration pattern.","agent_message":"Blocked by AI org hook: possible secret exfiltration pattern."}' ;;
     *) printf '%s\n' '{"permission":"deny","user_message":"Blocked by AI org hook.","agent_message":"Blocked by AI org hook."}' ;;
   esac
+  exit 0
+}
+
+deny_iso() {
+  printf '%s\n' '{"permission":"deny","user_message":"Blocked by AI org hook: git must run in one product repo, not the SSD root or a mixed path. Open the product folder and start a new chat.","agent_message":"Blocked by AI org hook: cross-project git. Use git -C <bound-path> inside one registry project only."}'
   exit 0
 }
 
@@ -31,9 +44,20 @@ if echo "$cmd" | grep -Eqi 'git[[:space:]]+push[[:space:]]+.*--force|[[:space:]]
   deny force
 fi
 
-# Prod deploy CLIs / promote scripts (portable patterns — not product-specific)
-if echo "$cmd" | grep -Eqi 'vercel[[:space:]]+(--prod|deploy[[:space:]]+.*--prod)|doctl[[:space:]]+apps[[:space:]]+create-deployment|ship-marketing\.sh[[:space:]]+--prod|promote-to-prod|deploy\.sh[[:space:]]+prod|kubectl[[:space:]]+.*[[:space:]]+apply.*prod'; then
-  deny prod
+# Cross-project / SSD-root git (project isolation)
+if echo "$cmd" | grep -Eqi 'git[[:space:]]+-C[[:space:]]+"?/Volumes/SSD"?[[:space:]]'; then
+  deny_iso
+fi
+if echo "$cmd" | grep -Eqi 'git[[:space:]]+(add|commit|push|mv|rm|restore|stash)'; then
+  hits=$(printf '%s' "$cmd" | python3 -c '
+import sys
+cmd=sys.stdin.read()
+names=["StrataIQ","SuperKalooki","superkalooki-website","JobSearchAI","Tournament Manager","VerixCredit","ScriberInk","fawilli-workspace"]
+print(sum(1 for n in names if ("/Volumes/SSD/"+n) in cmd))
+' 2>/dev/null || echo 0)
+  if [ "${hits:-0}" -ge 2 ]; then
+    deny_iso
+  fi
 fi
 
 # Secret exfil patterns
