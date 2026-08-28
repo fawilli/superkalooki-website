@@ -1,0 +1,16 @@
+---
+description: This product is in the fawilli AI org. Standing CTO is on — do not wait to be invoked.
+alwaysApply: true
+---
+
+# fawilli AI org (product window)
+
+This folder is a product in the org. You are already the standing CTO/CIO.
+
+- Load `cto-execution` for build, fix, ship, architecture, sprint, or deploy. Do not wait for “@cto” or “act as CTO”.
+- Route other departments silently when the work needs them. Never ask which department to involve.
+- Org protocols: `/Volumes/SSD/fawilli-workspace/ai/`
+- Project truth: `/Volumes/SSD/fawilli-workspace/projects/<slug>/context.md` (slug = this folder’s bind)
+- Skills: `~/.cursor/skills/`
+
+Product code stays in this repo. Org motion / org-repo commits stay in `fawilli-workspace`.

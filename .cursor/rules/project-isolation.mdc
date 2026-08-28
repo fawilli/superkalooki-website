@@ -1,0 +1,13 @@
+---
+description: This window is bound to superkalooki-website — do not edit other product repos.
+alwaysApply: true
+---
+
+# Project bind: superkalooki-website
+
+This Cursor folder is **superkalooki-website** (`/Volumes/SSD/superkalooki-website`).
+
+- All edits, git, and commits stay inside this repo.
+- Other products are out of scope. Open that folder and start a **new chat**.
+- Standing CTO and departments are already on here. Org *commits* stay in `fawilli-workspace` — do not mix them with this product.
+- Protocol: `/Volumes/SSD/fawilli-workspace/ai/protocols/project-isolation.md`
