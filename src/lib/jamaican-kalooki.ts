@@ -60,6 +60,11 @@ export const DEFINED_TERMS: DefinedTerm[] = [
     definition:
       'More than three calls, or laying the wrong contract, costs 50 points and limits what you can do for that round or game.',
   },
+  {
+    term: 'Tack',
+    definition:
+      'After you have laid your contract, adding a legal card to a meld already on the table when Super Kalooki offers the tack action. Tacking is not calling.',
+  },
 ]
 
 export type FaqPair = {
@@ -90,11 +95,30 @@ export const DIFFERENTIATION_FAQS: FaqPair[] = [
   },
 ]
 
+export const TACKING_FAQS: FaqPair[] = [
+  {
+    question: 'What is tacking in Jamaican Kalooki?',
+    answer:
+      'Tacking is adding a legal card to a meld already on the table after you have laid your contract. Super Kalooki offers a tack action when the table opens that opportunity. It is not the same as calling a discard.',
+  },
+  {
+    question: 'What is the difference between calling and tacking?',
+    answer:
+      'Calling happens before you have laid down: you ask for a card just discarded and, if allowed, take it plus a penalty card. Tacking happens after you are down: you add a legal card to an existing table meld when the app offers tack.',
+  },
+  {
+    question: 'How do I download Super Kalooki on iPhone?',
+    answer:
+      'Open the Super Kalooki App Store listing and tap Get. The app is free on iPhone and iPad. Entertainment only — no real money, gambling, or prizes.',
+  },
+]
+
 export const GUIDE_LINKS = [
   {href: '/jamaican-kalooki/', label: 'What is Jamaican Kalooki?'},
   {href: '/rules/', label: 'Full rules'},
   {href: '/jamaican-kalooki/vs-other-variants/', label: 'How it differs from other Kalooki'},
   {href: '/jamaican-kalooki/scoring/', label: 'Scoring & deadwood'},
+  {href: '/jamaican-kalooki/tacking/', label: 'Call and tack'},
   {href: '/jamaican-kalooki/strategy/', label: 'Strategy tips'},
   {href: '/play/', label: 'Play on iOS'},
 ] as const

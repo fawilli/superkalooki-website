@@ -103,5 +103,19 @@
     "answer": "Yes — Super Kalooki is free to download on the iOS App Store. Entertainment only — no real money, gambling, or prizes.",
     "category": "general",
     "sortOrder": 15
+  },
+  {
+    "_type": "faqItem",
+    "question": "What is tacking in Jamaican Kalooki?",
+    "answer": "Tacking is adding a legal card to a meld already on the table after you have laid your contract. Super Kalooki offers a tack action when the table opens that opportunity. It is not the same as calling a discard. Guide: /jamaican-kalooki/tacking/.",
+    "category": "general",
+    "sortOrder": 16
+  },
+  {
+    "_type": "faqItem",
+    "question": "How do I download Super Kalooki on iPhone?",
+    "answer": "Open the Super Kalooki App Store listing and tap Get. Free on iPhone and iPad. Entertainment only — no real money, gambling, or prizes. Start at /play/.",
+    "category": "general",
+    "sortOrder": 17
   }
 ]

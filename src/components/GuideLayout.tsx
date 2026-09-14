@@ -18,6 +18,8 @@ type Props = {
   currentPath?: string
   showStoreCta?: boolean
   storeCampaign?: AppStoreCampaign
+  /** Hide the muted Play note — never peer a dead Android door with the iOS badge */
+  showPlayNote?: boolean
 }
 
 export function GuideLayout({
@@ -29,6 +31,7 @@ export function GuideLayout({
   currentPath,
   showStoreCta = true,
   storeCampaign = 'website_cta',
+  showPlayNote = true,
 }: Props) {
   return (
     <div className="min-h-screen bg-ivory text-text-dark">
@@ -83,7 +86,7 @@ export function GuideLayout({
             <p className="text-ivory/60 text-sm m-0 mb-5 max-w-md mx-auto">
               Jamaican Contract Rummy on iOS — solo vs AI or live with friends.
             </p>
-            <StoreBadges campaign={storeCampaign} centered />
+            <StoreBadges campaign={storeCampaign} centered showPlayNote={showPlayNote} />
           </div>
         ) : null}
       </main>

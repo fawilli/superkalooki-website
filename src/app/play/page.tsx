@@ -85,7 +85,12 @@ export default function PlayPage() {
               </p>
               <ul className="text-ivory/60 leading-relaxed space-y-2 list-disc pl-5 m-0">
                 <li>Nine contract deals (333 → 4444)</li>
-                <li>Sets, runs, calling, and Jamaican scoring</li>
+                <li>
+                  Sets, runs, calling, and{' '}
+                  <Link className="text-gold font-semibold no-underline hover:text-gold-lt" href="/jamaican-kalooki/tacking/">
+                    tacking
+                  </Link>
+                </li>
                 <li>Free to download — entertainment only</li>
               </ul>
             </div>
