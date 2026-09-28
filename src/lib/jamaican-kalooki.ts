@@ -113,6 +113,24 @@ export const TACKING_FAQS: FaqPair[] = [
   },
 ]
 
+export const PLAY_FAQS: FaqPair[] = [
+  {
+    question: 'How do I play Jamaican Kalooki online?',
+    answer:
+      'Download Super Kalooki on the App Store, then play Solo vs AI or host a live private table for 4–6 friends. Same Jamaican Contract Rummy rules: nine deals, changing contracts, lowest score wins.',
+  },
+  {
+    question: 'How do I download Super Kalooki on iPhone?',
+    answer:
+      'Open the Super Kalooki App Store listing and tap Get. The app is free on iPhone and iPad. Entertainment only — no real money, gambling, or prizes.',
+  },
+  {
+    question: 'What is tacking in Jamaican Kalooki?',
+    answer:
+      'Tacking is adding a legal card to a table meld after you have laid your contract. Super Kalooki offers tack when the action is legal. It is not calling. Read the call-and-tack guide, then practice in Solo.',
+  },
+]
+
 export const GUIDE_LINKS = [
   {href: '/jamaican-kalooki/', label: 'What is Jamaican Kalooki?'},
   {href: '/rules/', label: 'Full rules'},
