@@ -14,6 +14,7 @@ export type AppStoreCampaign =
   | 'website_footer'
   | 'website_about'
   | 'website_play'
+  | 'website_guide_tacking'
   | 'website'
 
 /** App Store campaign URL for Apple App Analytics (`ct` + `mt=8`). */

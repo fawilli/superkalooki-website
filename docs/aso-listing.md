@@ -53,7 +53,7 @@ FREE ENTERTAINMENT
 • Free to download
 • No real-money wagering, no gambling, no cash prizes
 
-Learn the rules at superkalooki.com/rules and what makes Jamaican Kalooki distinct at superkalooki.com/jamaican-kalooki
+Learn the rules at superkalooki.com/rules, call vs tack at superkalooki.com/jamaican-kalooki/tacking, and what makes Jamaican Kalooki distinct at superkalooki.com/jamaican-kalooki
 ```
 
 ## Keywords field (comma-separated, no spaces after commas; ≤100 characters)

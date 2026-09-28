@@ -60,7 +60,8 @@ export default function JamaicanKalookiHubPage() {
         4–6 friends.
       </p>
       <p>
-        Ready for detail? Read the <Link href="/rules/">full rules</Link>, see{' '}
+        Ready for detail? Read the <Link href="/rules/">full rules</Link>,{' '}
+        <Link href="/jamaican-kalooki/tacking/">call and tack</Link>, see{' '}
         <Link href="/jamaican-kalooki/vs-other-variants/">how it differs from other Kalooki</Link>, or{' '}
         <Link href="/play/">download Super Kalooki on iOS</Link>.
       </p>
