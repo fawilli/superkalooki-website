@@ -1,19 +1,21 @@
+import {AndroidApkDownload} from '@/components/AndroidApkDownload'
 import {JsonLd} from '@/components/JsonLd'
 import {SiteFooter} from '@/components/SiteFooter'
 import {SiteHeader} from '@/components/SiteHeader'
 import {StoreBadges} from '@/components/StoreBadges'
+import {ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {graphJsonLd, organizationJsonLd, webPageJsonLd} from '@/lib/json-ld'
 import type {Metadata} from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Super Kalooki for Android',
-  description: 'Super Kalooki for Android is not available to download yet. Get the free app on the App Store.',
+  title: 'Download Super Kalooki for Android',
+  description:
+    'Download Super Kalooki for Android. Tap download, open the file, then tap Install. Free Jamaican Contract Rummy — entertainment only.',
   alternates: {canonical: '/android/'},
-  robots: {index: false, follow: false},
   openGraph: {
-    title: 'Super Kalooki for Android',
-    description: 'Android download is not available yet. Super Kalooki is free on the App Store.',
+    title: 'Download Super Kalooki for Android',
+    description: 'Free Super Kalooki for Android. Tap download, then Install.',
     url: '/android/',
   },
 }
@@ -39,12 +41,21 @@ export default function AndroidDownloadPage() {
               Android
             </p>
             <h1 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] font-normal text-ivory m-0 mb-5 text-pretty">
-              Android is not ready yet
+              Get Super Kalooki on your phone
             </h1>
             <p className="text-ivory/65 leading-relaxed text-lg mb-8">
-              The Android build is paused while we fix launch on device. Super Kalooki is free on the App Store for
-              iPhone and iPad.
+              Tap the button, then follow the three steps. Free to play — entertainment only.
             </p>
+
+            {ANDROID_DOWNLOAD_PUBLIC ? (
+              <div className="rounded-[1.15rem] border border-white/12 bg-felt-deep/80 p-5 sm:p-8 ring-1 ring-black/30 mb-12">
+                <AndroidApkDownload />
+              </div>
+            ) : (
+              <p className="text-ivory/65 leading-relaxed text-lg mb-8">
+                The Android build is paused while we fix launch on device.
+              </p>
+            )}
 
             <p className="text-ivory/55 text-sm m-0">
               On iPhone or iPad, use the{' '}

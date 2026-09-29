@@ -37,7 +37,7 @@ export default function AboutPage() {
               Built for the Kalooki table — on your phone
             </h1>
             <p className="text-ivory/65 leading-relaxed text-lg max-w-2xl mx-auto">
-              Super Kalooki brings authentic Jamaican Contract Rummy to iOS: nine scored deals, changing contracts,
+              Super Kalooki brings authentic Jamaican Contract Rummy to iOS and Android: nine scored deals, changing contracts,
               and real-time play — solo against AI or live with friends.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
                 Download Super Kalooki
               </h2>
               <p className="text-ivory/55 m-0 leading-relaxed">
-                Free on the App Store for iPhone and iPad. Entertainment only — no real money, no prizes.
+                Free on the App Store and for Android. Entertainment only — no real money, no prizes.
               </p>
             </div>
           </div>

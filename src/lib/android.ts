@@ -7,8 +7,8 @@ export const ANDROID_APK_FILENAME = 'SuperKalooki-1.6-62.apk'
 export const ANDROID_APK_PATH = `/downloads/${ANDROID_APK_FILENAME}`
 export const ANDROID_PAGE_PATH = '/android/'
 
-/** Off until a build launches on a device. Hides every public Android download. */
-export const ANDROID_DOWNLOAD_PUBLIC = false
+/** Public Android download. Set false to hide every Android button without removing the APK. */
+export const ANDROID_DOWNLOAD_PUBLIC = true
 export const ANDROID_APK_SHA256 =
   '1a6826250a6fed303e0fbc8af787f8f3ed6a2b692b93d2bd27850413b02f0dba'
 

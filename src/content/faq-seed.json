@@ -121,7 +121,7 @@
   {
     "_type": "faqItem",
     "question": "How do I install Super Kalooki on Android?",
-    "answer": "The Android download is paused while launch on device is fixed. Super Kalooki is free on the iOS App Store. Entertainment only — no real money, gambling, or prizes.",
+    "answer": "Go to /android/ and tap Download for Android. Open the file when it finishes, then tap Install. If your phone asks for permission, tap Allow first. Entertainment only — no real money, gambling, or prizes.",
     "category": "general",
     "sortOrder": 18
   }

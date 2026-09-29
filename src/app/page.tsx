@@ -15,7 +15,7 @@ import type {Metadata} from 'next'
 export const metadata: Metadata = {
   title: 'Super Kalooki — Play Jamaican Kalooki & Contract Rummy Online',
   description:
-    'Download Super Kalooki, the free Jamaican Contract Rummy app for iOS. Play Kalooki solo vs AI or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
+    'Download Super Kalooki, the free Jamaican Contract Rummy app for iOS and Android. Play Kalooki solo vs AI or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
   keywords: [
     'Kalooki',
     'Kalooki app',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Super Kalooki — Jamaican Contract Rummy for Mobile',
     description:
-      'Authentic Kalooki on your phone: nine scored deals, changing contracts, solo AI or live tables for 4–6 players. Free on the App Store.',
+      'Authentic Kalooki on your phone: nine scored deals, changing contracts, solo AI or live tables for 4–6 players. Free on iOS and Android.',
     url: '/',
     type: 'website',
     images: [
@@ -59,7 +59,7 @@ const jsonLd = graphJsonLd([
     name: 'Super Kalooki',
     url: 'https://superkalooki.com/',
     description:
-      'Official site for Super Kalooki — Jamaican Kalooki and Contract Rummy for iOS.',
+      'Official site for Super Kalooki — Jamaican Kalooki and Contract Rummy for iOS and Android.',
     publisher: {'@id': 'https://superkalooki.com/#organization'},
   },
   mobileApplicationJsonLd(),
@@ -68,7 +68,7 @@ const jsonLd = graphJsonLd([
     {
       question: 'Is Super Kalooki free?',
       answer:
-        'Yes. Super Kalooki is free to download on the App Store. It is for entertainment only — no real money, no gambling, and no prizes.',
+        'Yes. Super Kalooki is free on the App Store and for Android from this site. It is for entertainment only — no real money, no gambling, and no prizes.',
     },
   ]),
 ])
@@ -122,7 +122,7 @@ export default async function HomePage() {
                 Play Jamaican Kalooki — Contract Rummy on mobile
               </h1>
               <p className="text-base sm:text-lg text-ivory/70 mb-8 leading-relaxed max-w-[42ch]">
-                Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.
+                Nine deals. Changing contracts. Lowest score wins. Free on iOS and Android — solo vs AI or live with friends.
               </p>
               <StoreBadges campaign="website_hero" />
               <p className="text-[0.8rem] text-white/40 tracking-[0.02em] mt-4">
@@ -156,7 +156,7 @@ export default async function HomePage() {
                 low. After nine deals, lowest total wins — not a race to 40 or 51.
               </p>
               <p className="text-ivory/65 leading-relaxed mb-6">
-                Super Kalooki is that table on iOS — calls, private live games, and solo practice against AI. Start with{' '}
+                Super Kalooki is that table on iOS and Android — calls, private live games, and solo practice against AI. Start with{' '}
                 <Link
                   className="text-gold hover:text-gold-lt underline-offset-2 hover:underline"
                   href="/jamaican-kalooki/"
@@ -330,7 +330,7 @@ export default async function HomePage() {
           </h2>
           <p className="text-ivory/65 mb-8 max-w-xl mx-auto leading-relaxed">
             Start a private Kalooki table with friends — or practice Contract Rummy solo against AI. Free on the App
-            Store for iPhone and iPad.
+            Store and for Android.
           </p>
           <StoreBadges centered campaign="website_cta" />
         </section>

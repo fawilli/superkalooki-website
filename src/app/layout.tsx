@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: '%s | Super Kalooki',
   },
   description:
-    'Download Super Kalooki, the free Jamaican Contract Rummy (Kalooki) app for iOS. Play solo vs AI or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
+    'Download Super Kalooki, the free Jamaican Contract Rummy (Kalooki) app for iOS and Android. Play solo vs AI or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
   openGraph: {
     type: 'website',
     siteName: 'Super Kalooki',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Super Kalooki — Play Kalooki Online',
-    description: 'Free Jamaican Kalooki / Contract Rummy for iOS. Solo or live with friends.',
+    description: 'Free Jamaican Kalooki / Contract Rummy for iOS and Android. Solo or live with friends.',
     images: ['/marketing/solo-mid-hand.png'],
   },
   other: {
