@@ -1,7 +1,7 @@
 'use client'
 
-import {useClientPlatform} from '@/hooks/useClientPlatform'
-import {ANDROID_PAGE_PATH} from '@/lib/android'
+import {AndroidMark} from '@/components/AndroidMark'
+import {ANDROID_APK_FILENAME, ANDROID_APK_PATH} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,17 +16,10 @@ const nav = [
   {href: '/about/', label: 'About'},
 ]
 
+const appStoreHref = appStoreUrl('website_header')
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const platform = useClientPlatform()
-  const isAndroid = platform === 'android'
-  const downloadHref = isAndroid ? ANDROID_PAGE_PATH : appStoreUrl('website_header')
-  const downloadLabel = isAndroid ? 'Get Android' : 'Download free'
-  const downloadAria = isAndroid
-    ? 'Download Super Kalooki for Android'
-    : 'Download Super Kalooki on the App Store'
-  const downloadCta = isAndroid ? 'android-apk' : 'app-store'
-  const downloadExternal = !isAndroid
 
   return (
     <header role="banner">
@@ -40,7 +33,7 @@ export function SiteHeader() {
         aria-label="Main navigation"
         className="fixed top-0 inset-x-0 z-50 bg-felt/[0.97] backdrop-blur-[20px] border-b border-white/[0.07]"
       >
-        <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-3 lg:px-8">
           <Link
             href="/"
             aria-label="Super Kalooki – Homepage"
@@ -63,47 +56,29 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block text-[0.9rem] font-medium text-white/55 no-underline px-4 py-2 transition-colors duration-150 hover:text-gold whitespace-nowrap"
+                  className="block text-[0.9rem] font-medium text-white/55 no-underline px-3 py-2 transition-colors duration-150 hover:text-gold whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <a
               aria-label="Super Kalooki on Instagram"
-              className="flex items-center justify-center size-[38px] rounded-full border border-white/[0.13] text-white/50 no-underline transition-all duration-150 hover:border-gold hover:text-gold"
+              className="flex items-center justify-center size-11 rounded-full border border-white/[0.13] text-white/50 no-underline transition-all duration-150 hover:border-gold hover:text-gold"
               href="https://www.instagram.com/superkalooki"
               rel="noopener noreferrer"
               target="_blank"
             >
               <InstagramIcon />
             </a>
-            <a
-              aria-label={downloadAria}
-              className="inline-flex items-center justify-center min-h-11 px-4 rounded-full bg-gold text-felt-deep text-[0.875rem] font-semibold no-underline transition-colors hover:bg-gold-lt"
-              data-cta={downloadCta}
-              data-cta-campaign="website_header"
-              href={downloadHref}
-              rel={downloadExternal ? 'noopener noreferrer' : undefined}
-              target={downloadExternal ? '_blank' : undefined}
-            >
-              {downloadLabel}
-            </a>
+            <AppStoreLink className="min-h-11 px-3.5 text-[0.875rem]" />
+            <AndroidLink className="min-h-11 px-3.5 text-[0.875rem]" />
           </div>
-          <div className="flex items-center gap-2 lg:hidden shrink-0">
-            <a
-              aria-label={downloadAria}
-              className="inline-flex items-center justify-center min-h-11 px-3.5 rounded-full bg-gold text-felt-deep text-[0.8125rem] font-semibold no-underline"
-              data-cta={downloadCta}
-              data-cta-campaign="website_header"
-              href={downloadHref}
-              rel={downloadExternal ? 'noopener noreferrer' : undefined}
-              target={downloadExternal ? '_blank' : undefined}
-            >
-              {isAndroid ? 'Get Android' : 'Get app'}
-            </a>
+          <div className="flex items-center gap-1.5 lg:hidden shrink-0">
+            <AppStoreLink compact />
+            <AndroidLink compact />
             <button
               aria-controls="mobile-menu"
               aria-expanded={open}
@@ -142,21 +117,77 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <a
-              className="mt-6 inline-flex items-center justify-center min-h-12 rounded-xl bg-gold text-felt-deep text-[1rem] font-semibold no-underline"
-              data-cta={downloadCta}
-              data-cta-campaign="website_header"
-              href={downloadHref}
-              rel={downloadExternal ? 'noopener noreferrer' : undefined}
-              target={downloadExternal ? '_blank' : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {isAndroid ? 'Download for Android' : 'Download free on the App Store'}
-            </a>
+            <div className="mt-6 flex flex-col gap-3">
+              <AppStoreLink className="min-h-12 w-full text-[1rem]" onClick={() => setOpen(false)} />
+              <AndroidLink className="min-h-12 w-full text-[1rem]" onClick={() => setOpen(false)} />
+            </div>
           </div>
         </div>
       ) : null}
     </header>
+  )
+}
+
+function AppStoreLink({
+  className = '',
+  compact = false,
+  onClick,
+}: {
+  className?: string
+  compact?: boolean
+  onClick?: () => void
+}) {
+  return (
+    <a
+      aria-label="Download Super Kalooki on the App Store"
+      className={`inline-flex items-center justify-center gap-1.5 rounded-full bg-gold font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt ${
+        compact ? 'size-11' : ''
+      } ${className}`}
+      data-cta="app-store"
+      data-cta-campaign="website_header"
+      href={appStoreHref}
+      rel="noopener noreferrer"
+      target="_blank"
+      onClick={onClick}
+    >
+      <AppleMark />
+      {compact ? <span className="sr-only">App Store</span> : 'App Store'}
+    </a>
+  )
+}
+
+function AndroidLink({
+  className = '',
+  compact = false,
+  onClick,
+}: {
+  className?: string
+  compact?: boolean
+  onClick?: () => void
+}) {
+  return (
+    <a
+      aria-label="Download Super Kalooki for Android"
+      className={`inline-flex items-center justify-center gap-1.5 rounded-full bg-gold font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt ${
+        compact ? 'size-11' : ''
+      } ${className}`}
+      data-cta="android-apk"
+      data-cta-campaign="website_header"
+      download={ANDROID_APK_FILENAME}
+      href={ANDROID_APK_PATH}
+      onClick={onClick}
+    >
+      <AndroidMark className="size-[18px] shrink-0" />
+      {compact ? <span className="sr-only">Android</span> : 'Android'}
+    </a>
+  )
+}
+
+function AppleMark() {
+  return (
+    <svg aria-hidden="true" className="size-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-.1 2.9-2.3c.7-1 1.2-2.1 1.5-3.2-3.9-1.5-3.8-5.5-3.8-5.1ZM14.7 6.2c.6-.8 1.1-1.9.9-3-1 .1-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1.1.1 2.2-.5 2.9-1.3Z" />
+    </svg>
   )
 }
 
