@@ -59,7 +59,7 @@ Previous Cloudflare Workers HTML site is preserved under [`legacy/`](legacy/) fo
 
 ## Android APK
 
-Production Android build is served from `public/downloads/SuperKalooki-1.6-63.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.
+Production Android build is served from `public/downloads/SuperKalooki-1.6-64.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.
 
 ## Scripts
 
