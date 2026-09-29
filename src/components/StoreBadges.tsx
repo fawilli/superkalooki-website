@@ -1,20 +1,21 @@
+import {AndroidApkDownload} from '@/components/AndroidApkDownload'
 import {appStoreUrl, type AppStoreCampaign} from '@/lib/app-store'
 
 type Props = {
   centered?: boolean
   /** Apple App Analytics campaign token */
   campaign?: AppStoreCampaign
-  /** Show muted Google Play note under the badge (default true) */
-  showPlayNote?: boolean
+  /** Android APK download with SHA-256 (default true) */
+  showAndroid?: boolean
 }
 
 export function StoreBadges({
   centered = false,
   campaign = 'website',
-  showPlayNote = true,
+  showAndroid = true,
 }: Props) {
   return (
-    <div className={centered ? 'flex flex-col items-center gap-3' : 'flex flex-col items-start gap-3'}>
+    <div className={centered ? 'flex flex-col items-center gap-5' : 'flex flex-col items-start gap-5'}>
       <a
         aria-label="Download Super Kalooki on the App Store"
         className="inline-block no-underline min-h-11 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
@@ -32,11 +33,7 @@ export function StoreBadges({
           style={{height: 44, width: 'auto', display: 'block'}}
         />
       </a>
-      {showPlayNote ? (
-        <p className="text-[0.75rem] text-white/35 m-0 tracking-[0.02em]">
-          Free on iOS · Google Play coming soon
-        </p>
-      ) : null}
+      {showAndroid ? <AndroidApkDownload /> : null}
     </div>
   )
 }

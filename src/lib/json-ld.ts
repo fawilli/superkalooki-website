@@ -1,3 +1,8 @@
+import {
+  ANDROID_PACKAGE_ID,
+  ANDROID_VERSION_NAME,
+  androidApkAbsoluteUrl,
+} from '@/lib/android'
 import {APP_STORE_URL} from '@/lib/app-store'
 import {
   AI_SUMMARY,
@@ -39,6 +44,29 @@ export function mobileApplicationJsonLd() {
     url: SITE_URL,
     downloadUrl: APP_STORE_URL,
     installUrl: APP_STORE_URL,
+    image: `${SITE_URL}/app-icon.png`,
+    publisher: {'@id': `${SITE_URL}/#organization`},
+  }
+}
+
+export function androidApplicationJsonLd() {
+  return {
+    '@type': 'MobileApplication',
+    '@id': `${SITE_URL}/#android-app`,
+    name: PRODUCT_NAME,
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'Android',
+    softwareVersion: ANDROID_VERSION_NAME,
+    identifier: ANDROID_PACKAGE_ID,
+    description: AI_SUMMARY,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    url: `${SITE_URL}/android/`,
+    downloadUrl: androidApkAbsoluteUrl(SITE_URL),
+    installUrl: androidApkAbsoluteUrl(SITE_URL),
     image: `${SITE_URL}/app-icon.png`,
     publisher: {'@id': `${SITE_URL}/#organization`},
   }

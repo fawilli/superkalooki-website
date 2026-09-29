@@ -9,7 +9,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'FAQ — Jamaican Kalooki & Super Kalooki',
   description:
-    'Frequently asked questions about Jamaican Kalooki, Contract Rummy, Kalooki 40/51 differences, and the Super Kalooki iOS app.',
+    'Frequently asked questions about Jamaican Kalooki, Contract Rummy, Kalooki 40/51 differences, and the Super Kalooki app for iOS and Android.',
   alternates: {canonical: '/faq/'},
 }
 

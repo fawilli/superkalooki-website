@@ -1,4 +1,5 @@
 import {CookieSettingsLink} from '@/components/CookieConsent'
+import {ANDROID_PAGE_PATH} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -60,6 +61,15 @@ export function SiteFooter() {
             >
               Download on App Store
             </a>
+          </li>
+          <li>
+            <Link
+              className="text-sm font-semibold text-gold no-underline transition-colors duration-150 hover:text-gold-lt"
+              data-cta="android-apk"
+              href={ANDROID_PAGE_PATH}
+            >
+              Download Android APK
+            </Link>
           </li>
           <li>
             <CookieSettingsLink className="text-sm font-normal text-white/35 transition-colors duration-150 hover:text-gold" />

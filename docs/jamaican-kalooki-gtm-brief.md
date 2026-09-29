@@ -13,7 +13,7 @@ Authentic Jamaican Kalooki on your phone — nine deals, changing contracts, sol
 
 ```
 Super Kalooki — Jamaican Contract Rummy.
-Learn the real Jamaican rules. Play on iOS.
+Learn the real Jamaican rules. Play on iOS and Android.
 superkalooki.com/play
 ```
 
@@ -24,7 +24,7 @@ superkalooki.com/play
 | Rules | Short clips / carousels → `superkalooki.com/rules` |
 | Contracts | 333 → 4444 explained |
 | Strategy | Deadwood, jokers, calling tips → `/jamaican-kalooki/strategy` |
-| App | Download CTAs → App Store / `/play` |
+| App | Download CTAs → App Store, `/android`, `/play` |
 | Culture | Jamaican card-table vibe (authentic, not costume) |
 
 ### Content themes (each post: one hook + guided link)
@@ -38,8 +38,8 @@ superkalooki.com/play
 ### Do / don’t
 
 - **Do:** Say “Jamaican Contract Rummy” and “nine deals / lowest score”  
-- **Do:** CTA to App Store or `/play`  
-- **Don’t:** Claim Android availability  
+- **Do:** CTA to App Store, `/android`, or `/play`  
+- **Don’t:** Claim Google Play availability  
 - **Don’t:** Equate Super Kalooki with Kalooki 40/51  
 - **Don’t:** Imply real-money play  
 
@@ -65,4 +65,4 @@ Low-competition, high-intent themes for a future campaign:
 
 ## Measurement (site already instrumented)
 
-App Store campaign tokens on web CTAs: `website_hero`, `website_header`, `website_sticky`, `website_footer`, `website_play`, `website_cta`, `website_about`. Review in App Store Connect → App Analytics → Sources.
+App Store campaign tokens on web CTAs: `website_hero`, `website_header`, `website_sticky`, `website_footer`, `website_play`, `website_cta`, `website_about`. Android APK CTAs use `data-cta=android-apk`. Review iOS in App Store Connect → App Analytics → Sources.

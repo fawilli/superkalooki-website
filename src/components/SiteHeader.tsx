@@ -1,5 +1,7 @@
 'use client'
 
+import {useClientPlatform} from '@/hooks/useClientPlatform'
+import {ANDROID_PAGE_PATH} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,7 +18,15 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const downloadHref = appStoreUrl('website_header')
+  const platform = useClientPlatform()
+  const isAndroid = platform === 'android'
+  const downloadHref = isAndroid ? ANDROID_PAGE_PATH : appStoreUrl('website_header')
+  const downloadLabel = isAndroid ? 'Download APK' : 'Download free'
+  const downloadAria = isAndroid
+    ? 'Download Super Kalooki Android APK'
+    : 'Download Super Kalooki on the App Store'
+  const downloadCta = isAndroid ? 'android-apk' : 'app-store'
+  const downloadExternal = !isAndroid
 
   return (
     <header role="banner">
@@ -71,28 +81,28 @@ export function SiteHeader() {
               <InstagramIcon />
             </a>
             <a
-              aria-label="Download Super Kalooki on the App Store"
+              aria-label={downloadAria}
               className="inline-flex items-center justify-center min-h-11 px-4 rounded-full bg-gold text-felt-deep text-[0.875rem] font-semibold no-underline transition-colors hover:bg-gold-lt"
-              data-cta="app-store"
+              data-cta={downloadCta}
               data-cta-campaign="website_header"
               href={downloadHref}
-              rel="noopener noreferrer"
-              target="_blank"
+              rel={downloadExternal ? 'noopener noreferrer' : undefined}
+              target={downloadExternal ? '_blank' : undefined}
             >
-              Download free
+              {downloadLabel}
             </a>
           </div>
           <div className="flex items-center gap-2 lg:hidden shrink-0">
             <a
-              aria-label="Download Super Kalooki on the App Store"
+              aria-label={downloadAria}
               className="inline-flex items-center justify-center min-h-11 px-3.5 rounded-full bg-gold text-felt-deep text-[0.8125rem] font-semibold no-underline"
-              data-cta="app-store"
+              data-cta={downloadCta}
               data-cta-campaign="website_header"
               href={downloadHref}
-              rel="noopener noreferrer"
-              target="_blank"
+              rel={downloadExternal ? 'noopener noreferrer' : undefined}
+              target={downloadExternal ? '_blank' : undefined}
             >
-              Get app
+              {isAndroid ? 'Get APK' : 'Get app'}
             </a>
             <button
               aria-controls="mobile-menu"
@@ -134,14 +144,14 @@ export function SiteHeader() {
             ))}
             <a
               className="mt-6 inline-flex items-center justify-center min-h-12 rounded-xl bg-gold text-felt-deep text-[1rem] font-semibold no-underline"
-              data-cta="app-store"
+              data-cta={downloadCta}
               data-cta-campaign="website_header"
               href={downloadHref}
-              rel="noopener noreferrer"
-              target="_blank"
+              rel={downloadExternal ? 'noopener noreferrer' : undefined}
+              target={downloadExternal ? '_blank' : undefined}
               onClick={() => setOpen(false)}
             >
-              Download free on the App Store
+              {isAndroid ? 'Download Android APK' : 'Download free on the App Store'}
             </a>
           </div>
         </div>

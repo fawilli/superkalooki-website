@@ -113,7 +113,7 @@ export default function ScoringPage() {
       <p>
         Full contract tables and turn structure live in the{' '}
         <Link href="/rules/">Jamaican Kalooki rules</Link>. Ready to practice?{' '}
-        <Link href="/play/">Play Super Kalooki on iOS</Link>.
+        <Link href="/play/">Play Super Kalooki</Link>.
       </p>
     </GuideLayout>
   )

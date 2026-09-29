@@ -109,7 +109,7 @@ export default function RulesPage() {
         </nav>
 
         <div className="mt-10 rounded-xl border border-black/[0.08] bg-felt px-5 py-8 text-center">
-          <p className="font-display text-[1.5rem] text-ivory m-0 mb-2">Play by these rules on iOS</p>
+          <p className="font-display text-[1.5rem] text-ivory m-0 mb-2">Play by these rules on your phone</p>
           <p className="text-ivory/60 text-sm m-0 mb-5">
             Super Kalooki — free Jamaican Contract Rummy. Entertainment only.
           </p>

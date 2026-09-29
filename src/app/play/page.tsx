@@ -6,6 +6,7 @@ import {JsonLd} from '@/components/JsonLd'
 import {AiSummary} from '@/components/AiSummary'
 import {AI_SUMMARY, GUIDE_LINKS} from '@/lib/jamaican-kalooki'
 import {
+  androidApplicationJsonLd,
   graphJsonLd,
   mobileApplicationJsonLd,
   organizationJsonLd,
@@ -15,12 +16,12 @@ import type {Metadata} from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Play Jamaican Kalooki Online — Free iOS App',
+  title: 'Play Jamaican Kalooki Online — Free iOS & Android App',
   description:
-    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki for iOS. Solo vs AI or live private tables for 4–6 friends. Free to download — entertainment only.',
+    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki. Solo vs AI or live private tables for 4–6 friends. Free on the App Store and as an Android APK — entertainment only.',
   alternates: {canonical: '/play/'},
   openGraph: {
-    title: 'Play Jamaican Kalooki Online on iOS',
+    title: 'Play Jamaican Kalooki Online',
     description:
       'Free Super Kalooki app — Jamaican Contract Rummy with nine deals, solo AI, and live tables.',
     url: '/play/',
@@ -39,6 +40,7 @@ export default function PlayPage() {
   const jsonLd = graphJsonLd([
     organizationJsonLd(),
     mobileApplicationJsonLd(),
+    androidApplicationJsonLd(),
     webPageJsonLd({
       name: 'Play Jamaican Kalooki Online',
       description: metadata.description as string,
@@ -57,7 +59,7 @@ export default function PlayPage() {
               Play online
             </p>
             <h1 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] font-normal text-ivory m-0 mb-5 text-pretty">
-              Play Jamaican Kalooki online — free on iOS
+              Play Jamaican Kalooki online — free on iOS and Android
             </h1>
             <p className="text-ivory/65 leading-relaxed text-lg max-w-2xl mx-auto mb-8">
               Super Kalooki is the digital Jamaican Contract Rummy table: nine deals, changing contracts, solo AI or a
@@ -120,7 +122,7 @@ export default function PlayPage() {
             Download Super Kalooki free
           </h2>
           <p className="text-ivory/60 mb-8 max-w-lg mx-auto">
-            Jamaican Contract Rummy for iPhone and iPad. No real money, gambling, or prizes.
+            Jamaican Contract Rummy for iPhone, iPad, and Android. No real money, gambling, or prizes.
           </p>
           <StoreBadges campaign="website_play" centered />
         </section>

@@ -7,7 +7,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Jamaican Kalooki Strategy — Contracts, Jokers & Deadwood',
   description:
-    'Beginner strategy for Jamaican Kalooki: meet contracts early, manage deadwood, use jokers wisely, track discards, and know when to call. Play Super Kalooki on iOS.',
+    'Beginner strategy for Jamaican Kalooki: meet contracts early, manage deadwood, use jokers wisely, track discards, and know when to call. Play Super Kalooki on iOS and Android.',
   alternates: {canonical: '/jamaican-kalooki/strategy/'},
   openGraph: {
     title: 'Jamaican Kalooki Strategy Tips',
@@ -75,7 +75,7 @@ export default function StrategyPage() {
       <h2>6. Practice solo, then host a table</h2>
       <p>
         Use Super Kalooki’s AI modes to rehearse contracts, then host a live table for 4–6 friends. Same Jamaican rules
-        either way — <Link href="/play/">play online on iOS</Link>.
+        either way — <Link href="/play/">play Super Kalooki</Link>.
       </p>
 
       <p>

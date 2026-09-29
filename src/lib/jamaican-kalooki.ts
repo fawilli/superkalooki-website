@@ -7,7 +7,7 @@ export const PRODUCT_NAME = 'Super Kalooki'
 
 /** Short summary for page tops (also useful for AI quotability). */
 export const AI_SUMMARY =
-  'Jamaican Kalooki is Contract Rummy the Jamaican way: two decks plus jokers, nine deals with changing contracts of sets and runs, and the lowest score wins. Super Kalooki brings that table to iOS — solo or with friends.'
+  'Jamaican Kalooki is Contract Rummy the Jamaican way: two decks plus jokers, nine deals with changing contracts of sets and runs, and the lowest score wins. Super Kalooki brings that table to iOS and Android — solo or with friends.'
 
 export const CANONICAL_DEFINITION =
   'Jamaican Kalooki is the Jamaican form of Contract Rummy. You play with two decks and jokers across nine deals. Each deal has a contract — the sets and runs you must lay before you can go out. After nine deals, the lowest cumulative score wins.'
@@ -120,7 +120,7 @@ export const GUIDE_LINKS = [
   {href: '/jamaican-kalooki/scoring/', label: 'Scoring & deadwood'},
   {href: '/jamaican-kalooki/tacking/', label: 'Call and tack'},
   {href: '/jamaican-kalooki/strategy/', label: 'Strategy tips'},
-  {href: '/play/', label: 'Play on iOS'},
+  {href: '/play/', label: 'Play Super Kalooki'},
 ] as const
 
 export const COMPARISON_ROWS = [
@@ -156,7 +156,7 @@ export const COMPARISON_ROWS = [
   },
   {
     aspect: 'In Super Kalooki',
-    jamaican: 'This is the ruleset you play on iOS',
+    jamaican: 'This is the ruleset you play in Super Kalooki',
     kalooki4051: 'Not this app',
     contractRummy: 'Super Kalooki plays the Jamaican variant',
   },

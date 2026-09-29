@@ -18,7 +18,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'What Is Jamaican Kalooki? — Contract Rummy from Jamaica',
   description:
-    'Jamaican Kalooki is Contract Rummy with nine deals, sets and runs, jokers, and Jamaican scoring. Learn the rules and play free on iOS with Super Kalooki.',
+    'Jamaican Kalooki is Contract Rummy with nine deals, sets and runs, jokers, and Jamaican scoring. Learn the rules and play Super Kalooki free on iOS and Android.',
   alternates: {canonical: '/jamaican-kalooki/'},
   openGraph: {
     title: 'What Is Jamaican Kalooki?',
@@ -63,7 +63,7 @@ export default function JamaicanKalookiHubPage() {
         Ready for detail? Read the <Link href="/rules/">full rules</Link>,{' '}
         <Link href="/jamaican-kalooki/tacking/">call and tack</Link>, see{' '}
         <Link href="/jamaican-kalooki/vs-other-variants/">how it differs from other Kalooki</Link>, or{' '}
-        <Link href="/play/">download Super Kalooki on iOS</Link>.
+        <Link href="/play/">download Super Kalooki</Link>.
       </p>
 
       <h2>Words you will hear</h2>

@@ -57,6 +57,10 @@ Editor cheat-sheet: [docs/EDITOR.md](docs/EDITOR.md)
 
 Previous Cloudflare Workers HTML site is preserved under [`legacy/`](legacy/) for reference and rollback.
 
+## Android APK
+
+Production APK is served from `public/downloads/SuperKalooki-1.6-57.apk` at `/downloads/SuperKalooki-1.6-57.apk`. SHA-256 is in `src/lib/android.ts` and `public/downloads/SHA256SUMS`. Player page: `/android/`.
+
 ## Scripts
 
 | Script          | Purpose                                                             |
