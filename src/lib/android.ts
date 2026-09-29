@@ -14,8 +14,3 @@ export function androidApkAbsoluteUrl(
 ): string {
   return `${siteUrl.replace(/\/$/, '')}${ANDROID_APK_PATH}`
 }
-
-/** Grouped hex for on-screen verification; copy/share uses the raw digest. */
-export function formatSha256Grouped(sha256: string): string {
-  return sha256.replace(/(.{8})/g, '$1 ').trim()
-}

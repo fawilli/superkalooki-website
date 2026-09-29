@@ -5,7 +5,7 @@ type Props = {
   centered?: boolean
   /** Apple App Analytics campaign token */
   campaign?: AppStoreCampaign
-  /** Android APK download with SHA-256 (default true) */
+  /** Android download button and install steps (default true) */
   showAndroid?: boolean
 }
 

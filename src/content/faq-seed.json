@@ -37,7 +37,7 @@
   {
     "_type": "faqItem",
     "question": "How do you play Super Kalooki?",
-    "answer": "Download Super Kalooki on iOS from the App Store, or the Android APK from /android/. Play solo against AI or host a live table for 4–6 players. Draw, lay your contract, call, and discard — first to go out ends the round. See /play/ and /rules/.",
+    "answer": "Download Super Kalooki on iOS from the App Store, or for Android from /android/. Play solo against AI or host a live table for 4–6 players. Draw, lay your contract, call, and discard — first to go out ends the round. See /play/ and /rules/.",
     "category": "general",
     "sortOrder": 6
   },
@@ -100,7 +100,7 @@
   {
     "_type": "faqItem",
     "question": "Is Super Kalooki free to play?",
-    "answer": "Yes — Super Kalooki is free on the iOS App Store and as an Android APK from superkalooki.com. Entertainment only — no real money, gambling, or prizes.",
+    "answer": "Yes — Super Kalooki is free on the iOS App Store and for Android from superkalooki.com. Entertainment only — no real money, gambling, or prizes.",
     "category": "general",
     "sortOrder": 15
   },
@@ -121,7 +121,7 @@
   {
     "_type": "faqItem",
     "question": "How do I install Super Kalooki on Android?",
-    "answer": "Download the APK from /android/. Open the file, allow superkalooki.com if Android asks, then tap Install. The SHA-256 on that page verifies the file. Entertainment only — no real money, gambling, or prizes.",
+    "answer": "Go to /android/ and tap Download for Android. Open the file when it finishes, then tap Install. If your phone asks for permission, tap Allow first. Entertainment only — no real money, gambling, or prizes.",
     "category": "general",
     "sortOrder": 18
   }

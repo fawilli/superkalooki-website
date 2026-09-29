@@ -68,7 +68,7 @@ export function SiteFooter() {
               data-cta="android-apk"
               href={ANDROID_PAGE_PATH}
             >
-              Download Android APK
+              Download for Android
             </Link>
           </li>
           <li>

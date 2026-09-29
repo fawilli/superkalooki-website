@@ -40,7 +40,6 @@ export default function TackingPage() {
       currentPath="/jamaican-kalooki/tacking/"
       eyebrow="Call and tack"
       jsonLd={jsonLd}
-      showPlayNote={false}
       storeCampaign="website_guide_tacking"
       summary={`${AI_SUMMARY} After you lay your contract, Super Kalooki lets you tack legal cards onto table melds when the action is offered. Calling is a different move — it happens before you are down.`}
       title={TITLE}

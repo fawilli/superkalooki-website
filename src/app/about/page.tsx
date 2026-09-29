@@ -81,7 +81,7 @@ export default function AboutPage() {
                 Download Super Kalooki
               </h2>
               <p className="text-ivory/55 m-0 leading-relaxed">
-                Free on the App Store and as an Android APK. Entertainment only — no real money, no prizes.
+                Free on the App Store and for Android. Entertainment only — no real money, no prizes.
               </p>
             </div>
           </div>

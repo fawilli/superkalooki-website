@@ -32,14 +32,14 @@ export function StickyDownloadBar() {
       <div className="border-t border-white/10 bg-felt-deep/95 backdrop-blur-xl px-4 py-3 shadow-[0_-8px_32px_rgba(0,0,0,0.45)]">
         {isAndroid ? (
           <a
-            aria-label="Download Super Kalooki Android APK"
+            aria-label="Download Super Kalooki for Android"
             className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-gold px-4 text-[0.95rem] font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt active:scale-[0.99]"
             data-cta="android-apk"
             data-cta-campaign="website_sticky"
             download={ANDROID_APK_FILENAME}
             href={ANDROID_APK_PATH}
           >
-            Download Android APK
+            Download for Android
           </a>
         ) : (
           <a

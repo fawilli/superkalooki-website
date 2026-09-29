@@ -18,7 +18,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Play Jamaican Kalooki Online — Free iOS & Android App',
   description:
-    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki. Solo vs AI or live private tables for 4–6 friends. Free on the App Store and as an Android APK — entertainment only.',
+    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki. Solo vs AI or live private tables for 4–6 friends. Free on the App Store and for Android — entertainment only.',
   alternates: {canonical: '/play/'},
   openGraph: {
     title: 'Play Jamaican Kalooki Online',

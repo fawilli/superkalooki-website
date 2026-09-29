@@ -75,7 +75,7 @@ const jsonLd = graphJsonLd([
     {
       question: 'Is Super Kalooki free?',
       answer:
-        'Yes. Super Kalooki is free to download on the App Store and as an Android APK from this site. It is for entertainment only — no real money, no gambling, and no prizes.',
+        'Yes. Super Kalooki is free on the App Store and for Android from this site. It is for entertainment only — no real money, no gambling, and no prizes.',
     },
   ]),
 ])
@@ -337,7 +337,7 @@ export default async function HomePage() {
           </h2>
           <p className="text-ivory/65 mb-8 max-w-xl mx-auto leading-relaxed">
             Start a private Kalooki table with friends — or practice Contract Rummy solo against AI. Free on the App
-            Store and as an Android APK.
+            Store and for Android.
           </p>
           <StoreBadges centered campaign="website_cta" />
         </section>

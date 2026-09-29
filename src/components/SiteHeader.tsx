@@ -21,9 +21,9 @@ export function SiteHeader() {
   const platform = useClientPlatform()
   const isAndroid = platform === 'android'
   const downloadHref = isAndroid ? ANDROID_PAGE_PATH : appStoreUrl('website_header')
-  const downloadLabel = isAndroid ? 'Download APK' : 'Download free'
+  const downloadLabel = isAndroid ? 'Get Android' : 'Download free'
   const downloadAria = isAndroid
-    ? 'Download Super Kalooki Android APK'
+    ? 'Download Super Kalooki for Android'
     : 'Download Super Kalooki on the App Store'
   const downloadCta = isAndroid ? 'android-apk' : 'app-store'
   const downloadExternal = !isAndroid
@@ -102,7 +102,7 @@ export function SiteHeader() {
               rel={downloadExternal ? 'noopener noreferrer' : undefined}
               target={downloadExternal ? '_blank' : undefined}
             >
-              {isAndroid ? 'Get APK' : 'Get app'}
+              {isAndroid ? 'Get Android' : 'Get app'}
             </a>
             <button
               aria-controls="mobile-menu"
@@ -151,7 +151,7 @@ export function SiteHeader() {
               target={downloadExternal ? '_blank' : undefined}
               onClick={() => setOpen(false)}
             >
-              {isAndroid ? 'Download Android APK' : 'Download free on the App Store'}
+              {isAndroid ? 'Download for Android' : 'Download free on the App Store'}
             </a>
           </div>
         </div>
