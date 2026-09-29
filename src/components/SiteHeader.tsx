@@ -1,7 +1,7 @@
 'use client'
 
 import {AndroidMark} from '@/components/AndroidMark'
-import {ANDROID_APK_FILENAME, ANDROID_APK_PATH} from '@/lib/android'
+import {ANDROID_APK_FILENAME, ANDROID_APK_PATH, ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -74,11 +74,11 @@ export function SiteHeader() {
               <InstagramIcon />
             </a>
             <AppStoreLink className="min-h-11 px-3.5 text-[0.875rem]" />
-            <AndroidLink className="min-h-11 px-3.5 text-[0.875rem]" />
+            {ANDROID_DOWNLOAD_PUBLIC ? <AndroidLink className="min-h-11 px-3.5 text-[0.875rem]" /> : null}
           </div>
           <div className="flex items-center gap-1.5 lg:hidden shrink-0">
             <AppStoreLink compact />
-            <AndroidLink compact />
+            {ANDROID_DOWNLOAD_PUBLIC ? <AndroidLink compact /> : null}
             <button
               aria-controls="mobile-menu"
               aria-expanded={open}
@@ -119,7 +119,9 @@ export function SiteHeader() {
             ))}
             <div className="mt-6 flex flex-col gap-3">
               <AppStoreLink className="min-h-12 w-full text-[1rem]" onClick={() => setOpen(false)} />
-              <AndroidLink className="min-h-12 w-full text-[1rem]" onClick={() => setOpen(false)} />
+              {ANDROID_DOWNLOAD_PUBLIC ? (
+                <AndroidLink className="min-h-12 w-full text-[1rem]" onClick={() => setOpen(false)} />
+              ) : null}
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import {AndroidApkDownload} from '@/components/AndroidApkDownload'
+import {ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {appStoreUrl, type AppStoreCampaign} from '@/lib/app-store'
 
 type Props = {
@@ -33,7 +34,7 @@ export function StoreBadges({
           style={{height: 44, width: 'auto', display: 'block'}}
         />
       </a>
-      {showAndroid ? <AndroidApkDownload centered={centered} /> : null}
+      {showAndroid && ANDROID_DOWNLOAD_PUBLIC ? <AndroidApkDownload centered={centered} /> : null}
     </div>
   )
 }

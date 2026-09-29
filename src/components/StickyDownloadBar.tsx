@@ -1,7 +1,7 @@
 'use client'
 
 import {AndroidMark} from '@/components/AndroidMark'
-import {ANDROID_APK_FILENAME, ANDROID_APK_PATH} from '@/lib/android'
+import {ANDROID_APK_FILENAME, ANDROID_APK_PATH, ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import {useEffect, useState} from 'react'
 
@@ -40,17 +40,19 @@ export function StickyDownloadBar() {
           <AppleMark />
           App Store
         </a>
-        <a
-          aria-label="Download Super Kalooki for Android"
-          className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gold px-3 text-[0.9rem] font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt active:scale-[0.99]"
-          data-cta="android-apk"
-          data-cta-campaign="website_sticky"
-          download={ANDROID_APK_FILENAME}
-          href={ANDROID_APK_PATH}
-        >
-          <AndroidMark className="size-5 shrink-0" />
-          Android
-        </a>
+        {ANDROID_DOWNLOAD_PUBLIC ? (
+          <a
+            aria-label="Download Super Kalooki for Android"
+            className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gold px-3 text-[0.9rem] font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt active:scale-[0.99]"
+            data-cta="android-apk"
+            data-cta-campaign="website_sticky"
+            download={ANDROID_APK_FILENAME}
+            href={ANDROID_APK_PATH}
+          >
+            <AndroidMark className="size-5 shrink-0" />
+            Android
+          </a>
+        ) : null}
       </div>
     </div>
   )
