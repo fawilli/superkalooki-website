@@ -33,7 +33,7 @@ export function StoreBadges({
           style={{height: 44, width: 'auto', display: 'block'}}
         />
       </a>
-      {showAndroid ? <AndroidApkDownload /> : null}
+      {showAndroid ? <AndroidApkDownload centered={centered} /> : null}
     </div>
   )
 }

@@ -4,8 +4,8 @@
 **User / job:** An Android player who wants Super Kalooki on their phone from superkalooki.com
 **Business outcome:** Android acquisition via a one-tap download; iOS App Store stays the peer CTA
 **Design system:** infer from shipped UI (`globals.css` felt/gold/ivory)
-**Recommendation:** One gold button plus three install steps in plain language. No hashes, package names, or file jargon on player-facing screens.
-**Do not:** Show SHA-256, version codes, or “APK” in the UI. Do not link to Google Play.
+**Recommendation:** Gold **Download for Android** with the Android robot, paired with the App Store badge, plus three install steps. The phone scroll bar shows both buttons. No hashes, package names, or file jargon.
+**Do not:** Show SHA-256, version codes, or “APK” in the UI. Do not use the Google Play badge.
 
 ## Primary path
 1. Visitor taps **Download for Android**.
@@ -24,7 +24,7 @@
 |---|---|---|---|
 | Home / Play / About | Dual-platform download | App Store or Download for Android | Three install steps under the Android button |
 | `/android/` | Dedicated install page | Download for Android | Same button + steps, no extra metadata |
-| Sticky bar (Android UA) | Resume after scroll | Download for Android | Hidden until scroll |
+| Sticky bar (phones) | Both downloads after scroll | App Store and Android, side by side | Hidden until scroll; Android uses the robot mark |
 
 ## Accessibility and platform
 - Touch targets ≥ 44×44 on mobile; visible focus; reduced motion
