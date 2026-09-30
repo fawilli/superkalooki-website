@@ -68,7 +68,7 @@ Both return `application/json` with no redirect. Paths covered: `/play`, `/play/
 
 ## Android APK
 
-Production Android build is served from `public/downloads/SuperKalooki-1.7-66.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.
+Production Android build is served from `public/downloads/SuperKalooki-1.7-67.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.
 
 ## Scripts
 
