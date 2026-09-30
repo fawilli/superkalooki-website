@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.game.superkalooki",
+      "sha256_cert_fingerprints": [
+        "71:46:8C:C5:CD:64:20:23:60:BC:0F:61:C4:26:3B:BB:23:B1:9B:AA:19:B4:79:0C:14:2E:00:7D:57:E4:59:96"
+      ]
+    }
+  }
+]

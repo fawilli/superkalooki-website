@@ -57,6 +57,15 @@ Editor cheat-sheet: [docs/EDITOR.md](docs/EDITOR.md)
 
 Previous Cloudflare Workers HTML site is preserved under [`legacy/`](legacy/) for reference and rollback.
 
+## App links
+
+Android App Links and iOS Universal Links are served from `public/.well-known/`:
+
+- `https://superkalooki.com/.well-known/assetlinks.json`
+- `https://superkalooki.com/.well-known/apple-app-site-association`
+
+Both return `application/json` with no redirect. Paths covered: `/play`, `/play/`, `/play/*`.
+
 ## Android APK
 
 Production Android build is served from `public/downloads/SuperKalooki-1.7-66.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.
