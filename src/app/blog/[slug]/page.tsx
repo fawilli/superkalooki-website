@@ -35,7 +35,7 @@ export default async function ArticlePage({params}: Props) {
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <p className="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold mb-2 m-0">
+          <p className="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold-deep mb-2 m-0">
             {formatDate(article.publishedAt)}
           </p>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal text-text-dark m-0 [text-wrap:pretty]">

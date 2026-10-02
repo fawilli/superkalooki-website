@@ -16,7 +16,7 @@ export function LegalPage({eyebrow, title, html}: Props) {
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold mb-2 block">
+          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold-deep mb-2 block">
             {eyebrow}
           </span>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-text-dark [text-wrap:pretty] m-0">

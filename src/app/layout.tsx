@@ -2,19 +2,14 @@ import {ConsentScripts} from '@/components/ConsentScripts'
 import {StickyDownloadBar} from '@/components/StickyDownloadBar'
 import {APP_STORE_ID} from '@/lib/app-store'
 import type {Metadata} from 'next'
-import {Geist, Instrument_Serif} from 'next/font/google'
+import {Inter} from 'next/font/google'
 import './globals.css'
 
-const geist = Geist({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  variable: '--font-inter',
 })
 
-const instrument = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-instrument',
-})
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://superkalooki.com'
 
@@ -55,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
-    <html lang="en" className={`${geist.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${inter.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -82,8 +77,7 @@ gtag('set', 'url_passthrough', false);
         className="font-sans antialiased pb-20 lg:pb-0"
         style={
           {
-            fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
-            ['--font-display' as string]: 'var(--font-instrument), serif',
+            fontFamily: 'var(--font-inter), system-ui, sans-serif',
           } as React.CSSProperties
         }
       >

@@ -43,7 +43,7 @@ export function SiteFooter() {
           {links.map((item) => (
             <li key={item.href}>
               <Link
-                className="text-sm font-normal text-white/35 no-underline transition-colors duration-150 hover:text-gold"
+                className="text-sm font-normal text-white/60 no-underline transition-colors duration-150 hover:text-gold"
                 href={item.href}
               >
                 {item.label}
@@ -74,15 +74,15 @@ export function SiteFooter() {
             </li>
           ) : null}
           <li>
-            <CookieSettingsLink className="text-sm font-normal text-white/35 transition-colors duration-150 hover:text-gold" />
+            <CookieSettingsLink className="text-sm font-normal text-white/60 transition-colors duration-150 hover:text-gold" />
           </li>
         </ul>
       </div>
       <div className="pt-5 flex flex-col gap-[0.375rem] text-center md:flex-row md:justify-between md:text-left">
-        <p className="text-[0.8rem] text-white/20 m-0">
+        <p className="text-[0.8rem] text-white/50 m-0">
           © {new Date().getFullYear()} Super Kalooki — Crofts Hill Holdings LLC, Florida, United States
         </p>
-        <p className="text-[0.8rem] text-white/20 m-0">
+        <p className="text-[0.8rem] text-white/50 m-0">
           For entertainment only — no real money, no gambling, no prizes.
         </p>
       </div>

@@ -23,7 +23,7 @@ export default function ContactPage() {
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold mb-2 block">
+          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold-deep mb-2 block">
             Get in Touch
           </span>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal text-text-dark m-0">
@@ -37,7 +37,7 @@ export default function ContactPage() {
           {contacts.map((c) => (
             <li key={c.email}>
               <a
-                className="inline-flex min-h-11 items-center text-green-link font-semibold hover:text-gold"
+                className="inline-flex min-h-11 items-center text-green-link font-semibold hover:text-gold-deep underline-offset-2 hover:underline"
                 href={`mailto:${c.email}`}
               >
                 {c.label}: {c.email}
@@ -46,7 +46,7 @@ export default function ContactPage() {
           ))}
           <li>
             <a
-              className="inline-flex min-h-11 items-center text-green-link font-semibold hover:text-gold"
+              className="inline-flex min-h-11 items-center text-green-link font-semibold hover:text-gold-deep underline-offset-2 hover:underline"
               href="https://www.instagram.com/superkalooki"
               rel="noopener noreferrer"
               target="_blank"
@@ -59,7 +59,7 @@ export default function ContactPage() {
           Crofts Hill Holdings LLC, Florida, United States
         </p>
         <p className="mt-6">
-          <Link className="text-green-link hover:text-gold" href="/faq/">
+          <Link className="text-green-link hover:text-gold-deep underline-offset-2 hover:underline" href="/faq/">
             Browse the FAQ →
           </Link>
         </p>

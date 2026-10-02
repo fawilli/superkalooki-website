@@ -39,7 +39,7 @@ export function GuideLayout({
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold mb-2 block">
+          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold-deep mb-2 block">
             {eyebrow}
           </span>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-text-dark text-pretty m-0">
@@ -52,7 +52,7 @@ export function GuideLayout({
         <div className="prose prose-stone max-w-none guide-prose">{children}</div>
 
         <nav aria-label="Jamaican Kalooki guides" className="mt-12 pt-8 border-t border-black/[0.08]">
-          <p className="text-[0.75rem] font-medium tracking-[0.16em] uppercase text-gold mb-4 m-0">
+          <p className="text-[0.75rem] font-medium tracking-[0.16em] uppercase text-gold-deep mb-4 m-0">
             Keep learning
           </p>
           <ul className="grid gap-2 sm:grid-cols-2 list-none m-0 p-0">
@@ -65,7 +65,7 @@ export function GuideLayout({
                     className={`inline-flex items-center min-h-11 text-sm font-semibold no-underline transition-colors ${
                       active
                         ? 'text-text-dark'
-                        : 'text-green-link hover:text-gold'
+                        : 'text-green-link hover:text-gold-deep underline-offset-2 hover:underline'
                     }`}
                     href={link.href}
                   >

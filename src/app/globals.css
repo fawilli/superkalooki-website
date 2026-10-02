@@ -2,20 +2,21 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-gold: #c9a84c;
-  --color-gold-lt: #e8c96a;
-  --color-felt: #0d2818;
-  --color-felt-mid: #112010;
+  --color-gold: #e4bc3b; /* DS v4: one gold (gold-400) on game and site */
+  --color-gold-deep: #7a5f1a; /* DS gold-700: gold text on paper, 5.9:1 */
+  --color-gold-lt: #ffe066; /* DS gold-300 */
+  --color-felt: #072619; /* DS emerald-900: one dark green with the app */
+  --color-felt-mid: #0d2818; /* DS emerald-800 */
   --color-felt-deep: #060e08;
   --color-ivory: #faf7f0;
-  --color-ivory-dark: #f0ebe0;
-  --color-text-dark: #1a160e;
+  --color-ivory-dark: #f2e6d5; /* DS ivory-100 */
+  --color-text-dark: #0a0908; /* DS ink-900 */
   --color-text-mid: #4a4035;
   --color-text-muted: #7a6e60;
   --color-green-link: #1a6b38;
 
-  --font-display: "Instrument Serif", serif;
-  --font-sans: "Geist", system-ui, sans-serif;
+  --font-display: var(--font-inter), "Inter", system-ui, sans-serif; /* DS v4: one font */
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
 }
 
 html {
@@ -74,7 +75,9 @@ body {
 }
 
 .prose a:hover {
-  color: var(--color-gold);
+  /* gold on ivory is 2.1:1 — keep the link colour dark and signal hover with the underline */
+  color: var(--color-text-dark);
+  text-decoration-thickness: 2px;
 }
 
 .prose table {
@@ -136,4 +139,10 @@ body {
   .sk-hero-media {
     animation: none;
   }
+}
+
+/* DS v4 — one font: headings are Inter 800 with tight tracking (unlayered, so it beats font-normal) */
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
