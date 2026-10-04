@@ -139,15 +139,6 @@ export function SiteHeader() {
                 </Link>
               )
             })}
-            {ANDROID_DOWNLOAD_PUBLIC ? (
-              <AndroidLink
-                className="mt-6 w-full"
-                onClick={(event) => {
-                  event.preventDefault()
-                  go('/android/')
-                }}
-              />
-            ) : null}
           </div>
         </div>
       ) : null}
