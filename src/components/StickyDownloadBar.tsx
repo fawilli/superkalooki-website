@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react'
 
 /**
  * Mobile download bar. Hidden while the hero App Store control is on screen.
- * One gold App Store action. Android is an outline door to /android/, not a second gold download.
+ * One gold App Store action. Android is an outline sideload to /android/, not a second gold download.
  */
 export function StickyDownloadBar() {
   const [visible, setVisible] = useState(false)
@@ -49,7 +49,7 @@ export function StickyDownloadBar() {
         </a>
         {ANDROID_DOWNLOAD_PUBLIC ? (
           <Link
-            aria-label="Android waitlist and download"
+            aria-label="Download Super Kalooki for Android"
             className="sk-btn sk-btn--outline sk-btn--lg min-w-0 flex-1"
             href="/android/"
           >
