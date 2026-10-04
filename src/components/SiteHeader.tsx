@@ -172,7 +172,7 @@ function AndroidLink({
 }) {
   return (
     <Link
-      aria-label="Android waitlist and download"
+      aria-label="Download Super Kalooki for Android"
       className={`sk-btn sk-btn--outline ${className}`}
       href="/android/"
       onClick={onClick}
