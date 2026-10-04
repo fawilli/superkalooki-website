@@ -22,7 +22,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-felt text-ivory">
       <SiteHeader />
       <main id="main-content">
-        <section className="pt-28 pb-16 px-5 sm:px-8 lg:px-12 border-b border-white/6">
+        <section className="border-b border-white/6 px-5 pt-[calc(var(--sk-header-offset)+2rem)] pb-16 sm:px-8 lg:px-12">
           <div className="max-w-3xl mx-auto text-center">
             <Image
               alt="Super Kalooki"

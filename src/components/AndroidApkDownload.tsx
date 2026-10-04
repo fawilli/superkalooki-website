@@ -7,14 +7,21 @@ type Props = {
   showSteps?: boolean
   /** Center the button when the parent CTA stack is centered. */
   centered?: boolean
+  /** Gold only when this is the single primary on the Android page. */
+  tone?: 'gold' | 'outline'
 }
 
-export function AndroidApkDownload({className = '', showSteps = true, centered = false}: Props) {
+export function AndroidApkDownload({
+  className = '',
+  showSteps = true,
+  centered = false,
+  tone = 'outline',
+}: Props) {
   return (
     <div className={`flex w-full max-w-md flex-col gap-4 ${centered ? 'items-center' : 'items-start'} ${className}`.trim()}>
       <a
         aria-label="Download Super Kalooki for Android"
-        className="inline-flex h-11 min-h-11 items-center justify-center gap-2 rounded-[10px] bg-gold px-4 text-[0.9375rem] font-semibold text-felt-deep no-underline whitespace-nowrap transition-colors hover:bg-gold-lt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+        className={`sk-btn ${tone === 'gold' ? 'sk-btn--gold' : 'sk-btn--outline'}`}
         data-cta="android-apk"
         data-cta-version={`${ANDROID_VERSION_NAME}-${ANDROID_VERSION_CODE}`}
         download={ANDROID_APK_FILENAME}

@@ -35,7 +35,7 @@ export function GuideLayout({
       {jsonLd ? <JsonLd data={jsonLd} /> : null}
       <SiteHeader />
       <main
-        className="max-w-[860px] mx-auto px-[1.125rem] pt-20 pb-14 sm:px-6 sm:pt-22 lg:px-8 lg:pt-26 lg:pb-18"
+        className="sk-below-header mx-auto max-w-[860px] px-[1.125rem] pb-14 sm:px-6 lg:px-8 lg:pb-18"
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
@@ -78,7 +78,7 @@ export function GuideLayout({
         </nav>
 
         {showStoreCta ? (
-          <div className="mt-10 rounded-xl border border-black/[0.08] bg-felt px-5 py-8 text-center">
+          <div className="mt-10 rounded-tile bg-felt-mid px-5 py-8 text-center">
             <p className="font-display text-[1.5rem] text-ivory m-0 mb-2">Play Super Kalooki free</p>
             <p className="text-ivory/60 text-sm m-0 mb-5 max-w-md mx-auto">
               Jamaican Contract Rummy on iOS and Android — solo vs AI or live with friends.

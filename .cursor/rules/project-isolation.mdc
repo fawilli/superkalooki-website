@@ -3,11 +3,11 @@ description: This window is bound to superkalooki-website — do not edit other 
 alwaysApply: true
 ---
 
-# Project bind: superkalooki-website
+# Project bind: superkalooki
 
-This Cursor folder is **superkalooki-website** (`/Volumes/SSD/superkalooki-website`).
+This folder is the marketing site inside **SuperKalooki** (`/Volumes/SSD/SuperKalooki/superkalooki-website`).
 
-- All edits, git, and commits stay inside this repo.
-- Other products are out of scope. Open that folder and start a **new chat**.
-- Standing CTO and departments are already on here. Org *commits* stay in `fawilli-workspace` — do not mix them with this product.
+- Cursor project is the parent repo. Do not open this folder as its own project.
+- Site source edits happen here. Site git commits stay in this nested repo (Vercel). Design-system and sprint docs commit in the parent.
+- Other products are out of scope.
 - Protocol: `/Volumes/SSD/fawilli-workspace/ai/protocols/project-isolation.md`
