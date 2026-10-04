@@ -30,11 +30,11 @@ export default async function FaqPage() {
       <JsonLd data={jsonLd} />
       <SiteHeader />
       <main
-        className="max-w-[860px] mx-auto px-[1.125rem] pt-20 pb-12 sm:px-6 lg:px-8"
+        className="sk-below-header mx-auto max-w-[860px] px-[1.125rem] pb-12 sm:px-6 lg:px-8"
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold mb-2 block">
+          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold-deep mb-2 block">
             Help Centre
           </span>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal text-text-dark m-0">
@@ -42,11 +42,11 @@ export default async function FaqPage() {
           </h1>
           <p className="text-text-mid mt-4 mb-0 leading-relaxed">
             Short answers about Jamaican Kalooki (Contract Rummy) and Super Kalooki. For the full ruleset see{' '}
-            <Link className="text-green-link font-semibold hover:text-gold" href="/rules/">
+            <Link className="text-green-link font-semibold hover:text-gold-deep underline-offset-2 hover:underline" href="/rules/">
               Jamaican Kalooki Rules
             </Link>{' '}
             or{' '}
-            <Link className="text-green-link font-semibold hover:text-gold" href="/jamaican-kalooki/">
+            <Link className="text-green-link font-semibold hover:text-gold-deep underline-offset-2 hover:underline" href="/jamaican-kalooki/">
               What is Jamaican Kalooki?
             </Link>
             .
@@ -59,7 +59,7 @@ export default async function FaqPage() {
               className="border-b border-black/[0.07] py-4"
               role="group"
             >
-              <p className="text-base font-semibold text-text-dark mb-1.5 before:content-['Q\00a0\00a0'] before:text-gold before:font-bold m-0">
+              <p className="text-base font-semibold text-text-dark mb-1.5 before:content-['Q\00a0\00a0'] before:text-gold-deep before:font-bold m-0">
                 {item.question}
               </p>
               <p className="text-[0.9375rem] leading-7 text-text-mid before:content-['A\00a0\00a0'] before:text-green-link before:font-semibold m-0">
@@ -71,7 +71,7 @@ export default async function FaqPage() {
         <div className="mt-7 p-[1.125rem_1.25rem] bg-black/[0.03] border border-black/[0.07] rounded-[3px] text-center">
           <p className="text-[0.9375rem] text-text-muted mb-1">Still have questions?</p>
           <a
-            className="font-semibold text-green-link hover:text-gold min-h-11 inline-flex items-center"
+            className="font-semibold text-green-link hover:text-gold-deep underline-offset-2 hover:underline min-h-11 inline-flex items-center"
             href="mailto:superkalookigame@gmail.com"
           >
             superkalookigame@gmail.com

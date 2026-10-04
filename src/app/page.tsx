@@ -85,11 +85,11 @@ export default async function HomePage() {
         {/* Hero: brand + copy + real card fan (product vernacular) */}
         <section
           aria-labelledby="hero-heading"
-          className="relative isolate overflow-hidden bg-felt-deep pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 min-h-[100svh] flex items-center"
+          className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-felt-deep pt-[calc(var(--sk-header-offset)+2rem)] pb-14 sm:pb-16 lg:pb-20"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_rgba(201,168,76,0.14),_transparent_50%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_rgba(228,188,59,0.14),_transparent_50%)]"
           />
           <div
             aria-hidden="true"
@@ -135,7 +135,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="what-heading"
-          className="bg-felt px-5 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24 border-t border-white/6"
+          className="border-t border-white/6 bg-felt-mid px-5 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24"
         >
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
@@ -199,7 +199,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="play-heading"
-          className="bg-felt-mid border-t border-white/6 py-16 md:py-20 lg:py-24"
+          className="border-t border-white/6 bg-felt py-16 md:py-20 lg:py-24"
         >
           <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
             <p className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/80 mb-3">
@@ -244,7 +244,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="safe-heading"
-          className="bg-felt border-t border-white/6 px-5 py-14 md:px-8 lg:px-12"
+          className="border-t border-white/6 bg-felt-deep px-5 py-14 md:px-8 lg:px-12"
         >
           <div className="max-w-3xl mx-auto text-center">
             <h2
@@ -270,7 +270,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="blog-heading"
-          className="bg-felt-deep border-t border-white/6 py-16 md:py-20 lg:py-24"
+          className="border-t border-white/6 bg-felt-mid py-16 md:py-20 lg:py-24"
         >
           <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
             <div className="flex items-end justify-between flex-wrap gap-3 mb-10">
@@ -296,7 +296,7 @@ export default async function HomePage() {
               {latest.map((article) => (
                 <Link
                   key={article.slug}
-                  className="group block no-underline border-t border-gold/25 pt-5 hover:border-gold/60 transition-colors"
+                  className="sk-article group"
                   href={`/blog/${article.slug}/`}
                 >
                   <p className="text-[0.75rem] font-medium tracking-widest uppercase text-gold/70 m-0 mb-2">
@@ -314,7 +314,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="cta-heading"
-          className="border-t border-white/6 bg-felt-deep py-20 md:py-24 px-5 text-center"
+          className="border-t border-white/6 bg-felt px-5 py-20 text-center md:py-24"
         >
           <div className="max-w-3xl mx-auto mb-10">
             <PhoneFrame

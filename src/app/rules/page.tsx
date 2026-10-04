@@ -64,11 +64,11 @@ export default function RulesPage() {
       <JsonLd data={jsonLd} />
       <SiteHeader />
       <main
-        className="max-w-[860px] mx-auto px-[1.125rem] pt-20 pb-12 sm:px-6 sm:pt-22 sm:pb-14 lg:px-8 lg:pt-26 lg:pb-18"
+        className="sk-below-header mx-auto max-w-[860px] px-[1.125rem] pb-12 sm:px-6 sm:pb-14 lg:px-8 lg:pb-18"
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold mb-2 block">
+          <span className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold-deep mb-2 block">
             Official rules
           </span>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal leading-[1.15] text-text-dark text-pretty m-0">
@@ -79,7 +79,7 @@ export default function RulesPage() {
         <AiSummary>{AI_SUMMARY}</AiSummary>
 
         <aside className="rounded-xl border border-gold/35 bg-gold/10 px-4 py-4 mb-8">
-          <p className="text-[0.7rem] font-medium tracking-[0.16em] uppercase text-gold m-0 mb-2">
+          <p className="text-[0.7rem] font-medium tracking-[0.16em] uppercase text-gold-deep m-0 mb-2">
             Not Kalooki 40 or 51
           </p>
           <p className="text-[0.95rem] leading-relaxed text-text-mid m-0">{NOT_KALOOKI_40_51}</p>
@@ -91,14 +91,14 @@ export default function RulesPage() {
         />
 
         <nav aria-label="Related guides" className="mt-12 pt-8 border-t border-black/[0.08]">
-          <p className="text-[0.75rem] font-medium tracking-[0.16em] uppercase text-gold mb-4 m-0">
+          <p className="text-[0.75rem] font-medium tracking-[0.16em] uppercase text-gold-deep mb-4 m-0">
             Keep learning
           </p>
           <ul className="grid gap-2 sm:grid-cols-2 list-none m-0 p-0">
             {GUIDE_LINKS.filter((l) => l.href !== '/rules/').map((link) => (
               <li key={link.href}>
                 <Link
-                  className="inline-flex items-center min-h-11 text-sm font-semibold text-green-link no-underline hover:text-gold"
+                  className="inline-flex items-center min-h-11 text-sm font-semibold text-green-link no-underline hover:text-gold-deep underline-offset-2 hover:underline"
                   href={link.href}
                 >
                   {link.label} →
@@ -108,7 +108,7 @@ export default function RulesPage() {
           </ul>
         </nav>
 
-        <div className="mt-10 rounded-xl border border-black/[0.08] bg-felt px-5 py-8 text-center">
+        <div className="mt-10 rounded-tile bg-felt-mid px-5 py-8 text-center">
           <p className="font-display text-[1.5rem] text-ivory m-0 mb-2">Play by these rules on your phone</p>
           <p className="text-ivory/60 text-sm m-0 mb-5">
             Super Kalooki — free Jamaican Contract Rummy. Entertainment only.

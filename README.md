@@ -2,13 +2,13 @@
 
 Next.js (App Router) + Sanity Free marketing site for **https://superkalooki.com**.
 
-|                |                                                                |
-| -------------- | -------------------------------------------------------------- |
-| **Local path** | `/Volumes/SSD/superkalooki-website` (sibling of the game repo) |
-| **GitHub**     | `fawilli/superkalooki-website`                                 |
-| **Host**       | Vercel (Hobby) — owner: `superkalooki@gmail.com`               |
-| **CMS**        | Sanity Free — owner: `superkalooki@gmail.com`                  |
-| **DNS / SSL**  | Cloudflare (registrar: GoDaddy)                                |
+|                |                                                                         |
+| -------------- | ----------------------------------------------------------------------- |
+| **Local path** | `/Volumes/SSD/SuperKalooki/superkalooki-website` (inside the game repo) |
+| **GitHub**     | `fawilli/superkalooki-website`                                          |
+| **Host**       | Vercel (Hobby) — owner: `superkalooki@gmail.com`                        |
+| **CMS**        | Sanity Free — owner: `superkalooki@gmail.com`                           |
+| **DNS / SSL**  | Cloudflare (registrar: GoDaddy)                                         |
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Next.js (App Router) + Sanity Free marketing site for **https://superkalooki.com
 ## Local development
 
 ```bash
-cd /Volumes/SSD/superkalooki-website
+cd /Volumes/SSD/SuperKalooki/superkalooki-website
 cp .env.example .env.local
 # Fill NEXT_PUBLIC_SANITY_* (optional — seed JSON fallbacks work without Sanity)
 npm install

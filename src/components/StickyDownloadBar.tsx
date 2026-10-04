@@ -1,36 +1,43 @@
 'use client'
 
 import {AndroidMark} from '@/components/AndroidMark'
-import {ANDROID_APK_FILENAME, ANDROID_APK_PATH, ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
+import {ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
+import Link from 'next/link'
 import {useEffect, useState} from 'react'
 
 /**
- * Persistent mobile download bar — both stores, after the hero scrolls away.
- * Hidden on large screens where header + hero badges already convert.
+ * Mobile download bar. Hidden while the hero App Store control is on screen.
+ * One gold App Store action. Android is an outline door to /android/, not a second gold download.
  */
 export function StickyDownloadBar() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 280)
-    onScroll()
-    window.addEventListener('scroll', onScroll, {passive: true})
-    return () => window.removeEventListener('scroll', onScroll)
+    const hero = document.querySelector('[data-cta-campaign="website_hero"]')
+    if (!hero) {
+      setVisible(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      {threshold: 0.2},
+    )
+    observer.observe(hero)
+    return () => observer.disconnect()
   }, [])
 
   return (
     <div
       aria-hidden={!visible}
-      className={`fixed inset-x-0 bottom-0 z-40 lg:hidden transition-transform duration-200 ease-out ${
-        visible ? 'translate-y-0' : 'translate-y-full pointer-events-none'
+      className={`fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(12px,env(safe-area-inset-bottom))] transition-transform duration-200 ease-out lg:hidden ${
+        visible ? 'translate-y-0' : 'pointer-events-none translate-y-full'
       }`}
-      style={{paddingBottom: 'env(safe-area-inset-bottom, 0px)'}}
     >
-      <div className="flex gap-2 border-t border-white/10 bg-felt-deep/95 px-3 py-3 shadow-[0_-8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+      <div className="sk-glass-strong flex gap-2 rounded-tile p-3">
         <a
           aria-label="Download Super Kalooki on the App Store"
-          className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gold px-3 text-[0.9rem] font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt active:scale-[0.99]"
+          className="sk-btn sk-btn--gold sk-btn--lg min-w-0 flex-1"
           data-cta="app-store"
           data-cta-campaign="website_sticky"
           href={appStoreUrl('website_sticky')}
@@ -41,17 +48,14 @@ export function StickyDownloadBar() {
           App Store
         </a>
         {ANDROID_DOWNLOAD_PUBLIC ? (
-          <a
-            aria-label="Download Super Kalooki for Android"
-            className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-xl bg-gold px-3 text-[0.9rem] font-semibold text-felt-deep no-underline transition-colors hover:bg-gold-lt active:scale-[0.99]"
-            data-cta="android-apk"
-            data-cta-campaign="website_sticky"
-            download={ANDROID_APK_FILENAME}
-            href={ANDROID_APK_PATH}
+          <Link
+            aria-label="Android waitlist and download"
+            className="sk-btn sk-btn--outline sk-btn--lg min-w-0 flex-1"
+            href="/android/"
           >
             <AndroidMark className="size-5 shrink-0" />
             Android
-          </a>
+          </Link>
         ) : null}
       </div>
     </div>
