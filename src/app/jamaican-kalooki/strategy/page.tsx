@@ -74,7 +74,7 @@ export default function StrategyPage() {
 
       <h2>6. Practice solo, then host a table</h2>
       <p>
-        Use Super Kalooki’s AI modes to rehearse contracts, then host a live table for 4–6 friends. Same Jamaican rules
+        Play Super Kalooki solo against bots to rehearse contracts, then host a live table for 4–6 friends. Same Jamaican rules
         either way — <Link href="/play/">play Super Kalooki</Link>.
       </p>
 

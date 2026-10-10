@@ -5,7 +5,7 @@
 
 ## Primary promise
 
-Authentic Jamaican Kalooki on your phone — nine deals, changing contracts, solo AI or live with friends. Free entertainment.
+Authentic Jamaican Kalooki on your phone — nine deals, changing contracts, solo vs bots or live with friends. Free entertainment.
 
 ## Instagram
 

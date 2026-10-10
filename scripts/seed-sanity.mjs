@@ -81,7 +81,7 @@ tx.createOrReplace({
   _type: 'siteSettings',
   headline: 'Play Jamaican Kalooki — Contract Rummy on mobile',
   subcopy:
-    'Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.',
+    'Nine deals. Changing contracts. Lowest score wins. Free on iOS and Android — solo vs bots or live with friends.',
   primaryCtaLabel: 'Download on the App Store',
   primaryCtaUrl: 'https://apps.apple.com/app/super-kalooki/id6451106023',
 })

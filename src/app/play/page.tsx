@@ -12,12 +12,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Play Jamaican Kalooki Online — Free iOS & Android App',
   description:
-    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki. Solo vs AI or live private tables for 4–6 friends. Free on the App Store and for Android — entertainment only.',
+    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki. Solo vs bots or live private tables for 4–6 friends. Free on the App Store and for Android — entertainment only.',
   alternates: {canonical: '/play/'},
   openGraph: {
     title: 'Play Jamaican Kalooki Online',
     description:
-      'Free Super Kalooki app — Jamaican Contract Rummy with nine deals, solo AI, and live tables.',
+      'Free Super Kalooki app — Jamaican Contract Rummy with nine deals, solo bots, and live tables.',
     url: '/play/',
     images: [
       {
@@ -55,7 +55,7 @@ export default function PlayPage() {
               Play Jamaican Kalooki online — free on iOS and Android
             </h1>
             <p className="text-ivory/65 leading-relaxed text-lg max-w-2xl mx-auto mb-8">
-              Super Kalooki is the digital Jamaican Contract Rummy table: nine deals, changing contracts, solo AI or a
+              Super Kalooki is the digital Jamaican Contract Rummy table: nine deals, changing contracts, solo vs bots or a
               private live game with 4–6 friends.
             </p>
             <StoreBadges campaign="website_play" centered />
@@ -72,7 +72,7 @@ export default function PlayPage() {
             />
             <div>
               <h2 className="font-display text-[clamp(1.4rem,3vw,1.85rem)] text-ivory mb-3">
-                Solo vs AI or live with friends
+                Solo vs bots or live with friends
               </h2>
               <p className="text-ivory/60 leading-relaxed mb-4">
                 Practice against Beginner, Intermediate, or Expert bots — or host a private online table. Same Jamaican

@@ -37,7 +37,7 @@
   {
     "_type": "faqItem",
     "question": "How do you play Super Kalooki?",
-    "answer": "Download Super Kalooki on iOS from the App Store, or for Android from /android/. Play solo against AI or host a live table for 4–6 players. Draw, lay your contract, call, and discard — first to go out ends the round. See /play/ and /rules/.",
+    "answer": "Download Super Kalooki on iOS from the App Store, or for Android from /android/. Play solo against bots or host a live table for 4–6 players. Draw, lay your contract, call, and discard — first to go out ends the round. See /play/ and /rules/.",
     "category": "general",
     "sortOrder": 6
   },
@@ -51,7 +51,7 @@
   {
     "_type": "faqItem",
     "question": "What game modes are available?",
-    "answer": "Single Player (against AI bots at Beginner, Intermediate, or Expert level) and Live Online with friends. Voice, video, and custom rules are coming soon for live online games.",
+    "answer": "Single Player (against bots at Beginner, Intermediate, or Expert level) and Live Online with friends. Voice, video, and custom rules are coming soon for live online games.",
     "category": "general",
     "sortOrder": 8
   },
@@ -64,7 +64,7 @@
   },
   {
     "_type": "faqItem",
-    "question": "What are the AI difficulty levels?",
+    "question": "What are the bot difficulty levels?",
     "answer": "Beginner (Lucky Larry), Intermediate (Steady Sandra), and Expert (Sharp Shane).",
     "category": "general",
     "sortOrder": 10

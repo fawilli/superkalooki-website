@@ -56,7 +56,7 @@ export default function JamaicanKalookiHubPage() {
         cards, and keep the deadwood low. When the ninth deal ends, the lowest score wins.
       </p>
       <p>
-        Super Kalooki is that game on your phone: same contracts, calling, and scoring — solo against AI or live with
+        Super Kalooki is that game on your phone: same contracts, calling, and scoring — solo against bots or live with
         4–6 friends.
       </p>
       <p>

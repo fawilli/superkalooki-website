@@ -47,9 +47,7 @@ export default function TackingPage() {
       <p>
         Super Kalooki players asked for this page: the App Store listing mentions{' '}
         <strong>call and tack</strong>, and the official rules already cover calling. This guide names tacking in
-        player language, keeps it distinct from calling, and points you to a free iOS download. FAQ schema below matches
-        the visible answers. Google’s AI-features bar is people-first, crawlable, snippet-eligible copy — not a fake
-        AEO file.
+        player language, keeps it distinct from calling, and points you to a free iOS download.
       </p>
 
       <h2>What is tacking in Jamaican Kalooki?</h2>

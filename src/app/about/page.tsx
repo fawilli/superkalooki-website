@@ -38,7 +38,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-ivory/65 leading-relaxed text-lg max-w-2xl mx-auto">
               Super Kalooki brings authentic Jamaican Contract Rummy to iOS and Android: nine scored deals, changing contracts,
-              and real-time play — solo against AI or live with friends.
+              and real-time play — solo against bots or live with friends.
             </p>
           </div>
         </section>
@@ -52,7 +52,7 @@ export default function AboutPage() {
           </p>
           <p className="text-ivory/65 leading-relaxed mb-4">
             Our wordmark and app icon stand for that promise: the green felt, the gold accents, and the contracts
-            players know from Jamaican Kalooki nights — rebuilt for touch, private tables, and practice against AI.
+            players know from Jamaican Kalooki nights — rebuilt for touch, private tables, and practice against bots.
           </p>
           <p className="text-ivory/65 leading-relaxed">
             Want the full contracts and scoring? See the{' '}

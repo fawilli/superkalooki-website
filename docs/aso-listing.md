@@ -31,7 +31,7 @@ Jamaican Contract Rummy
 ## Promotional text (up to 170 characters — rotatable)
 
 ```
-Play real Jamaican Kalooki — nine deals, changing contracts, solo vs AI or live with friends. Free. Entertainment only.
+Play real Jamaican Kalooki — nine deals, changing contracts, solo vs bots or live with friends. Free. Entertainment only.
 ```
 
 ## Description (claim-safe)
@@ -45,7 +45,7 @@ THIS IS JAMAICAN KALOOKI
 • Not Kalooki 40 or Kalooki 51 (different point-threshold variants)
 
 HOW YOU PLAY
-• Solo against Beginner, Intermediate, or Expert AI
+• Solo against Beginner, Intermediate, or Expert bots
 • Live private tables for 4–6 friends
 • Draw, lay your contract, call, discard — race to go out
 
