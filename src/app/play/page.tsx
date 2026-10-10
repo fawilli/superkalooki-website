@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     url: '/play/',
     images: [
       {
-        url: '/marketing/solo-or-friends.png',
-        width: 1170,
-        height: 2532,
-        alt: 'Super Kalooki solo or friends mode',
+        url: '/marketing/sk18-lobby.jpg',
+        width: 1920,
+        height: 883,
+        alt: 'Super Kalooki lobby with Solo and Host side by side',
       },
     ],
   },
@@ -67,8 +67,8 @@ export default function PlayPage() {
 
           <div className="grid sm:grid-cols-2 gap-10 items-center mb-14">
             <PhoneFrame
-              alt="Choose solo AI or host a live Kalooki table"
-              src="/marketing/solo-or-friends.png"
+              alt="Super Kalooki lobby: play Solo against bots or host a table for friends"
+              src="/marketing/sk18-lobby.jpg"
             />
             <div>
               <h2 className="font-display text-[clamp(1.4rem,3vw,1.85rem)] text-ivory mb-3">

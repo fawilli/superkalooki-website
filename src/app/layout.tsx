@@ -30,10 +30,10 @@ export const metadata: Metadata = {
       'Free Kalooki app: nine scored deals, changing contracts, solo AI or live tables for 4–6 players.',
     images: [
       {
-        url: '/marketing/solo-mid-hand.png',
+        url: '/marketing/sk18-table.jpg',
         width: 1920,
         height: 883,
-        alt: 'Super Kalooki gameplay screenshot',
+        alt: 'Super Kalooki table — your hand, the piles, and melds on the table',
       },
     ],
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Super Kalooki — Play Kalooki Online',
     description: 'Free Jamaican Kalooki / Contract Rummy for iOS and Android. Solo or live with friends.',
-    images: ['/marketing/solo-mid-hand.png'],
+    images: ['/marketing/sk18-table.jpg'],
   },
   other: {
     'apple-itunes-app': `app-id=${APP_STORE_ID}, app-argument=${siteUrl}`,

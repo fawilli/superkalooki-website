@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/marketing/solo-mid-hand.png',
+        url: '/marketing/sk18-table.jpg',
         width: 1920,
         height: 883,
-        alt: 'Super Kalooki gameplay — hand, draw pile, and table melds',
+        alt: 'Super Kalooki table — your hand, the draw and discard piles, and melds on the table',
       },
     ],
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: 'Super Kalooki — Play Kalooki & Contract Rummy',
     description:
       'Free Jamaican Kalooki app. Solo vs AI or live online with friends. Nine deals. Lowest score wins.',
-    images: ['/marketing/solo-mid-hand.png'],
+    images: ['/marketing/sk18-table.jpg'],
   },
 }
 
@@ -214,27 +214,27 @@ export default async function HomePage() {
 
             <div className="space-y-14 lg:space-y-20">
               <FeatureRow
-                alt="Sorted Kalooki hand ready to lay sets and runs on the table"
+                alt="Round 1 of 9 contract card: lay three sets of three"
                 body="Draw from the stock or take the discard, then lay sets and runs to meet that deal’s contract. Call when you can — then discard to stay lean."
                 href="/rules/"
-                image="/marketing/sorted-hand.png"
+                image="/marketing/sk18-contract.jpg"
                 linkLabel="See contracts & scoring"
                 title="Meet the contract each deal"
               />
               <FeatureRow
-                alt="Scoreboard across nine Kalooki deals with win badges and running totals"
+                alt="Scorecard for nine Kalooki deals, with a win badge and running totals"
                 body="Track every round on a live scoreboard. Nine deals, changing contracts (333 through the full run), lowest cumulative score wins the match."
                 href="/rules/"
-                image="/marketing/nine-deals.png"
+                image="/marketing/sk18-scorecard.jpg"
                 linkLabel="How scoring works"
                 reverse
                 title="Nine deals. Lowest score wins."
               />
               <FeatureRow
-                alt="Mode choice — solo against bots or host a live table with friends"
+                alt="Super Kalooki lobby with Solo against bots and Host a table for friends side by side"
                 body="Practice solo against Beginner, Intermediate, or Expert AI, or host a private live online table for 4–6 players. Same Kalooki rules either way."
                 href="/faq/"
-                image="/marketing/solo-or-friends.png"
+                image="/marketing/sk18-lobby.jpg"
                 linkLabel="Modes & player counts"
                 title="Solo vs AI or live with friends"
               />
@@ -318,8 +318,8 @@ export default async function HomePage() {
         >
           <div className="max-w-3xl mx-auto mb-10">
             <PhoneFrame
-              alt="One card left to discard and win the Kalooki round"
-              src="/marketing/one-card-out.png"
+              alt="Your turn at the Kalooki table: draw or take the discard"
+              src="/marketing/sk18-table.jpg"
             />
           </div>
           <h2
