@@ -31,13 +31,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/downloads/:file',
+        source: '/downloads/:file(.*\\.apk)',
         headers: [
           {key: 'Content-Type', value: 'application/vnd.android.package-archive'},
           {key: 'Content-Disposition', value: 'attachment'},
           {key: 'X-Content-Type-Options', value: 'nosniff'},
           {key: 'X-Robots-Tag', value: 'noindex'},
           {key: 'Cache-Control', value: 'public, max-age=31536000, immutable'},
+          // Edge TTL stays short: a 404 cached before a release deploy finishes must not stick for a year.
+          {key: 'Vercel-CDN-Cache-Control', value: 'max-age=300'},
         ],
       },
     ]
