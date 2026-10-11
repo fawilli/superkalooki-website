@@ -3,7 +3,7 @@
 export const ANDROID_PACKAGE_ID = 'com.game.superkalooki'
 export const ANDROID_VERSION_NAME = '1.8'
 export const ANDROID_VERSION_CODE = 72
-export const ANDROID_APK_FILENAME = 'SuperKalooki-1.8-72.apk'
+export const ANDROID_APK_FILENAME = 'SuperKalooki-1.8-72-release.apk'
 export const ANDROID_APK_PATH = `/downloads/${ANDROID_APK_FILENAME}`
 export const ANDROID_PAGE_PATH = '/android/'
 
