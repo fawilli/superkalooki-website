@@ -7,12 +7,7 @@ import {StoreBadges} from '@/components/StoreBadges'
 import {appStoreUrl} from '@/lib/app-store'
 import {DIFFERENTIATION_FAQS} from '@/lib/jamaican-kalooki'
 import {formatDate, getArticles} from '@/lib/content'
-import {
-  faqPageJsonLd,
-  graphJsonLd,
-  mobileApplicationJsonLd,
-  organizationJsonLd,
-} from '@/lib/json-ld'
+import {faqPageJsonLd, graphJsonLd, mobileApplicationJsonLd, organizationJsonLd} from '@/lib/json-ld'
 import Image from 'next/image'
 import Link from 'next/link'
 import type {Metadata} from 'next'
@@ -20,7 +15,7 @@ import type {Metadata} from 'next'
 export const metadata: Metadata = {
   title: 'Super Kalooki — Play Jamaican Kalooki & Contract Rummy Online',
   description:
-    'Download Super Kalooki, the free Jamaican Contract Rummy app for iOS. Play Kalooki solo vs AI or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
+    'Download Super Kalooki, the free Jamaican Contract Rummy app for iOS and Android. Play Kalooki solo vs bots or live online with 4–6 friends. Nine deals, changing contracts, lowest score wins.',
   keywords: [
     'Kalooki',
     'Kalooki app',
@@ -35,15 +30,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Super Kalooki — Jamaican Contract Rummy for Mobile',
     description:
-      'Authentic Kalooki on your phone: nine scored deals, changing contracts, solo AI or live tables for 4–6 players. Free on the App Store.',
+      'Authentic Kalooki on your phone: nine scored deals, changing contracts, solo vs bots or live tables for 4–6 players. Free on iOS and Android.',
     url: '/',
     type: 'website',
     images: [
       {
-        url: '/marketing/solo-mid-hand.png',
+        url: '/marketing/sk18-table.jpg',
         width: 1920,
         height: 883,
-        alt: 'Super Kalooki gameplay — hand, draw pile, and table melds',
+        alt: 'Super Kalooki table — your hand, the draw and discard piles, and melds on the table',
       },
     ],
   },
@@ -51,8 +46,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Super Kalooki — Play Kalooki & Contract Rummy',
     description:
-      'Free Jamaican Kalooki app. Solo vs AI or live online with friends. Nine deals. Lowest score wins.',
-    images: ['/marketing/solo-mid-hand.png'],
+      'Free Jamaican Kalooki app. Solo vs bots or live online with friends. Nine deals. Lowest score wins.',
+    images: ['/marketing/sk18-table.jpg'],
   },
 }
 
@@ -64,7 +59,7 @@ const jsonLd = graphJsonLd([
     name: 'Super Kalooki',
     url: 'https://superkalooki.com/',
     description:
-      'Official site for Super Kalooki — Jamaican Kalooki and Contract Rummy for iOS.',
+      'Official site for Super Kalooki — Jamaican Kalooki and Contract Rummy for iOS and Android.',
     publisher: {'@id': 'https://superkalooki.com/#organization'},
   },
   mobileApplicationJsonLd(),
@@ -73,7 +68,7 @@ const jsonLd = graphJsonLd([
     {
       question: 'Is Super Kalooki free?',
       answer:
-        'Yes. Super Kalooki is free to download on the App Store. It is for entertainment only — no real money, no gambling, and no prizes.',
+        'Yes. Super Kalooki is free on the App Store and for Android from this site. It is for entertainment only — no real money, no gambling, and no prizes.',
     },
   ]),
 ])
@@ -90,11 +85,11 @@ export default async function HomePage() {
         {/* Hero: brand + copy + real card fan (product vernacular) */}
         <section
           aria-labelledby="hero-heading"
-          className="relative isolate overflow-hidden bg-felt-deep pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 min-h-[100svh] flex items-center"
+          className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-felt-deep pt-[calc(var(--sk-header-offset)+2rem)] pb-14 sm:pb-16 lg:pb-20"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_rgba(201,168,76,0.14),_transparent_50%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_rgba(228,188,59,0.14),_transparent_50%)]"
           />
           <div
             aria-hidden="true"
@@ -127,7 +122,7 @@ export default async function HomePage() {
                 Play Jamaican Kalooki — Contract Rummy on mobile
               </h1>
               <p className="text-base sm:text-lg text-ivory/70 mb-8 leading-relaxed max-w-[42ch]">
-                Nine deals. Changing contracts. Lowest score wins. Free on iOS — solo vs AI or live with friends.
+                Nine deals. Changing contracts. Lowest score wins. Free on iOS and Android — solo vs bots or live with friends.
               </p>
               <StoreBadges campaign="website_hero" />
               <p className="text-[0.8rem] text-white/40 tracking-[0.02em] mt-4">
@@ -140,7 +135,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="what-heading"
-          className="bg-felt px-5 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24 border-t border-white/6"
+          className="border-t border-white/6 bg-felt-mid px-5 py-16 md:px-8 md:py-20 lg:px-12 lg:py-24"
         >
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
@@ -161,7 +156,7 @@ export default async function HomePage() {
                 low. After nine deals, lowest total wins — not a race to 40 or 51.
               </p>
               <p className="text-ivory/65 leading-relaxed mb-6">
-                Super Kalooki is that table on iOS — calls, private live games, and solo practice against AI. Start with{' '}
+                Super Kalooki is that table on iOS and Android — calls, private live games, and solo practice against bots. Start with{' '}
                 <Link
                   className="text-gold hover:text-gold-lt underline-offset-2 hover:underline"
                   href="/jamaican-kalooki/"
@@ -179,7 +174,7 @@ export default async function HomePage() {
                   className="inline-flex items-center min-h-11 text-sm font-semibold text-gold hover:text-gold-lt transition-colors"
                   href="/play/"
                 >
-                  Play on iOS →
+                  Play Super Kalooki →
                 </Link>
                 <a
                   className="inline-flex items-center min-h-11 text-sm font-semibold text-gold hover:text-gold-lt transition-colors"
@@ -204,7 +199,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="play-heading"
-          className="bg-felt-mid border-t border-white/6 py-16 md:py-20 lg:py-24"
+          className="border-t border-white/6 bg-felt py-16 md:py-20 lg:py-24"
         >
           <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
             <p className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/80 mb-3">
@@ -219,29 +214,29 @@ export default async function HomePage() {
 
             <div className="space-y-14 lg:space-y-20">
               <FeatureRow
-                alt="Sorted Kalooki hand ready to lay sets and runs on the table"
+                alt="Round 1 of 9 contract card: lay three sets of three"
                 body="Draw from the stock or take the discard, then lay sets and runs to meet that deal’s contract. Call when you can — then discard to stay lean."
                 href="/rules/"
-                image="/marketing/sorted-hand.png"
+                image="/marketing/sk18-contract.jpg"
                 linkLabel="See contracts & scoring"
                 title="Meet the contract each deal"
               />
               <FeatureRow
-                alt="Scoreboard across nine Kalooki deals with win badges and running totals"
+                alt="Scorecard for nine Kalooki deals, with a win badge and running totals"
                 body="Track every round on a live scoreboard. Nine deals, changing contracts (333 through the full run), lowest cumulative score wins the match."
                 href="/rules/"
-                image="/marketing/nine-deals.png"
+                image="/marketing/sk18-scorecard.jpg"
                 linkLabel="How scoring works"
                 reverse
                 title="Nine deals. Lowest score wins."
               />
               <FeatureRow
-                alt="Mode choice — solo against bots or host a live table with friends"
-                body="Practice solo against Beginner, Intermediate, or Expert AI, or host a private live online table for 4–6 players. Same Kalooki rules either way."
+                alt="Super Kalooki lobby with Solo against bots and Host a table for friends side by side"
+                body="Practice solo against Beginner, Intermediate, or Expert bots, or host a private live online table for 4–6 players. Same Kalooki rules either way."
                 href="/faq/"
-                image="/marketing/solo-or-friends.png"
+                image="/marketing/sk18-lobby.jpg"
                 linkLabel="Modes & player counts"
-                title="Solo vs AI or live with friends"
+                title="Solo vs bots or live with friends"
               />
             </div>
           </div>
@@ -249,7 +244,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="safe-heading"
-          className="bg-felt border-t border-white/6 px-5 py-14 md:px-8 lg:px-12"
+          className="border-t border-white/6 bg-felt-deep px-5 py-14 md:px-8 lg:px-12"
         >
           <div className="max-w-3xl mx-auto text-center">
             <h2
@@ -275,7 +270,7 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="blog-heading"
-          className="bg-felt-deep border-t border-white/6 py-16 md:py-20 lg:py-24"
+          className="border-t border-white/6 bg-felt-mid py-16 md:py-20 lg:py-24"
         >
           <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
             <div className="flex items-end justify-between flex-wrap gap-3 mb-10">
@@ -301,7 +296,7 @@ export default async function HomePage() {
               {latest.map((article) => (
                 <Link
                   key={article.slug}
-                  className="group block no-underline border-t border-gold/25 pt-5 hover:border-gold/60 transition-colors"
+                  className="sk-article group"
                   href={`/blog/${article.slug}/`}
                 >
                   <p className="text-[0.75rem] font-medium tracking-widest uppercase text-gold/70 m-0 mb-2">
@@ -319,12 +314,12 @@ export default async function HomePage() {
 
         <section
           aria-labelledby="cta-heading"
-          className="border-t border-white/6 bg-felt-deep py-20 md:py-24 px-5 text-center"
+          className="border-t border-white/6 bg-felt px-5 py-20 text-center md:py-24"
         >
           <div className="max-w-3xl mx-auto mb-10">
             <PhoneFrame
-              alt="One card left to discard and win the Kalooki round"
-              src="/marketing/one-card-out.png"
+              alt="Your turn at the Kalooki table: draw or take the discard"
+              src="/marketing/sk18-table.jpg"
             />
           </div>
           <h2
@@ -334,8 +329,8 @@ export default async function HomePage() {
             Download Super Kalooki free
           </h2>
           <p className="text-ivory/65 mb-8 max-w-xl mx-auto leading-relaxed">
-            Start a private Kalooki table with friends — or practice Contract Rummy solo against AI. Free on the App
-            Store for iPhone and iPad.
+            Start a private Kalooki table with friends — or practice Contract Rummy solo against bots. Free on the App
+            Store and for Android.
           </p>
           <StoreBadges centered campaign="website_cta" />
         </section>

@@ -16,21 +16,21 @@ import type {Metadata} from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Play Jamaican Kalooki Online — Free iOS App',
+  title: 'Play Jamaican Kalooki Online — Free iOS & Android App',
   description:
-    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki for iOS. Solo vs AI or live private tables for 4–6 friends. Free to download — entertainment only.',
+    'Play Jamaican Kalooki (Contract Rummy) online with Super Kalooki. Solo vs bots or live private tables for 4–6 friends. Free on the App Store and for Android — entertainment only.',
   alternates: {canonical: '/play/'},
   openGraph: {
-    title: 'Play Jamaican Kalooki Online on iOS',
+    title: 'Play Jamaican Kalooki Online',
     description:
-      'Free Super Kalooki app — Jamaican Contract Rummy with nine deals, solo AI, and live tables.',
+      'Free Super Kalooki app — Jamaican Contract Rummy with nine deals, solo bots, and live tables.',
     url: '/play/',
     images: [
       {
-        url: '/marketing/solo-or-friends.png',
-        width: 1170,
-        height: 2532,
-        alt: 'Super Kalooki solo or friends mode',
+        url: '/marketing/sk18-lobby.jpg',
+        width: 1920,
+        height: 883,
+        alt: 'Super Kalooki lobby with Solo and Host side by side',
       },
     ],
   },
@@ -53,19 +53,19 @@ export default function PlayPage() {
       <JsonLd data={jsonLd} />
       <SiteHeader />
       <main id="main-content">
-        <section className="pt-28 pb-16 px-5 sm:px-8 lg:px-12 border-b border-white/6">
+        <section className="border-b border-white/6 px-5 pt-[calc(var(--sk-header-offset)+2rem)] pb-16 sm:px-8 lg:px-12">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/80 mb-3">
               Play online
             </p>
             <h1 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] font-normal text-ivory m-0 mb-5 text-pretty">
-              Play Jamaican Kalooki online — free on iOS
+              Play Jamaican Kalooki online — free on iOS and Android
             </h1>
             <p className="text-ivory/65 leading-relaxed text-lg max-w-2xl mx-auto mb-8">
-              Super Kalooki is the digital Jamaican Contract Rummy table: nine deals, changing contracts, solo AI or a
+              Super Kalooki is the digital Jamaican Contract Rummy table: nine deals, changing contracts, solo vs bots or a
               private live game with 4–6 friends.
             </p>
-            <StoreBadges campaign="website_play" centered showPlayNote={false} />
+            <StoreBadges campaign="website_play" centered showAndroid={false} />
           </div>
         </section>
 
@@ -91,8 +91,8 @@ export default function PlayPage() {
 
           <div className="grid sm:grid-cols-2 gap-10 items-center mb-14">
             <PhoneFrame
-              alt="Choose solo AI or host a live Kalooki table"
-              src="/marketing/solo-or-friends.png"
+              alt="Super Kalooki lobby: play Solo against bots or host a table for friends"
+              src="/marketing/sk18-lobby.jpg"
             />
             <div>
               <h2 className="font-display text-[clamp(1.4rem,3vw,1.85rem)] text-ivory mb-3">
@@ -151,9 +151,10 @@ export default function PlayPage() {
             Download Super Kalooki free
           </h2>
           <p className="text-ivory/60 mb-8 max-w-lg mx-auto">
-            Jamaican Contract Rummy for iPhone and iPad. No real money, gambling, or prizes.
+            Jamaican Contract Rummy for iPhone and iPad. Download on the App Store. Entertainment only — no real money,
+            gambling, or prizes.
           </p>
-          <StoreBadges campaign="website_play" centered showPlayNote={false} />
+          <StoreBadges campaign="website_play" centered showAndroid={false} />
         </section>
       </main>
       <SiteFooter />

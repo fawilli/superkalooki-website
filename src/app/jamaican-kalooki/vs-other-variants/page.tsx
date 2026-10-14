@@ -84,7 +84,7 @@ export default function VsOtherVariantsPage() {
       <p>
         Want the full contract list and penalties? See the <Link href="/rules/">Jamaican Kalooki rules</Link>. For
         how points work, read <Link href="/jamaican-kalooki/scoring/">scoring &amp; deadwood</Link>. Or{' '}
-        <Link href="/play/">play Super Kalooki on iOS</Link>.
+        <Link href="/play/">play Super Kalooki</Link>.
       </p>
     </GuideLayout>
   )

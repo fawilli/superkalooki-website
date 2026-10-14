@@ -31,11 +31,11 @@ export default async function ArticlePage({params}: Props) {
     <div className="min-h-screen bg-ivory">
       <SiteHeader />
       <main
-        className="max-w-[860px] mx-auto px-[1.125rem] pt-20 pb-12 sm:px-6 lg:px-8"
+        className="sk-below-header mx-auto max-w-[860px] px-[1.125rem] pb-12 sm:px-6 lg:px-8"
         id="main-content"
       >
         <header className="border-b border-black/[0.08] pb-7 mb-8">
-          <p className="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold mb-2 m-0">
+          <p className="text-[0.75rem] font-medium tracking-[0.1em] uppercase text-gold-deep mb-2 m-0">
             {formatDate(article.publishedAt)}
           </p>
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.625rem)] font-normal text-text-dark m-0 [text-wrap:pretty]">

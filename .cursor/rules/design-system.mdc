@@ -1,0 +1,17 @@
+---
+description: Super Kalooki design system — use for any UI, styling, layout or component work
+globs: ["**/*.{ts,tsx,js,jsx,css,html,astro,vue}"]
+alwaysApply: false
+---
+# Super Kalooki design system
+
+Source of truth: `../design-system/` (shared with the app, one level up in SuperKalooki/) (exported from the Design System artifact).
+
+- Start with `../design-system/README.md` (rules, tokens, screen tiers, "Using this system in code").
+- Tokens: use `../design-system/tokens.css` variables. Never hard-code hex, radius, shadow or font values.
+- Components: each `../design-system/components/<Comp>/README.md` is the spec; `preview.html` is the visual reference. Rebuild components cleanly from spec + tokens — `components/bundle.css` is preview reference CSS, not a stylesheet to import wholesale.
+- Never ship preview-only classes: `ct-`, `tm-`, `tl-`, `da-`, `ab-`, `mx-`.
+- Screen tiers are the only breakpoints: `tier-short` (landscape ≤340px tall), `tier-phone` (landscape ≤430px tall), `tier-tablet` (landscape ≥981px wide). Website is portrait-first with `web-container`.
+- Font: Inter only (800 headings, −0.02em). One gold (`--gold`); gold = commit, glass = cancel/tool, red = destroy. Move colours (blue Call, amber Lay, green Tack) only in the table dock.
+- Mobile-first: landscape 780×360 is the design floor, 640×360 the minimum; 44px minimum touch targets.
+- Table (app): follow `components/TableLayout/README.md` — hand fits without scrolling (44→24px step, 21px on tier-short), slide-to-select, lifted cards keep stack order, meld window fixed on the right and scrolls, +N opens a meld in place.

@@ -2,13 +2,13 @@
 
 Next.js (App Router) + Sanity Free marketing site for **https://superkalooki.com**.
 
-|                |                                                                |
-| -------------- | -------------------------------------------------------------- |
-| **Local path** | `/Volumes/SSD/superkalooki-website` (sibling of the game repo) |
-| **GitHub**     | `fawilli/superkalooki-website`                                 |
-| **Host**       | Vercel (Hobby) — owner: `superkalooki@gmail.com`               |
-| **CMS**        | Sanity Free — owner: `superkalooki@gmail.com`                  |
-| **DNS / SSL**  | Cloudflare (registrar: GoDaddy)                                |
+|                |                                                                         |
+| -------------- | ----------------------------------------------------------------------- |
+| **Local path** | `/Volumes/SSD/SuperKalooki/superkalooki-website` (inside the game repo) |
+| **GitHub**     | `fawilli/superkalooki-website`                                          |
+| **Host**       | Vercel (Hobby) — owner: `superkalooki@gmail.com`                        |
+| **CMS**        | Sanity Free — owner: `superkalooki@gmail.com`                           |
+| **DNS / SSL**  | Cloudflare (registrar: GoDaddy)                                         |
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Next.js (App Router) + Sanity Free marketing site for **https://superkalooki.com
 ## Local development
 
 ```bash
-cd /Volumes/SSD/superkalooki-website
+cd /Volumes/SSD/SuperKalooki/superkalooki-website
 cp .env.example .env.local
 # Fill NEXT_PUBLIC_SANITY_* (optional — seed JSON fallbacks work without Sanity)
 npm install
@@ -56,6 +56,19 @@ Editor cheat-sheet: [docs/EDITOR.md](docs/EDITOR.md)
 ## Legacy static site
 
 Previous Cloudflare Workers HTML site is preserved under [`legacy/`](legacy/) for reference and rollback.
+
+## App links
+
+Android App Links and iOS Universal Links are served from `public/.well-known/`:
+
+- `https://superkalooki.com/.well-known/assetlinks.json`
+- `https://superkalooki.com/.well-known/apple-app-site-association`
+
+Both return `application/json` with no redirect. Paths covered: `/play`, `/play/`, `/play/*`.
+
+## Android APK
+
+Production Android build is served from `public/downloads/SuperKalooki-1.8-72-release.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.
 
 ## Scripts
 

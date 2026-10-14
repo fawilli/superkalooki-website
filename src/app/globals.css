@@ -2,20 +2,35 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-gold: #c9a84c;
-  --color-gold-lt: #e8c96a;
-  --color-felt: #0d2818;
-  --color-felt-mid: #112010;
-  --color-felt-deep: #060e08;
-  --color-ivory: #faf7f0;
-  --color-ivory-dark: #f0ebe0;
-  --color-text-dark: #1a160e;
-  --color-text-mid: #4a4035;
+  /* Primitives aliased from design-system/tokens.css. next/font supplies Inter. */
+  --color-gold: #e4bc3b;
+  --color-gold-deep: #7a5f1a;
+  --color-gold-lt: #ffe066;
+  --color-felt: #072619; /* emerald-900 */
+  --color-felt-mid: #0d2818; /* emerald-800 */
+  --color-felt-deep: #060e08; /* emerald-950 */
+  --color-ivory: #faf7f0; /* surface-paper */
+  --color-ivory-dark: #f2e6d5; /* text-primary on deep */
+  --color-text-dark: #0a0908; /* text-on-light */
+  --color-text-mid: #4a4035; /* text-prose */
   --color-text-muted: #7a6e60;
-  --color-green-link: #1a6b38;
+  --color-green-link: #1a6b38; /* text-link */
+  --color-glass: rgba(13, 61, 39, 0.72);
+  --color-glass-strong: rgba(13, 61, 39, 0.88);
+  --color-glass-fallback: rgba(13, 61, 39, 0.96);
 
-  --font-display: "Instrument Serif", serif;
-  --font-sans: "Geist", system-ui, sans-serif;
+  --radius-control: 12px;
+  --radius-tile: 16px;
+  --radius-sheet: 24px;
+
+  --shadow-glass: 0 8px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+  --font-display: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --sk-header-offset: calc(64px + env(safe-area-inset-top, 0px));
 }
 
 html {
@@ -57,13 +72,14 @@ body {
   --tw-prose-quotes: var(--color-text-dark);
   --tw-prose-quote-borders: var(--color-gold);
   --tw-prose-captions: var(--color-text-muted);
-  --tw-prose-th-borders: rgba(201, 168, 76, 0.3);
+  --tw-prose-th-borders: rgba(228, 188, 59, 0.35);
   --tw-prose-td-borders: rgba(0, 0, 0, 0.06);
 }
 
 .prose h2 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 0.375rem;
 }
@@ -74,7 +90,9 @@ body {
 }
 
 .prose a:hover {
-  color: var(--color-gold);
+  /* gold on ivory is 2.1:1 — keep the link colour dark and signal hover with the underline */
+  color: var(--color-text-dark);
+  text-decoration-thickness: 2px;
 }
 
 .prose table {
@@ -83,7 +101,7 @@ body {
 }
 
 .prose thead th {
-  background: rgba(201, 168, 76, 0.1);
+  background: rgba(228, 188, 59, 0.12);
   white-space: nowrap;
 }
 
@@ -135,5 +153,134 @@ body {
   .sk-hero-copy > *,
   .sk-hero-media {
     animation: none;
+  }
+}
+
+/* DS v4 — one font: headings are Inter 800 with tight tracking (unlayered, so it beats font-normal) */
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sk-below-header {
+  padding-top: calc(var(--sk-header-offset) + 24px);
+}
+
+.sk-glass-strong {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 60%),
+    var(--color-glass-strong);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: var(--shadow-glass);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+}
+
+.sk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sk-btn--lg {
+  min-height: 48px;
+}
+
+.sk-btn--gold {
+  background: var(--color-gold);
+  color: var(--color-text-dark);
+}
+
+.sk-btn--glass {
+  background: var(--color-glass);
+  color: var(--color-ivory);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.sk-btn--outline {
+  background: transparent;
+  color: var(--color-gold);
+  border-color: rgba(228, 188, 59, 0.45);
+}
+
+.sk-btn:focus-visible {
+  outline: 3px solid #a7f3d0;
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sk-btn--gold:hover {
+    background: #e8c96a;
+  }
+  .sk-btn--glass:hover,
+  .sk-btn--outline:hover {
+    border-color: rgba(255, 255, 255, 0.24);
+  }
+}
+
+.sk-btn:active {
+  transform: scale(0.99);
+}
+
+.sk-article {
+  display: block;
+  border-top: 1px solid rgba(228, 188, 59, 0.35);
+  padding-top: 16px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sk-article:hover {
+    border-top-color: var(--color-gold);
+  }
+}
+
+@media (max-width: 479px) {
+  .sk-consent-actions {
+    flex-direction: column;
+  }
+  .sk-consent-actions > * {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sk-glass-strong {
+    background: var(--color-glass-fallback);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .sk-glass-strong {
+    background: var(--color-glass-fallback);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .sk-glass-strong {
+    background: var(--color-glass-fallback);
+    border-color: rgba(255, 255, 255, 0.24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk-btn:active {
+    transform: none;
   }
 }

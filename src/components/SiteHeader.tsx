@@ -1,9 +1,12 @@
 'use client'
 
+import {AndroidMark} from '@/components/AndroidMark'
+import {ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
-import {useState} from 'react'
+import {usePathname, useRouter} from 'next/navigation'
+import {useState, type MouseEvent} from 'react'
 
 const nav = [
   {href: '/jamaican-kalooki/', label: 'Jamaican Kalooki'},
@@ -14,97 +17,92 @@ const nav = [
   {href: '/about/', label: 'About'},
 ]
 
+const appStoreHref = appStoreUrl('website_header')
+
+function isCurrent(pathname: string, href: string) {
+  const path = pathname.endsWith('/') ? pathname : `${pathname}/`
+  return path === href || path.startsWith(href)
+}
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const downloadHref = appStoreUrl('website_header')
+  const pathname = usePathname()
+  const router = useRouter()
+
+  function go(href: string) {
+    router.push(href)
+    setOpen(false)
+  }
 
   return (
     <header role="banner">
       <a
-        className="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[200] focus:bg-gold focus:text-black focus:px-4 focus:py-2 focus:font-semibold focus:text-sm"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-[env(safe-area-inset-top)] focus:left-4 focus:z-[200] focus:rounded-control focus:bg-gold focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-text-dark"
         href="#main-content"
       >
         Skip to content
       </a>
       <nav
         aria-label="Main navigation"
-        className="fixed top-0 inset-x-0 z-50 bg-felt/[0.97] backdrop-blur-[20px] border-b border-white/[0.07]"
+        className="sk-glass-strong fixed inset-x-0 top-0 z-50 rounded-none border-x-0 border-t-0 pt-[env(safe-area-inset-top)]"
       >
-        <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-4 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 lg:px-8">
           <Link
             href="/"
             aria-label="Super Kalooki – Homepage"
-            className="shrink-0 flex items-center gap-2.5 no-underline min-h-11"
+            className="flex min-h-11 shrink-0 items-center gap-3 no-underline"
           >
             <Image
               src="/app-icon.png"
               alt=""
               width={40}
               height={40}
-              className="size-10 rounded-[10px] shadow-sm ring-1 ring-white/15"
+              className="size-10 rounded-control ring-1 ring-white/15"
               priority
             />
-            <span className="text-[0.95rem] font-semibold tracking-tight text-ivory/90 hidden sm:inline">
+            <span className="hidden text-[0.9375rem] font-semibold text-ivory sm:inline">
               Super Kalooki
             </span>
           </Link>
-          <ul className="hidden lg:flex items-center list-none m-0 p-0" role="list">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block text-[0.9rem] font-medium text-white/55 no-underline px-4 py-2 transition-colors duration-150 hover:text-gold whitespace-nowrap"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+          <ul className="m-0 hidden list-none items-center p-0 lg:flex" role="list">
+            {nav.map((item) => {
+              const current = isCurrent(pathname, item.href)
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={current ? 'page' : undefined}
+                    className={`block whitespace-nowrap px-3 py-2 text-[0.9375rem] font-medium no-underline ${
+                      current ? 'text-gold' : 'text-ivory-dark hover:text-gold'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
             <a
               aria-label="Super Kalooki on Instagram"
-              className="flex items-center justify-center size-[38px] rounded-full border border-white/[0.13] text-white/50 no-underline transition-all duration-150 hover:border-gold hover:text-gold"
+              className="hidden size-11 items-center justify-center rounded-control border border-white/20 text-ivory/70 no-underline lg:flex"
               href="https://www.instagram.com/superkalooki"
               rel="noopener noreferrer"
               target="_blank"
             >
               <InstagramIcon />
             </a>
-            <a
-              aria-label="Download Super Kalooki on the App Store"
-              className="inline-flex items-center justify-center min-h-11 px-4 rounded-full bg-gold text-felt-deep text-[0.875rem] font-semibold no-underline transition-colors hover:bg-gold-lt"
-              data-cta="app-store"
-              data-cta-campaign="website_header"
-              href={downloadHref}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Download free
-            </a>
-          </div>
-          <div className="flex items-center gap-2 lg:hidden shrink-0">
-            <a
-              aria-label="Download Super Kalooki on the App Store"
-              className="inline-flex items-center justify-center min-h-11 px-3.5 rounded-full bg-gold text-felt-deep text-[0.8125rem] font-semibold no-underline"
-              data-cta="app-store"
-              data-cta-campaign="website_header"
-              href={downloadHref}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Get app
-            </a>
+            {ANDROID_DOWNLOAD_PUBLIC ? <AndroidLink className="hidden lg:inline-flex" /> : null}
+            <AppStoreLink />
             <button
               aria-controls="mobile-menu"
               aria-expanded={open}
               aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
-              className="flex flex-col justify-center gap-[5px] bg-transparent border-0 cursor-pointer p-[6px] shrink-0 min-h-11 min-w-11"
+              className="inline-grid size-11 place-items-center rounded-control border border-white/20 bg-transparent text-ivory lg:hidden"
               type="button"
               onClick={() => setOpen((v) => !v)}
             >
-              <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
-              <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
-              <span className="block w-[22px] h-px bg-white/75 rounded-sm" />
+              <MenuIcon />
             </button>
           </div>
         </div>
@@ -113,40 +111,91 @@ export function SiteHeader() {
         <div className="fixed inset-0 z-40 lg:hidden" id="mobile-menu">
           <button
             aria-label="Close menu overlay"
-            className="absolute inset-0 bg-[rgba(5,10,6,0.97)] border-0 cursor-pointer"
+            className="absolute inset-0 border-0 bg-[rgba(2,14,9,0.55)]"
             type="button"
             onClick={() => setOpen(false)}
           />
           <div
             aria-label="Mobile navigation"
-            className="relative z-[1] px-5 pt-20 pb-8 flex flex-col"
+            className="sk-glass-strong absolute inset-y-0 right-0 z-[1] flex w-[min(100%,320px)] flex-col px-4 pb-[env(safe-area-inset-bottom)] pt-[var(--sk-header-offset)]"
             role="navigation"
           >
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block py-[0.875rem] text-[1.0625rem] font-medium text-white/65 no-underline border-b border-white/[0.06] transition-colors duration-150 hover:text-gold min-h-11"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <a
-              className="mt-6 inline-flex items-center justify-center min-h-12 rounded-xl bg-gold text-felt-deep text-[1rem] font-semibold no-underline"
-              data-cta="app-store"
-              data-cta-campaign="website_header"
-              href={downloadHref}
-              rel="noopener noreferrer"
-              target="_blank"
-              onClick={() => setOpen(false)}
-            >
-              Download free on the App Store
-            </a>
+            {nav.map((item) => {
+              const current = isCurrent(pathname, item.href)
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={current ? 'page' : undefined}
+                  className={`flex min-h-12 items-center border-b border-white/15 text-[1.0625rem] font-medium no-underline ${
+                    current ? 'text-gold' : 'text-ivory-dark'
+                  }`}
+                  onClick={(event) => {
+                    event.preventDefault()
+                    go(item.href)
+                  }}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </div>
         </div>
       ) : null}
     </header>
+  )
+}
+
+function AppStoreLink({className = ''}: {className?: string}) {
+  return (
+    <a
+      aria-label="Download Super Kalooki on the App Store"
+      className={`sk-btn sk-btn--gold ${className}`}
+      data-cta="app-store"
+      data-cta-campaign="website_header"
+      href={appStoreHref}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <AppleMark />
+      Download
+    </a>
+  )
+}
+
+function AndroidLink({
+  className = '',
+  onClick,
+}: {
+  className?: string
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void
+}) {
+  return (
+    <Link
+      aria-label="Download Super Kalooki for Android"
+      className={`sk-btn sk-btn--outline ${className}`}
+      href="/android/"
+      onClick={onClick}
+    >
+      <AndroidMark className="size-[18px] shrink-0" />
+      Android
+    </Link>
+  )
+}
+
+function MenuIcon() {
+  return (
+    <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.85" viewBox="0 0 24 24">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  )
+}
+
+function AppleMark() {
+  return (
+    <svg aria-hidden="true" className="size-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-.1 2.9-2.3c.7-1 1.2-2.1 1.5-3.2-3.9-1.5-3.8-5.5-3.8-5.1ZM14.7 6.2c.6-.8 1.1-1.9.9-3-1 .1-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1.1.1 2.2-.5 2.9-1.3Z" />
+    </svg>
   )
 }
 

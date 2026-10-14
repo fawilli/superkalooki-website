@@ -119,8 +119,8 @@ export function CookieConsent() {
       className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-5"
       role="dialog"
     >
-      <div className="mx-auto max-w-3xl rounded-xl border border-white/15 bg-felt-deep/95 text-ivory shadow-2xl backdrop-blur-md p-5 sm:p-6">
-        <h2 className="font-display text-xl text-ivory m-0 mb-2" id="sk-cookie-title">
+      <div className="sk-glass-strong mx-auto max-w-3xl rounded-tile p-4 text-ivory sm:p-6">
+        <h2 className="font-display m-0 mb-2 text-2xl text-ivory" id="sk-cookie-title">
           Cookie preferences
         </h2>
         <p className="text-sm text-ivory/65 leading-relaxed m-0 mb-4" id="sk-cookie-desc">
@@ -145,27 +145,15 @@ export function CookieConsent() {
           </span>
         </label>
 
-        <div className="flex flex-wrap gap-2.5">
-          <button
-            className="min-h-11 px-4 rounded-md bg-gold text-felt-deep text-sm font-semibold border-0 cursor-pointer hover:bg-gold-lt transition-colors"
-            type="button"
-            onClick={() => save(true)}
-          >
-            Accept analytics
+        <div className="sk-consent-actions flex flex-wrap gap-2">
+          <button className="sk-btn sk-btn--glass" type="button" onClick={() => save(true)}>
+            Accept
           </button>
-          <button
-            className="min-h-11 px-4 rounded-md bg-white/10 text-ivory text-sm font-semibold border border-white/20 cursor-pointer hover:bg-white/15 transition-colors"
-            type="button"
-            onClick={() => save(false)}
-          >
-            Necessary only
+          <button className="sk-btn sk-btn--glass" type="button" onClick={() => save(draftAnalytics)}>
+            Customize
           </button>
-          <button
-            className="min-h-11 px-4 rounded-md bg-transparent text-gold text-sm font-semibold border border-gold/40 cursor-pointer hover:border-gold transition-colors"
-            type="button"
-            onClick={() => save(draftAnalytics)}
-          >
-            Save choices
+          <button className="sk-btn sk-btn--glass" type="button" onClick={() => save(false)}>
+            Reject
           </button>
         </div>
       </div>

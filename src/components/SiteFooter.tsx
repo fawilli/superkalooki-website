@@ -1,4 +1,5 @@
 import {CookieSettingsLink} from '@/components/CookieConsent'
+import {ANDROID_DOWNLOAD_PUBLIC, ANDROID_PAGE_PATH} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -42,7 +43,7 @@ export function SiteFooter() {
           {links.map((item) => (
             <li key={item.href}>
               <Link
-                className="text-sm font-normal text-white/35 no-underline transition-colors duration-150 hover:text-gold"
+                className="text-sm font-normal text-white/60 no-underline transition-colors duration-150 hover:text-gold"
                 href={item.href}
               >
                 {item.label}
@@ -61,16 +62,27 @@ export function SiteFooter() {
               Download on App Store
             </a>
           </li>
+          {ANDROID_DOWNLOAD_PUBLIC ? (
+            <li>
+              <Link
+                className="text-sm font-semibold text-gold no-underline transition-colors duration-150 hover:text-gold-lt"
+                data-cta="android-apk"
+                href={ANDROID_PAGE_PATH}
+              >
+                Download for Android
+              </Link>
+            </li>
+          ) : null}
           <li>
-            <CookieSettingsLink className="text-sm font-normal text-white/35 transition-colors duration-150 hover:text-gold" />
+            <CookieSettingsLink className="text-sm font-normal text-white/60 transition-colors duration-150 hover:text-gold" />
           </li>
         </ul>
       </div>
       <div className="pt-5 flex flex-col gap-[0.375rem] text-center md:flex-row md:justify-between md:text-left">
-        <p className="text-[0.8rem] text-white/20 m-0">
+        <p className="text-[0.8rem] text-white/50 m-0">
           © {new Date().getFullYear()} Super Kalooki — Crofts Hill Holdings LLC, Florida, United States
         </p>
-        <p className="text-[0.8rem] text-white/20 m-0">
+        <p className="text-[0.8rem] text-white/50 m-0">
           For entertainment only — no real money, no gambling, no prizes.
         </p>
       </div>

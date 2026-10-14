@@ -18,7 +18,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'What Is Jamaican Kalooki? — Contract Rummy from Jamaica',
   description:
-    'Jamaican Kalooki is Contract Rummy with nine deals, sets and runs, jokers, and Jamaican scoring. Learn the rules and play free on iOS with Super Kalooki.',
+    'Jamaican Kalooki is Contract Rummy with nine deals, sets and runs, jokers, and Jamaican scoring. Learn the rules and play Super Kalooki free on iOS and Android.',
   alternates: {canonical: '/jamaican-kalooki/'},
   openGraph: {
     title: 'What Is Jamaican Kalooki?',
@@ -56,14 +56,14 @@ export default function JamaicanKalookiHubPage() {
         cards, and keep the deadwood low. When the ninth deal ends, the lowest score wins.
       </p>
       <p>
-        Super Kalooki is that game on your phone: same contracts, calling, and scoring — solo against AI or live with
+        Super Kalooki is that game on your phone: same contracts, calling, and scoring — solo against bots or live with
         4–6 friends.
       </p>
       <p>
         Ready for detail? Read the <Link href="/rules/">full rules</Link>,{' '}
         <Link href="/jamaican-kalooki/tacking/">call and tack</Link>, see{' '}
         <Link href="/jamaican-kalooki/vs-other-variants/">how it differs from other Kalooki</Link>, or{' '}
-        <Link href="/play/">download Super Kalooki on iOS</Link>.
+        <Link href="/play/">download Super Kalooki</Link>.
       </p>
 
       <h2>Words you will hear</h2>

@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "T75K638PK6.com.game.superkalooki",
+        "paths": ["/play", "/play/", "/play/*"]
+      }
+    ]
+  }
+}
