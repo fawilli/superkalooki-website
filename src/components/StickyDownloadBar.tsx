@@ -1,23 +1,30 @@
 'use client'
 
 import {AndroidMark} from '@/components/AndroidMark'
+import {OpenInAppButton} from '@/components/OpenInAppButton'
 import {ANDROID_DOWNLOAD_PUBLIC} from '@/lib/android'
 import {appStoreUrl} from '@/lib/app-store'
+import {useClientPlatform} from '@/hooks/useClientPlatform'
+import {useRelatedAppInstalled} from '@/hooks/useRelatedAppInstalled'
 import Link from 'next/link'
 import {useEffect, useState} from 'react'
 
 /**
  * Mobile download bar. Hidden while the hero App Store control is on screen.
- * One gold App Store action. Android is an outline sideload to /android/, not a second gold download.
+ * Platform pairing keeps two actions max: Open + primary acquire.
+ * Android install-confirmed: Open is gold; acquire stays available as outline.
  */
 export function StickyDownloadBar() {
   const [visible, setVisible] = useState(false)
+  const platform = useClientPlatform()
+  const installState = useRelatedAppInstalled()
+  const installed = installState === 'installed'
 
   useEffect(() => {
     const hero = document.querySelector('[data-cta-campaign="website_hero"]')
     if (!hero) {
-      setVisible(true)
-      return
+      const id = requestAnimationFrame(() => setVisible(true))
+      return () => cancelAnimationFrame(id)
     }
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(!entry.isIntersecting),
@@ -27,6 +34,8 @@ export function StickyDownloadBar() {
     return () => observer.disconnect()
   }, [])
 
+  const showOpen = platform === 'ios' || platform === 'android'
+
   return (
     <div
       aria-hidden={!visible}
@@ -35,28 +44,46 @@ export function StickyDownloadBar() {
       }`}
     >
       <div className="sk-glass-strong flex gap-2 rounded-tile p-3">
-        <a
-          aria-label="Download Super Kalooki on the App Store"
-          className="sk-btn sk-btn--gold sk-btn--lg min-w-0 flex-1"
-          data-cta="app-store"
-          data-cta-campaign="website_sticky"
-          href={appStoreUrl('website_sticky')}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <AppleMark />
-          App Store
-        </a>
-        {ANDROID_DOWNLOAD_PUBLIC ? (
+        {showOpen ? (
+          <OpenInAppButton
+            className={
+              installed
+                ? 'sk-btn sk-btn--gold sk-btn--lg min-w-0 flex-1'
+                : 'sk-btn sk-btn--outline sk-btn--lg min-w-0 flex-1'
+            }
+            emphasize={installed}
+          >
+            Open
+          </OpenInAppButton>
+        ) : null}
+
+        {platform === 'android' && ANDROID_DOWNLOAD_PUBLIC ? (
           <Link
             aria-label="Download Super Kalooki for Android"
-            className="sk-btn sk-btn--outline sk-btn--lg min-w-0 flex-1"
+            className={`sk-btn sk-btn--lg min-w-0 flex-1 ${
+              installed ? 'sk-btn--outline' : 'sk-btn--gold'
+            }`}
             href="/android/"
           >
             <AndroidMark className="size-5 shrink-0" />
             Android
           </Link>
-        ) : null}
+        ) : (
+          <a
+            aria-label="Download Super Kalooki on the App Store"
+            className={`sk-btn sk-btn--lg min-w-0 flex-1 ${
+              installed ? 'sk-btn--outline' : 'sk-btn--gold'
+            }`}
+            data-cta="app-store"
+            data-cta-campaign="website_sticky"
+            href={appStoreUrl('website_sticky')}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <AppleMark />
+            App Store
+          </a>
+        )}
       </div>
     </div>
   )

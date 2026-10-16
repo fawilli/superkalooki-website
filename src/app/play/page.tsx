@@ -1,4 +1,5 @@
 import {PhoneFrame} from '@/components/PhoneFrame'
+import {InviteOpenBanner} from '@/components/InviteOpenBanner'
 import {SiteFooter} from '@/components/SiteFooter'
 import {SiteHeader} from '@/components/SiteHeader'
 import {StoreBadges} from '@/components/StoreBadges'
@@ -30,7 +31,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function PlayPage() {
+type PlaySearchParams = Promise<{join?: string; seats?: string; resumeSolo?: string}>
+
+export default async function PlayPage({searchParams}: {searchParams: PlaySearchParams}) {
+  const params = await searchParams
+  const join = typeof params.join === 'string' ? params.join : undefined
+  const seats = typeof params.seats === 'string' ? params.seats : undefined
+
   const jsonLd = graphJsonLd([
     organizationJsonLd(),
     mobileApplicationJsonLd(),
@@ -46,7 +53,14 @@ export default function PlayPage() {
       <JsonLd data={jsonLd} />
       <SiteHeader />
       <main id="main-content">
-        <section className="border-b border-white/6 px-5 pt-[calc(var(--sk-header-offset)+2rem)] pb-16 sm:px-8 lg:px-12">
+        <div className="pt-[var(--sk-header-offset)]">
+          <InviteOpenBanner join={join} seats={seats} />
+        </div>
+        <section
+          className={`border-b border-white/6 px-5 pb-16 sm:px-8 lg:px-12 ${
+            join ? 'pt-10' : 'pt-8'
+          }`}
+        >
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-[0.75rem] font-medium tracking-[0.18em] uppercase text-gold/80 mb-3">
               Play online

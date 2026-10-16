@@ -66,6 +66,17 @@ Android App Links and iOS Universal Links are served from `public/.well-known/`:
 
 Both return `application/json` with no redirect. Paths covered: `/play`, `/play/`, `/play/*`.
 
+### Open-in-app (marketing soft nudge)
+
+Invite Universal / App Links are unchanged. For general browsing (and when someone stays in Safari/Chrome on `/play?join=…`):
+
+| Platform | Mechanism |
+| -------- | --------- |
+| **iOS** | Smart App Banner (`apple-itunes-app`, `app-id=6451106023`) plus a user-tapped “Open in Super Kalooki” Universal Link to `/play/` |
+| **Android** | User-tapped `intent://` into `com.game.superkalooki` with HTTPS fallback; optional `getInstalledRelatedApps` via `manifest.webmanifest` `related_applications` (never claims install without that signal) |
+
+No new env vars. Existing: `NEXT_PUBLIC_SITE_URL` (defaults to `https://superkalooki.com`), App Store ID `6451106023` in `src/lib/app-store.ts`, package `com.game.superkalooki` in `src/lib/android.ts`.
+
 ## Android APK
 
 Production Android build is served from `public/downloads/SuperKalooki-1.8-72-release.apk`. Player page `/android/` is button + install steps only. Checksum file stays at `public/downloads/SHA256SUMS` for operators, not the public UI.

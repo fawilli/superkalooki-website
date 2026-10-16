@@ -1,0 +1,29 @@
+{
+  "name": "Super Kalooki",
+  "short_name": "Super Kalooki",
+  "description": "Jamaican Kalooki and Contract Rummy for iOS and Android.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0a1f16",
+  "theme_color": "#0a1f16",
+  "icons": [
+    {
+      "src": "/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.game.superkalooki",
+      "url": "https://play.google.com/store/apps/details?id=com.game.superkalooki"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/super-kalooki/id6451106023",
+      "id": "6451106023"
+    }
+  ]
+}
