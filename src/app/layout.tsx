@@ -1,6 +1,8 @@
 import {ConsentScripts} from '@/components/ConsentScripts'
+import {OpenInAppPrompt} from '@/components/OpenInAppPrompt'
+import {SmartAppBannerMeta} from '@/components/SmartAppBannerMeta'
 import {StickyDownloadBar} from '@/components/StickyDownloadBar'
-import {APP_STORE_ID} from '@/lib/app-store'
+import {appleItunesAppMeta, playAppLinkUrl} from '@/lib/app-links'
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import './globals.css'
@@ -43,8 +45,10 @@ export const metadata: Metadata = {
     description: 'Free Jamaican Kalooki / Contract Rummy for iOS and Android. Solo or live with friends.',
     images: ['/marketing/sk18-table.jpg'],
   },
+  manifest: '/manifest.webmanifest',
   other: {
-    'apple-itunes-app': `app-id=${APP_STORE_ID}, app-argument=${siteUrl}`,
+    // Default Smart App Banner; SmartAppBannerMeta updates app-argument on /play (incl. ?join=).
+    'apple-itunes-app': appleItunesAppMeta(playAppLinkUrl()),
   },
 }
 
@@ -81,8 +85,10 @@ gtag('set', 'url_passthrough', false);
           } as React.CSSProperties
         }
       >
+        <SmartAppBannerMeta />
         <ConsentScripts />
         {children}
+        <OpenInAppPrompt variant="installed" />
         <StickyDownloadBar />
       </body>
     </html>
