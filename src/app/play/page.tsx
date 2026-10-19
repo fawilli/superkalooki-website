@@ -5,8 +5,14 @@ import {SiteHeader} from '@/components/SiteHeader'
 import {StoreBadges} from '@/components/StoreBadges'
 import {JsonLd} from '@/components/JsonLd'
 import {AiSummary} from '@/components/AiSummary'
-import {AI_SUMMARY, GUIDE_LINKS} from '@/lib/jamaican-kalooki'
-import {graphJsonLd, mobileApplicationJsonLd, organizationJsonLd, webPageJsonLd} from '@/lib/json-ld'
+import {AI_SUMMARY, GUIDE_LINKS, PLAY_FAQS} from '@/lib/jamaican-kalooki'
+import {
+  faqPageJsonLd,
+  graphJsonLd,
+  mobileApplicationJsonLd,
+  organizationJsonLd,
+  webPageJsonLd,
+} from '@/lib/json-ld'
 import type {Metadata} from 'next'
 import Link from 'next/link'
 
@@ -46,6 +52,7 @@ export default async function PlayPage({searchParams}: {searchParams: PlaySearch
       description: metadata.description as string,
       path: '/play/',
     }),
+    faqPageJsonLd(PLAY_FAQS),
   ])
 
   return (
@@ -72,12 +79,29 @@ export default async function PlayPage({searchParams}: {searchParams: PlaySearch
               Super Kalooki is the digital Jamaican Contract Rummy table: nine deals, changing contracts, solo vs bots or a
               private live game with 4–6 friends.
             </p>
-            <StoreBadges campaign="website_play" centered />
+            <StoreBadges campaign="website_play" centered showAndroid={false} />
           </div>
         </section>
 
         <section className="px-5 py-14 sm:px-8 lg:px-12 max-w-3xl mx-auto">
           <AiSummary tone="dark">{AI_SUMMARY}</AiSummary>
+
+          <h2 className="font-display text-[clamp(1.4rem,3vw,1.85rem)] text-ivory mb-3">
+            How do I play Jamaican Kalooki online?
+          </h2>
+          <p className="text-ivory/60 leading-relaxed mb-10">
+            Download Super Kalooki on the App Store, then play Solo vs AI or host a live private table for 4–6 friends.
+            Same Jamaican Contract Rummy rules: nine deals, changing contracts, lowest score wins. Google’s AI features
+            use the same{' '}
+            <a
+              className="text-gold font-semibold no-underline hover:text-gold-lt"
+              href="https://developers.google.com/search/docs/appearance/ai-features"
+              rel="noopener noreferrer"
+            >
+              people-first, crawlable, snippet-eligible
+            </a>{' '}
+            pages as Search — not a special llms.txt file.
+          </p>
 
           <div className="grid sm:grid-cols-2 gap-10 items-center mb-14">
             <PhoneFrame
@@ -86,11 +110,15 @@ export default async function PlayPage({searchParams}: {searchParams: PlaySearch
             />
             <div>
               <h2 className="font-display text-[clamp(1.4rem,3vw,1.85rem)] text-ivory mb-3">
-                Solo vs bots or live with friends
+                How do I download Super Kalooki on iPhone?
               </h2>
               <p className="text-ivory/60 leading-relaxed mb-4">
-                Practice against Beginner, Intermediate, or Expert bots — or host a private online table. Same Jamaican
-                Kalooki rules either way.
+                Open the Super Kalooki App Store listing and tap Get. The app is free on iPhone and iPad. Entertainment
+                only — no real money, gambling, or prizes. Practice{' '}
+                <Link className="text-gold font-semibold no-underline hover:text-gold-lt" href="/jamaican-kalooki/tacking/">
+                  call and tack
+                </Link>{' '}
+                in Solo, then host a live table.
               </p>
               <ul className="text-ivory/60 leading-relaxed space-y-2 list-disc pl-5 m-0">
                 <li>Nine contract deals (333 → 4444)</li>
@@ -104,6 +132,14 @@ export default async function PlayPage({searchParams}: {searchParams: PlaySearch
               </ul>
             </div>
           </div>
+
+          <h2 className="font-display text-[clamp(1.4rem,3vw,1.85rem)] text-ivory mb-4">Common questions</h2>
+          {PLAY_FAQS.map((faq) => (
+            <div key={faq.question} className="mb-5">
+              <h3 className="font-display text-base font-semibold text-ivory m-0 mb-2">{faq.question}</h3>
+              <p className="text-ivory/60 leading-relaxed m-0">{faq.answer}</p>
+            </div>
+          ))}
 
           <nav aria-label="Learn Jamaican Kalooki" className="border-t border-white/10 pt-10">
             <p className="text-[0.75rem] font-medium tracking-[0.16em] uppercase text-gold/80 mb-4 m-0">
@@ -129,9 +165,10 @@ export default async function PlayPage({searchParams}: {searchParams: PlaySearch
             Download Super Kalooki free
           </h2>
           <p className="text-ivory/60 mb-8 max-w-lg mx-auto">
-            Jamaican Contract Rummy for iPhone, iPad, and Android. No real money, gambling, or prizes.
+            Jamaican Contract Rummy for iPhone and iPad. Download on the App Store. Entertainment only — no real money,
+            gambling, or prizes.
           </p>
-          <StoreBadges campaign="website_play" centered />
+          <StoreBadges campaign="website_play" centered showAndroid={false} />
         </section>
       </main>
       <SiteFooter />
