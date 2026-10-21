@@ -131,12 +131,31 @@ export const PLAY_FAQS: FaqPair[] = [
   },
 ]
 
+export const IPHONE_FAQS: FaqPair[] = [
+  {
+    question: 'Can I play Jamaican Kalooki on iPhone?',
+    answer:
+      'Yes. Super Kalooki is free on the App Store for iPhone and iPad. Download the app, then play Solo vs bots or host a live private table for 4–6 friends. Entertainment only — no real money, gambling, or prizes.',
+  },
+  {
+    question: 'How do I download Super Kalooki on iPhone?',
+    answer:
+      'Open the Super Kalooki App Store listing and tap Get. The listing is live and the app is free. Practice call and tack in Solo, then invite friends to a private table.',
+  },
+  {
+    question: 'Is Super Kalooki on Google Play?',
+    answer:
+      'This page is the iPhone download path. Super Kalooki does not claim a Google Play listing here. Use the App Store Get button for iOS.',
+  },
+]
+
 export const GUIDE_LINKS = [
   {href: '/jamaican-kalooki/', label: 'What is Jamaican Kalooki?'},
   {href: '/rules/', label: 'Full rules'},
   {href: '/jamaican-kalooki/vs-other-variants/', label: 'How it differs from other Kalooki'},
   {href: '/jamaican-kalooki/scoring/', label: 'Scoring & deadwood'},
   {href: '/jamaican-kalooki/tacking/', label: 'Call and tack'},
+  {href: '/jamaican-kalooki/iphone/', label: 'Play on iPhone'},
   {href: '/jamaican-kalooki/strategy/', label: 'Strategy tips'},
   {href: '/play/', label: 'Play Super Kalooki'},
 ] as const

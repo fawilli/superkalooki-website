@@ -15,6 +15,7 @@ export type AppStoreCampaign =
   | 'website_about'
   | 'website_play'
   | 'website_guide_tacking'
+  | 'website_guide_iphone'
   | 'website'
 
 /** App Store campaign URL for Apple App Analytics (`ct` + `mt=8`). */

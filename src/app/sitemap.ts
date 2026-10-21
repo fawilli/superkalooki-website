@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/jamaican-kalooki/vs-other-variants/',
     '/jamaican-kalooki/scoring/',
     '/jamaican-kalooki/tacking/',
+    '/jamaican-kalooki/iphone/',
     '/jamaican-kalooki/strategy/',
     '/play/',
     '/android/',

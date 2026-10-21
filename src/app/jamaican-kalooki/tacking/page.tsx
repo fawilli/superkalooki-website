@@ -81,7 +81,8 @@ export default function TackingPage() {
       <p>
         Open the Super Kalooki App Store listing and tap Get. The app is free on iPhone and iPad. Entertainment only —
         no real money, gambling, or prizes. Practice call and tack in Solo, then host a live table. Start at{' '}
-        <Link href="/play/">Play Jamaican Kalooki on iOS</Link>.
+        <Link href="/play/">Play Jamaican Kalooki on iOS</Link> or the{' '}
+        <Link href="/jamaican-kalooki/iphone/">iPhone download guide</Link>.
       </p>
 
       <h2>Common questions</h2>

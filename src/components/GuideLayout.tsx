@@ -18,6 +18,9 @@ type Props = {
   currentPath?: string
   showStoreCta?: boolean
   storeCampaign?: AppStoreCampaign
+  /** APK / Android badge. Keep false on iOS-only growth pages. */
+  showAndroid?: boolean
+  storeSubcopy?: string
 }
 
 export function GuideLayout({
@@ -29,6 +32,8 @@ export function GuideLayout({
   currentPath,
   showStoreCta = true,
   storeCampaign = 'website_cta',
+  showAndroid = true,
+  storeSubcopy = 'Jamaican Contract Rummy on iOS and Android — solo vs bots or live with friends.',
 }: Props) {
   return (
     <div className="min-h-screen bg-ivory text-text-dark">
@@ -80,10 +85,8 @@ export function GuideLayout({
         {showStoreCta ? (
           <div className="mt-10 rounded-tile bg-felt-mid px-5 py-8 text-center">
             <p className="font-display text-[1.5rem] text-ivory m-0 mb-2">Play Super Kalooki free</p>
-            <p className="text-ivory/60 text-sm m-0 mb-5 max-w-md mx-auto">
-              Jamaican Contract Rummy on iOS and Android — solo vs bots or live with friends.
-            </p>
-            <StoreBadges campaign={storeCampaign} centered />
+            <p className="text-ivory/60 text-sm m-0 mb-5 max-w-md mx-auto">{storeSubcopy}</p>
+            <StoreBadges campaign={storeCampaign} centered showAndroid={showAndroid} />
           </div>
         ) : null}
       </main>
