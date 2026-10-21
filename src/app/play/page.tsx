@@ -118,7 +118,11 @@ export default async function PlayPage({searchParams}: {searchParams: PlaySearch
                 <Link className="text-gold font-semibold no-underline hover:text-gold-lt" href="/jamaican-kalooki/tacking/">
                   call and tack
                 </Link>{' '}
-                in Solo, then host a live table.
+                in Solo, then host a live table. Full iPhone path:{' '}
+                <Link className="text-gold font-semibold no-underline hover:text-gold-lt" href="/jamaican-kalooki/iphone/">
+                  Can I play Jamaican Kalooki on iPhone?
+                </Link>
+                .
               </p>
               <ul className="text-ivory/60 leading-relaxed space-y-2 list-disc pl-5 m-0">
                 <li>Nine contract deals (333 → 4444)</li>

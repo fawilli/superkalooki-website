@@ -61,7 +61,8 @@ export default function JamaicanKalookiHubPage() {
       </p>
       <p>
         Ready for detail? Read the <Link href="/rules/">full rules</Link>,{' '}
-        <Link href="/jamaican-kalooki/tacking/">call and tack</Link>, see{' '}
+        <Link href="/jamaican-kalooki/tacking/">call and tack</Link>,{' '}
+        <Link href="/jamaican-kalooki/iphone/">play on iPhone</Link>, see{' '}
         <Link href="/jamaican-kalooki/vs-other-variants/">how it differs from other Kalooki</Link>, or{' '}
         <Link href="/play/">download Super Kalooki</Link>.
       </p>
